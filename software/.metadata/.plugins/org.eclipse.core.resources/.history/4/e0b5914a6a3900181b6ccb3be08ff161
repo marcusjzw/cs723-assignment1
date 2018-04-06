@@ -47,6 +47,7 @@ typedef struct {
 void freq_relay() {
 	unsigned int new_count = IORD(FREQUENCY_ANALYSER_BASE, 0);	// number of ADC samples
 	double new_freq = 16000/(double)new_count;
+
 	int avg_count = (new_count + old_count) / 2;	// avg number of samples between two readings
 	double roc = fabs(((new_freq - old_freq) * 16000)/ avg_count); // must always be positive
 
@@ -74,24 +75,25 @@ void freq_relay() {
 
 // VGA_Task
 void VGA_Task(void *pvParameters ){
-//	//reset the display
-//	alt_up_pixel_buffer_dma_dev *pixel_buf;
-//	pixel_buf = alt_up_pixel_buffer_dma_open_dev(VIDEO_PIXEL_BUFFER_DMA_NAME);
-//	if(pixel_buf == NULL){
-//		printf("Cannot find pixel buffer device\n");
-//	}
-//	alt_up_pixel_buffer_dma_clear_screen(pixel_buf, 0);
-//
-//	//initialize character buffer
-//	alt_up_char_buffer_dev *char_buf;
-//	char_buf = alt_up_char_buffer_open_dev("/dev/video_character_buffer_with_dma");
-//	if(char_buf == NULL){
-//		printf("can't find char buffer device\n");
-//	}
-//	alt_up_char_buffer_clear(char_buf);
-//	while(1){
-//		// draw stuff
-//	}
+	//reset the display
+	alt_up_pixel_buffer_dma_dev *pixel_buf;
+	pixel_buf = alt_up_pixel_buffer_dma_open_dev(VIDEO_PIXEL_BUFFER_DMA_NAME);
+	if(pixel_buf == NULL){
+		printf("Cannot find pixel buffer device\n");
+	}
+	alt_up_pixel_buffer_dma_clear_screen(pixel_buf, 0);
+
+	//initialize character buffer
+	alt_up_char_buffer_dev *char_buf;
+	char_buf = alt_up_char_buffer_open_dev("/dev/video_character_buffer_with_dma");
+	if(char_buf == NULL){
+		printf("can't find char buffer device\n");
+	}
+	alt_up_char_buffer_clear(char_buf);
+
+	while(1){
+		// draw stuff
+	}
 }
 
 

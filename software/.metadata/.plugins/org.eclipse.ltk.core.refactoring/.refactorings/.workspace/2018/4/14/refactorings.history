@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;freertos_test/vga.c&apos;" deleteContents="false" description="Delete resource &apos;freertos_test/vga.c&apos;" element1="/freertos_test/vga.c" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1522998392165"/>
+</session>

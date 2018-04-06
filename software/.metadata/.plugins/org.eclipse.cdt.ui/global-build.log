@@ -1795,3 +1795,1768 @@ the public mailing list cygwin@cygwin.com
 [freertos_test build complete]
 
 **** Build Finished ****
+
+**** Build of configuration Nios II for project freertos_test ****
+
+make all 
+      1 [main] sh 4056 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 7252 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 10648 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 8140 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 1588 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 8000 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11772 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 8480 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 10988 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12124 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 7804 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 832 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 6928 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+/usr/bin/sh: line 0: cd: D:/cs723-assignment1/cs723/: No such file or directory
+      1 [main] sh 11328 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 4996 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 9032 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 10832 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 5704 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 5960 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 11692 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 524 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 11688 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 10548 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] echo 12148 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Building D:/cs723-assignment1/software/freertos_test_bsp/
+make --no-print-directory -C D:/cs723-assignment1/software/freertos_test_bsp/
+      0 [main] pwd 8604 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11868 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 2184 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[BSP build complete]
+      0 [main] echo 9740 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Compiling D:/cs723-assignment1/software/freertos_test/freertos_test.c to obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o
+      1 [main] mkdir 8488 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+nios2-elf-gcc -xc -MP -MMD -c -ID:/cs723-assignment1/software/freertos_test_bsp//HAL/inc -ID:/cs723-assignment1/software/freertos_test_bsp/ -ID:/cs723-assignment1/software/freertos_test_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o D:/cs723-assignment1/software/freertos_test/freertos_test.c
+      0 [main] true 5448 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] echo 1388 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Linking freertos_test.elf
+nios2-elf-g++  -T'D:/cs723-assignment1/software/freertos_test_bsp//linker.x' -msys-crt0='D:/cs723-assignment1/software/freertos_test_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LD:/cs723-assignment1/software/freertos_test_bsp/   -Wl,-Map=freertos_test.map   -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o freertos_test.elf obj/default//D/cs723-assignment1/software/freertos_test/freertos/croutine.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/event_groups.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/heap.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/list.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/port.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/queue.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/tasks.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/timers.o obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/port_asm.o -lm 
+nios2-elf-insert freertos_test.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "D:/cs723-assignment1/software/freertos_test" --sopcinfo //uoa.auckland.ac.nz/engdfs/home/stoo718/Documents/cs723/nios2.sopcinfo
+      0 [main] sh 6332 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] uname 2116 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] cygpath 10416 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 10780 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: (freertos_test.elf) 599 KBytes program size (code + initialized data).
+Info:                     130561 KBytes free for stack + heap.
+      1 [main] echo 8768 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Creating freertos_test.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source freertos_test.elf >freertos_test.objdump
+      1 [main] sh 11328 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 8848 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[freertos_test build complete]
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project freertos_test ****
+
+make all 
+      0 [main] sh 9912 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 11772 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 10564 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+     11 [main] sh 3096 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 9248 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 4872 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 11720 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 3500 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 9944 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 824 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 9440 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 1388 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11032 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+/usr/bin/sh: line 0: cd: D:/cs723-assignment1/cs723/: No such file or directory
+      1 [main] sh 2784 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 8012 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 8700 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 8364 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 10648 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 4056 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11680 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 3680 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 6048 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 11464 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] echo 11328 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Building D:/cs723-assignment1/software/freertos_test_bsp/
+make --no-print-directory -C D:/cs723-assignment1/software/freertos_test_bsp/
+      0 [main] pwd 9248 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 11556 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11268 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[BSP build complete]
+      0 [main] echo 4056 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Compiling D:/cs723-assignment1/software/freertos_test/freertos_test.c to obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o
+      8 [main] mkdir 11792 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+nios2-elf-gcc -xc -MP -MMD -c -ID:/cs723-assignment1/software/freertos_test_bsp//HAL/inc -ID:/cs723-assignment1/software/freertos_test_bsp/ -ID:/cs723-assignment1/software/freertos_test_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o D:/cs723-assignment1/software/freertos_test/freertos_test.c
+      1 [main] true 11616 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] echo 8604 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Linking freertos_test.elf
+nios2-elf-g++  -T'D:/cs723-assignment1/software/freertos_test_bsp//linker.x' -msys-crt0='D:/cs723-assignment1/software/freertos_test_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LD:/cs723-assignment1/software/freertos_test_bsp/   -Wl,-Map=freertos_test.map   -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o freertos_test.elf obj/default//D/cs723-assignment1/software/freertos_test/freertos/croutine.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/event_groups.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/heap.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/list.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/port.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/queue.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/tasks.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/timers.o obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/port_asm.o -lm 
+nios2-elf-insert freertos_test.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "D:/cs723-assignment1/software/freertos_test" --sopcinfo //uoa.auckland.ac.nz/engdfs/home/stoo718/Documents/cs723/nios2.sopcinfo
+      0 [main] sh 9128 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] uname 5932 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] cygpath 11956 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 6376 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: (freertos_test.elf) 599 KBytes program size (code + initialized data).
+Info:                     130561 KBytes free for stack + heap.
+      1 [main] echo 8164 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Creating freertos_test.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source freertos_test.elf >freertos_test.objdump
+      1 [main] sh 6052 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 6048 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[freertos_test build complete]
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project freertos_test ****
+
+make all 
+      1 [main] sh 7700 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12168 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 5440 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11724 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 7268 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 2684 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 10444 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 1000 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 11880 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 900 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 7768 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12392 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12808 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+/usr/bin/sh: line 0: cd: D:/cs723-assignment1/cs723/: No such file or directory
+      0 [main] sh 11536 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 13076 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 11772 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 7288 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12764 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 11076 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 10972 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11452 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 8876 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 1756 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] echo 13132 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Building D:/cs723-assignment1/software/freertos_test_bsp/
+make --no-print-directory -C D:/cs723-assignment1/software/freertos_test_bsp/
+      0 [main] pwd 2116 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 9512 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12932 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[BSP build complete]
+      0 [main] echo 3096 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Compiling D:/cs723-assignment1/software/freertos_test/freertos_test.c to obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o
+      0 [main] mkdir 8124 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+nios2-elf-gcc -xc -MP -MMD -c -ID:/cs723-assignment1/software/freertos_test_bsp//HAL/inc -ID:/cs723-assignment1/software/freertos_test_bsp/ -ID:/cs723-assignment1/software/freertos_test_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o D:/cs723-assignment1/software/freertos_test/freertos_test.c
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:37: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'static'
+D:/cs723-assignment1/software/freertos_test/freertos_test.c: In function 'freq_relay':
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:51: error: 'old_freq' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:51: error: (Each undeclared identifier is reported only once
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:51: error: for each function it appears in.)
+make: *** [obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project freertos_test ****
+
+make all 
+      1 [main] sh 12620 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12940 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 5676 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 3224 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 8140 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 2980 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11260 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 10444 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 8124 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11104 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12496 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 13068 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 9440 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+/usr/bin/sh: line 0: cd: D:/cs723-assignment1/cs723/: No such file or directory
+      1 [main] sh 12580 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 13084 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 13100 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 11256 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 10092 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11328 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11000 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11440 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12628 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 4544 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] echo 12520 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Building D:/cs723-assignment1/software/freertos_test_bsp/
+make --no-print-directory -C D:/cs723-assignment1/software/freertos_test_bsp/
+      0 [main] pwd 8876 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 8724 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 7968 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[BSP build complete]
+      0 [main] echo 13036 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Compiling D:/cs723-assignment1/software/freertos_test/freertos_test.c to obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o
+      1 [main] mkdir 3096 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+nios2-elf-gcc -xc -MP -MMD -c -ID:/cs723-assignment1/software/freertos_test_bsp//HAL/inc -ID:/cs723-assignment1/software/freertos_test_bsp/ -ID:/cs723-assignment1/software/freertos_test_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o D:/cs723-assignment1/software/freertos_test/freertos_test.c
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:39: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'typedef'
+D:/cs723-assignment1/software/freertos_test/freertos_test.c: In function 'freq_relay':
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:63: warning: excess elements in struct initializer
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:63: warning: (near initialization for 'freqMessageToSend')
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:63: warning: excess elements in struct initializer
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:63: warning: (near initialization for 'freqMessageToSend')
+make: *** [obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project freertos_test ****
+
+make all 
+      0 [main] sh 12488 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12528 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 904 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 13304 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12768 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11064 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 11728 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12696 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 2980 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 11724 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 13256 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 3096 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 11936 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+/usr/bin/sh: line 0: cd: D:/cs723-assignment1/cs723/: No such file or directory
+      0 [main] sh 6940 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 9288 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12976 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 11460 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 10788 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 8076 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 10476 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 13296 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 4644 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 7860 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] echo 12472 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Building D:/cs723-assignment1/software/freertos_test_bsp/
+make --no-print-directory -C D:/cs723-assignment1/software/freertos_test_bsp/
+      0 [main] pwd 12648 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11404 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 2488 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[BSP build complete]
+      1 [main] echo 10380 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Compiling D:/cs723-assignment1/software/freertos_test/freertos_test.c to obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o
+      1 [main] mkdir 10708 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+nios2-elf-gcc -xc -MP -MMD -c -ID:/cs723-assignment1/software/freertos_test_bsp//HAL/inc -ID:/cs723-assignment1/software/freertos_test_bsp/ -ID:/cs723-assignment1/software/freertos_test_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o D:/cs723-assignment1/software/freertos_test/freertos_test.c
+      0 [main] true 3660 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] echo 8724 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Linking freertos_test.elf
+nios2-elf-g++  -T'D:/cs723-assignment1/software/freertos_test_bsp//linker.x' -msys-crt0='D:/cs723-assignment1/software/freertos_test_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LD:/cs723-assignment1/software/freertos_test_bsp/   -Wl,-Map=freertos_test.map   -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o freertos_test.elf obj/default//D/cs723-assignment1/software/freertos_test/freertos/croutine.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/event_groups.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/heap.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/list.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/port.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/queue.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/tasks.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/timers.o obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/port_asm.o -lm 
+nios2-elf-insert freertos_test.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "D:/cs723-assignment1/software/freertos_test" --sopcinfo //uoa.auckland.ac.nz/engdfs/home/stoo718/Documents/cs723/nios2.sopcinfo
+      1 [main] sh 13036 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] uname 12576 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] cygpath 7968 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 10324 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: (freertos_test.elf) 599 KBytes program size (code + initialized data).
+Info:                     130561 KBytes free for stack + heap.
+      0 [main] echo 9760 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Creating freertos_test.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source freertos_test.elf >freertos_test.objdump
+      1 [main] sh 7496 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 9936 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[freertos_test build complete]
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project freertos_test ****
+
+make all 
+      0 [main] sh 8024 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11652 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 812 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 13236 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 11364 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11328 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 13148 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 4768 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 6852 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 6060 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11768 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 7100 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 7912 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+/usr/bin/sh: line 0: cd: D:/cs723-assignment1/cs723/: No such file or directory
+      0 [main] sh 12424 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 4180 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12956 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 3116 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 2728 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 3096 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 7788 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 10760 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 5372 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12836 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] echo 8952 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Building D:/cs723-assignment1/software/freertos_test_bsp/
+make --no-print-directory -C D:/cs723-assignment1/software/freertos_test_bsp/
+      0 [main] pwd 9844 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 4164 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12532 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[BSP build complete]
+      1 [main] echo 13308 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Compiling D:/cs723-assignment1/software/freertos_test/freertos_test.c to obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o
+      1 [main] mkdir 12604 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+nios2-elf-gcc -xc -MP -MMD -c -ID:/cs723-assignment1/software/freertos_test_bsp//HAL/inc -ID:/cs723-assignment1/software/freertos_test_bsp/ -ID:/cs723-assignment1/software/freertos_test_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o D:/cs723-assignment1/software/freertos_test/freertos_test.c
+      0 [main] true 10324 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] echo 752 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Linking freertos_test.elf
+nios2-elf-g++  -T'D:/cs723-assignment1/software/freertos_test_bsp//linker.x' -msys-crt0='D:/cs723-assignment1/software/freertos_test_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LD:/cs723-assignment1/software/freertos_test_bsp/   -Wl,-Map=freertos_test.map   -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o freertos_test.elf obj/default//D/cs723-assignment1/software/freertos_test/freertos/croutine.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/event_groups.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/heap.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/list.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/port.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/queue.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/tasks.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/timers.o obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/port_asm.o -lm 
+nios2-elf-insert freertos_test.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "D:/cs723-assignment1/software/freertos_test" --sopcinfo //uoa.auckland.ac.nz/engdfs/home/stoo718/Documents/cs723/nios2.sopcinfo
+      0 [main] sh 3964 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] uname 12092 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] cygpath 13008 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 13192 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: (freertos_test.elf) 599 KBytes program size (code + initialized data).
+Info:                     130561 KBytes free for stack + heap.
+      0 [main] echo 12980 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Creating freertos_test.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source freertos_test.elf >freertos_test.objdump
+      1 [main] sh 12124 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12600 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[freertos_test build complete]
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project freertos_test ****
+
+make all 
+      0 [main] sh 13028 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 13288 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 10444 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 7052 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 3052 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 4436 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12776 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 3032 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 8924 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 2488 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 4056 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 8772 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 4164 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+/usr/bin/sh: line 0: cd: D:/cs723-assignment1/cs723/: No such file or directory
+      1 [main] sh 9844 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12912 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 7996 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 3776 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12252 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11000 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 9976 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11440 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 9760 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 11888 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] echo 10996 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Building D:/cs723-assignment1/software/freertos_test_bsp/
+make --no-print-directory -C D:/cs723-assignment1/software/freertos_test_bsp/
+      0 [main] pwd 12460 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 6060 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11792 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[BSP build complete]
+      0 [main] echo 11152 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Compiling D:/cs723-assignment1/software/freertos_test/freertos_test.c to obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o
+      0 [main] mkdir 10252 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+nios2-elf-gcc -xc -MP -MMD -c -ID:/cs723-assignment1/software/freertos_test_bsp//HAL/inc -ID:/cs723-assignment1/software/freertos_test_bsp/ -ID:/cs723-assignment1/software/freertos_test_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o D:/cs723-assignment1/software/freertos_test/freertos_test.c
+D:/cs723-assignment1/software/freertos_test/freertos_test.c: In function 'VGA_Task':
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:77: error: 'alt_up_pixel_buffer_dma_dev' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:77: error: (Each undeclared identifier is reported only once
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:77: error: for each function it appears in.)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:77: error: 'pixel_buf' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:78: warning: implicit declaration of function 'alt_up_pixel_buffer_dma_open_dev'
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:82: warning: implicit declaration of function 'alt_up_pixel_buffer_dma_clear_screen'
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:84: error: 'alt_up_char_buffer_dev' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:84: error: 'char_buf' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:85: warning: implicit declaration of function 'alt_up_char_buffer_open_dev'
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:89: warning: implicit declaration of function 'alt_up_char_buffer_clear'
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:93: warning: implicit declaration of function 'alt_up_pixel_buffer_dma_draw_hline'
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:95: warning: implicit declaration of function 'alt_up_pixel_buffer_dma_draw_vline'
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:98: warning: implicit declaration of function 'alt_up_char_buffer_string'
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:121: error: 'Line' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:121: error: expected ';' before 'line_freq'
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:139: error: 'freq_threshold' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:141: error: 'roc_threshold' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:144: error: 'time_taken' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:146: error: 'max_time' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:148: error: 'min_time' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:150: error: 'avg_time' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:154: warning: implicit declaration of function 'alt_up_pixel_buffer_dma_draw_box'
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:159: error: 'FREQPLT_ORI_Y' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:159: error: 'FREQPLT_FREQ_RES' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:159: error: 'MIN_FREQ' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:163: error: 'ROCPLT_ORI_Y' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:163: error: 'ROCPLT_ROC_RES' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:168: error: 'freq' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:168: error: 'freq_index' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:171: error: 'line_freq' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:171: error: 'FREQPLT_ORI_X' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:171: error: 'FREQPLT_GRID_SIZE_X' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:178: error: 'line_roc' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:178: error: 'ROCPLT_ORI_X' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:178: error: 'ROCPLT_GRID_SIZE_X' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:179: error: 'dfreq' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:185: warning: implicit declaration of function 'alt_up_pixel_buffer_dma_draw_line'
+make: *** [obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project freertos_test ****
+
+make all 
+      0 [main] sh 2728 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11688 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 992 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 4996 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 9944 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 10636 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 5412 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 1172 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 7536 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 1136 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11768 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 13128 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 10180 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+/usr/bin/sh: line 0: cd: D:/cs723-assignment1/cs723/: No such file or directory
+      1 [main] sh 10588 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 11108 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 6332 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 10300 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 10924 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12600 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 6308 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 13304 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 5648 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 9452 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] echo 992 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Building D:/cs723-assignment1/software/freertos_test_bsp/
+make --no-print-directory -C D:/cs723-assignment1/software/freertos_test_bsp/
+      0 [main] pwd 3776 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12472 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12644 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[BSP build complete]
+      1 [main] echo 11116 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Compiling D:/cs723-assignment1/software/freertos_test/freertos_test.c to obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o
+      0 [main] mkdir 12544 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+nios2-elf-gcc -xc -MP -MMD -c -ID:/cs723-assignment1/software/freertos_test_bsp//HAL/inc -ID:/cs723-assignment1/software/freertos_test_bsp/ -ID:/cs723-assignment1/software/freertos_test_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o D:/cs723-assignment1/software/freertos_test/freertos_test.c
+D:/cs723-assignment1/software/freertos_test/freertos_test.c: In function 'VGA_Task':
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:85: error: 'alt_up_char_buffer_dev' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:85: error: (Each undeclared identifier is reported only once
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:85: error: for each function it appears in.)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:85: error: 'char_buf' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:86: warning: implicit declaration of function 'alt_up_char_buffer_open_dev'
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:90: warning: implicit declaration of function 'alt_up_char_buffer_clear'
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:99: warning: implicit declaration of function 'alt_up_char_buffer_string'
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:122: error: 'Line' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:122: error: expected ';' before 'line_freq'
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:140: error: 'freq_threshold' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:142: error: 'roc_threshold' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:145: error: 'time_taken' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:147: error: 'max_time' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:149: error: 'min_time' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:151: error: 'avg_time' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:160: error: 'FREQPLT_ORI_Y' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:160: error: 'FREQPLT_FREQ_RES' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:160: error: 'MIN_FREQ' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:164: error: 'ROCPLT_ORI_Y' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:164: error: 'ROCPLT_ROC_RES' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:169: error: 'freq' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:169: error: 'freq_index' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:172: error: 'line_freq' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:172: error: 'FREQPLT_ORI_X' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:172: error: 'FREQPLT_GRID_SIZE_X' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:179: error: 'line_roc' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:179: error: 'ROCPLT_ORI_X' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:179: error: 'ROCPLT_GRID_SIZE_X' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:180: error: 'dfreq' undeclared (first use in this function)
+make: *** [obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project freertos_test ****
+
+make all 
+      1 [main] sh 11008 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12016 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 9972 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12384 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 8428 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 8876 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 10488 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12808 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 10760 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12788 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11740 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12916 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 4892 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+/usr/bin/sh: line 0: cd: D:/cs723-assignment1/cs723/: No such file or directory
+      0 [main] sh 11332 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 8152 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 9128 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12416 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 7124 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 3032 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11940 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 9544 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12684 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12332 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] echo 32 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Building D:/cs723-assignment1/software/freertos_test_bsp/
+make --no-print-directory -C D:/cs723-assignment1/software/freertos_test_bsp/
+      1 [main] pwd 8852 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 10908 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12976 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[BSP build complete]
+      0 [main] echo 12188 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Compiling D:/cs723-assignment1/software/freertos_test/freertos_test.c to obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o
+      1 [main] mkdir 12980 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+nios2-elf-gcc -xc -MP -MMD -c -ID:/cs723-assignment1/software/freertos_test_bsp//HAL/inc -ID:/cs723-assignment1/software/freertos_test_bsp/ -ID:/cs723-assignment1/software/freertos_test_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o D:/cs723-assignment1/software/freertos_test/freertos_test.c
+      0 [main] true 8836 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] echo 2184 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Linking freertos_test.elf
+nios2-elf-g++  -T'D:/cs723-assignment1/software/freertos_test_bsp//linker.x' -msys-crt0='D:/cs723-assignment1/software/freertos_test_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LD:/cs723-assignment1/software/freertos_test_bsp/   -Wl,-Map=freertos_test.map   -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o freertos_test.elf obj/default//D/cs723-assignment1/software/freertos_test/freertos/croutine.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/event_groups.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/heap.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/list.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/port.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/queue.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/tasks.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/timers.o obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/port_asm.o -lm 
+nios2-elf-insert freertos_test.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "D:/cs723-assignment1/software/freertos_test" --sopcinfo //uoa.auckland.ac.nz/engdfs/home/stoo718/Documents/cs723/nios2.sopcinfo
+      0 [main] sh 4188 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] uname 7596 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] cygpath 12404 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 4540 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: (freertos_test.elf) 604 KBytes program size (code + initialized data).
+Info:                     130561 KBytes free for stack + heap.
+      1 [main] echo 12204 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Creating freertos_test.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source freertos_test.elf >freertos_test.objdump
+      1 [main] sh 12964 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12960 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[freertos_test build complete]
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project freertos_test ****
+
+make all 
+      1 [main] sh 6308 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11444 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 668 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 1236 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 9604 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12188 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 11668 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 296 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 3032 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 3488 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12352 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 10964 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 992 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+/usr/bin/sh: line 0: cd: D:/cs723-assignment1/cs723/: No such file or directory
+      0 [main] sh 12644 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 5976 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 13172 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 13088 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 11880 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 5496 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12676 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 9352 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 13280 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 2892 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] echo 12620 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Building D:/cs723-assignment1/software/freertos_test_bsp/
+make --no-print-directory -C D:/cs723-assignment1/software/freertos_test_bsp/
+      0 [main] pwd 488 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 5904 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 1288 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[BSP build complete]
+      0 [main] true 11116 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 6800 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[freertos_test build complete]
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project freertos_test ****
+
+make all 
+      0 [main] sh 6892 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 9208 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12376 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11364 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 13252 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 1788 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 13084 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 3276 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 2684 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 2636 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 10912 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 1368 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 5360 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+/usr/bin/sh: line 0: cd: D:/cs723-assignment1/cs723/: No such file or directory
+      0 [main] sh 11104 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 5924 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 8876 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 2640 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12008 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 2548 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12780 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 13304 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 10836 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12336 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] echo 10908 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Building D:/cs723-assignment1/software/freertos_test_bsp/
+make --no-print-directory -C D:/cs723-assignment1/software/freertos_test_bsp/
+      1 [main] pwd 11544 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 1188 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 9996 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[BSP build complete]
+      0 [main] echo 7968 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Compiling D:/cs723-assignment1/software/freertos_test/freertos_test.c to obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o
+      1 [main] mkdir 12808 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+nios2-elf-gcc -xc -MP -MMD -c -ID:/cs723-assignment1/software/freertos_test_bsp//HAL/inc -ID:/cs723-assignment1/software/freertos_test_bsp/ -ID:/cs723-assignment1/software/freertos_test_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o D:/cs723-assignment1/software/freertos_test/freertos_test.c
+      1 [main] true 13280 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] echo 12784 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Linking freertos_test.elf
+nios2-elf-g++  -T'D:/cs723-assignment1/software/freertos_test_bsp//linker.x' -msys-crt0='D:/cs723-assignment1/software/freertos_test_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LD:/cs723-assignment1/software/freertos_test_bsp/   -Wl,-Map=freertos_test.map   -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o freertos_test.elf obj/default//D/cs723-assignment1/software/freertos_test/freertos/croutine.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/event_groups.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/heap.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/list.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/port.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/queue.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/tasks.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/timers.o obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/port_asm.o -lm 
+nios2-elf-insert freertos_test.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "D:/cs723-assignment1/software/freertos_test" --sopcinfo //uoa.auckland.ac.nz/engdfs/home/stoo718/Documents/cs723/nios2.sopcinfo
+      1 [main] sh 8196 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] uname 5904 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] cygpath 12620 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 13248 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: (freertos_test.elf) 599 KBytes program size (code + initialized data).
+Info:                     130561 KBytes free for stack + heap.
+      1 [main] echo 11792 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Creating freertos_test.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source freertos_test.elf >freertos_test.objdump
+      1 [main] sh 12744 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 7516 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[freertos_test build complete]
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project freertos_test ****
+
+make all 
+      0 [main] sh 316 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 8784 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11940 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 3680 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11676 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 10856 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 7496 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12752 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12764 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11316 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 13300 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 8428 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 8396 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+/usr/bin/sh: line 0: cd: D:/cs723-assignment1/cs723/: No such file or directory
+      0 [main] sh 1492 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12392 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 9936 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 6332 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 13220 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 7516 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 7984 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 9996 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12428 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 2508 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] echo 6492 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Building D:/cs723-assignment1/software/freertos_test_bsp/
+make --no-print-directory -C D:/cs723-assignment1/software/freertos_test_bsp/
+      1 [main] pwd 11292 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 7996 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12400 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[BSP build complete]
+      1 [main] echo 13208 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Compiling D:/cs723-assignment1/software/freertos_test/freertos_test.c to obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o
+      0 [main] mkdir 992 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+nios2-elf-gcc -xc -MP -MMD -c -ID:/cs723-assignment1/software/freertos_test_bsp//HAL/inc -ID:/cs723-assignment1/software/freertos_test_bsp/ -ID:/cs723-assignment1/software/freertos_test_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o D:/cs723-assignment1/software/freertos_test/freertos_test.c
+      0 [main] true 3972 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] echo 12320 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Linking freertos_test.elf
+nios2-elf-g++  -T'D:/cs723-assignment1/software/freertos_test_bsp//linker.x' -msys-crt0='D:/cs723-assignment1/software/freertos_test_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LD:/cs723-assignment1/software/freertos_test_bsp/   -Wl,-Map=freertos_test.map   -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o freertos_test.elf obj/default//D/cs723-assignment1/software/freertos_test/freertos/croutine.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/event_groups.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/heap.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/list.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/port.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/queue.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/tasks.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/timers.o obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/port_asm.o -lm 
+nios2-elf-insert freertos_test.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "D:/cs723-assignment1/software/freertos_test" --sopcinfo //uoa.auckland.ac.nz/engdfs/home/stoo718/Documents/cs723/nios2.sopcinfo
+      0 [main] sh 12336 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] uname 11448 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] cygpath 12008 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12416 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: (freertos_test.elf) 604 KBytes program size (code + initialized data).
+Info:                     130561 KBytes free for stack + heap.
+      0 [main] echo 3160 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Creating freertos_test.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source freertos_test.elf >freertos_test.objdump
+      0 [main] sh 6960 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 10040 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[freertos_test build complete]
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project freertos_test ****
+
+make all 
+      0 [main] sh 12400 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 9944 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11908 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 3584 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11308 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 8768 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 6232 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 3096 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12692 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12948 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 11796 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 8704 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 10368 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+/usr/bin/sh: line 0: cd: D:/cs723-assignment1/cs723/: No such file or directory
+      0 [main] sh 6872 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 11552 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 9036 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 10464 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12976 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11708 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 11288 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12172 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 6652 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12784 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] echo 68 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Building D:/cs723-assignment1/software/freertos_test_bsp/
+make --no-print-directory -C D:/cs723-assignment1/software/freertos_test_bsp/
+      0 [main] pwd 4972 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 7124 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 4888 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[BSP build complete]
+      0 [main] echo 12552 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Compiling D:/cs723-assignment1/software/freertos_test/freertos_test.c to obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o
+      0 [main] mkdir 9132 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+nios2-elf-gcc -xc -MP -MMD -c -ID:/cs723-assignment1/software/freertos_test_bsp//HAL/inc -ID:/cs723-assignment1/software/freertos_test_bsp/ -ID:/cs723-assignment1/software/freertos_test_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o D:/cs723-assignment1/software/freertos_test/freertos_test.c
+D:/cs723-assignment1/software/freertos_test/freertos_test.c: In function 'VGA_Task':
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:92: warning: implicit declaration of function 'alt_up_char_buff_clear'
+      1 [main] true 8320 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] echo 13196 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Linking freertos_test.elf
+nios2-elf-g++  -T'D:/cs723-assignment1/software/freertos_test_bsp//linker.x' -msys-crt0='D:/cs723-assignment1/software/freertos_test_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LD:/cs723-assignment1/software/freertos_test_bsp/   -Wl,-Map=freertos_test.map   -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o freertos_test.elf obj/default//D/cs723-assignment1/software/freertos_test/freertos/croutine.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/event_groups.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/heap.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/list.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/port.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/queue.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/tasks.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/timers.o obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/port_asm.o -lm 
+obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o: In function `VGA_Task':
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:92: undefined reference to `alt_up_char_buff_clear'
+collect2: ld returned 1 exit status
+make: *** [freertos_test.elf] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project freertos_test ****
+
+make all 
+      1 [main] sh 10836 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 3964 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 4744 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12372 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 7684 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 296 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 1368 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12836 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 7912 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 9900 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12336 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 8784 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 4180 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+/usr/bin/sh: line 0: cd: D:/cs723-assignment1/cs723/: No such file or directory
+      0 [main] sh 13296 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 13200 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 752 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 6892 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12552 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12404 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12684 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11332 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 692 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 11608 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] echo 3584 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Building D:/cs723-assignment1/software/freertos_test_bsp/
+make --no-print-directory -C D:/cs723-assignment1/software/freertos_test_bsp/
+      0 [main] pwd 12460 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 1752 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 2508 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[BSP build complete]
+      1 [main] echo 1136 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Compiling D:/cs723-assignment1/software/freertos_test/freertos_test.c to obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o
+      1 [main] mkdir 4524 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+nios2-elf-gcc -xc -MP -MMD -c -ID:/cs723-assignment1/software/freertos_test_bsp//HAL/inc -ID:/cs723-assignment1/software/freertos_test_bsp/ -ID:/cs723-assignment1/software/freertos_test_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o D:/cs723-assignment1/software/freertos_test/freertos_test.c
+      0 [main] true 12080 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] echo 10436 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Linking freertos_test.elf
+nios2-elf-g++  -T'D:/cs723-assignment1/software/freertos_test_bsp//linker.x' -msys-crt0='D:/cs723-assignment1/software/freertos_test_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LD:/cs723-assignment1/software/freertos_test_bsp/   -Wl,-Map=freertos_test.map   -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o freertos_test.elf obj/default//D/cs723-assignment1/software/freertos_test/freertos/croutine.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/event_groups.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/heap.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/list.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/port.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/queue.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/tasks.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/timers.o obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/port_asm.o -lm 
+nios2-elf-insert freertos_test.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "D:/cs723-assignment1/software/freertos_test" --sopcinfo //uoa.auckland.ac.nz/engdfs/home/stoo718/Documents/cs723/nios2.sopcinfo
+      0 [main] sh 6940 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] uname 12828 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] cygpath 11088 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12948 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: (freertos_test.elf) 604 KBytes program size (code + initialized data).
+Info:                     130561 KBytes free for stack + heap.
+      0 [main] echo 3660 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Creating freertos_test.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source freertos_test.elf >freertos_test.objdump
+      1 [main] sh 12436 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 7000 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[freertos_test build complete]
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project freertos_test ****
+
+make all 
+      1 [main] sh 312 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12628 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 7124 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 3640 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 9252 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 9960 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 1000 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 752 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 2596 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 5976 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 7940 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11772 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 10344 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+/usr/bin/sh: line 0: cd: D:/cs723-assignment1/cs723/: No such file or directory
+      1 [main] sh 9740 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12132 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12692 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 3648 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12816 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 10436 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 13300 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11380 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 10532 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 11420 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] echo 10220 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Building D:/cs723-assignment1/software/freertos_test_bsp/
+make --no-print-directory -C D:/cs723-assignment1/software/freertos_test_bsp/
+      0 [main] pwd 8312 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 11288 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 5796 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[BSP build complete]
+      0 [main] echo 9612 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Compiling D:/cs723-assignment1/software/freertos_test/freertos_test.c to obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o
+      1 [main] mkdir 10288 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+nios2-elf-gcc -xc -MP -MMD -c -ID:/cs723-assignment1/software/freertos_test_bsp//HAL/inc -ID:/cs723-assignment1/software/freertos_test_bsp/ -ID:/cs723-assignment1/software/freertos_test_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o D:/cs723-assignment1/software/freertos_test/freertos_test.c
+      1 [main] true 6928 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] echo 4436 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Linking freertos_test.elf
+nios2-elf-g++  -T'D:/cs723-assignment1/software/freertos_test_bsp//linker.x' -msys-crt0='D:/cs723-assignment1/software/freertos_test_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LD:/cs723-assignment1/software/freertos_test_bsp/   -Wl,-Map=freertos_test.map   -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o freertos_test.elf obj/default//D/cs723-assignment1/software/freertos_test/freertos/croutine.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/event_groups.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/heap.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/list.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/port.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/queue.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/tasks.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/timers.o obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/port_asm.o -lm 
+nios2-elf-insert freertos_test.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "D:/cs723-assignment1/software/freertos_test" --sopcinfo //uoa.auckland.ac.nz/engdfs/home/stoo718/Documents/cs723/nios2.sopcinfo
+      0 [main] sh 12428 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] uname 12152 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] cygpath 6312 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 13104 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: (freertos_test.elf) 599 KBytes program size (code + initialized data).
+Info:                     130561 KBytes free for stack + heap.
+      0 [main] echo 3500 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Creating freertos_test.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source freertos_test.elf >freertos_test.objdump
+      0 [main] sh 8812 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 6156 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[freertos_test build complete]
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project freertos_test ****
+
+make all 
+      0 [main] sh 344 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12716 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 808 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 8768 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 2548 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 5448 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 10764 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 13220 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 13048 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 7828 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 6232 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 3744 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 1444 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+/usr/bin/sh: line 0: cd: D:/cs723-assignment1/cs723/: No such file or directory
+      1 [main] sh 10792 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11464 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12640 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 13188 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 10540 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 4044 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 9444 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 10776 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 8156 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12792 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] echo 344 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Building D:/cs723-assignment1/software/freertos_test_bsp/
+make --no-print-directory -C D:/cs723-assignment1/software/freertos_test_bsp/
+      1 [main] pwd 12176 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 3640 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12812 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[BSP build complete]
+      0 [main] echo 2504 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Compiling D:/cs723-assignment1/software/freertos_test/freertos_test.c to obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o
+      0 [main] mkdir 12400 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+nios2-elf-gcc -xc -MP -MMD -c -ID:/cs723-assignment1/software/freertos_test_bsp//HAL/inc -ID:/cs723-assignment1/software/freertos_test_bsp/ -ID:/cs723-assignment1/software/freertos_test_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o D:/cs723-assignment1/software/freertos_test/freertos_test.c
+      1 [main] true 10672 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] echo 4892 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Linking freertos_test.elf
+nios2-elf-g++  -T'D:/cs723-assignment1/software/freertos_test_bsp//linker.x' -msys-crt0='D:/cs723-assignment1/software/freertos_test_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LD:/cs723-assignment1/software/freertos_test_bsp/   -Wl,-Map=freertos_test.map   -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o freertos_test.elf obj/default//D/cs723-assignment1/software/freertos_test/freertos/croutine.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/event_groups.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/heap.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/list.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/port.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/queue.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/tasks.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/timers.o obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/port_asm.o -lm 
+nios2-elf-insert freertos_test.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "D:/cs723-assignment1/software/freertos_test" --sopcinfo //uoa.auckland.ac.nz/engdfs/home/stoo718/Documents/cs723/nios2.sopcinfo
+      0 [main] sh 3500 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] uname 10964 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] cygpath 2684 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 8784 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: (freertos_test.elf) 604 KBytes program size (code + initialized data).
+Info:                     130561 KBytes free for stack + heap.
+      1 [main] echo 11088 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Creating freertos_test.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source freertos_test.elf >freertos_test.objdump
+      0 [main] sh 8112 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 4680 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[freertos_test build complete]
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project freertos_test ****
+
+make all 
+     10 [main] sh 12512 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 10352 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12420 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11296 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 3088 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 10856 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 13108 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 3584 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 5228 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 11556 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12640 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11300 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 11452 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+/usr/bin/sh: line 0: cd: D:/cs723-assignment1/cs723/: No such file or directory
+      0 [main] sh 13192 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 1772 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 4188 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 3140 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 10776 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12684 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 7860 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 3640 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 10708 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 6492 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] echo 13024 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Building D:/cs723-assignment1/software/freertos_test_bsp/
+make --no-print-directory -C D:/cs723-assignment1/software/freertos_test_bsp/
+      0 [main] pwd 12512 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12676 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 3464 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[BSP build complete]
+      0 [main] echo 9084 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Compiling D:/cs723-assignment1/software/freertos_test/freertos_test.c to obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o
+      1 [main] mkdir 4196 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+nios2-elf-gcc -xc -MP -MMD -c -ID:/cs723-assignment1/software/freertos_test_bsp//HAL/inc -ID:/cs723-assignment1/software/freertos_test_bsp/ -ID:/cs723-assignment1/software/freertos_test_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o D:/cs723-assignment1/software/freertos_test/freertos_test.c
+      1 [main] true 9312 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] echo 12412 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Linking freertos_test.elf
+nios2-elf-g++  -T'D:/cs723-assignment1/software/freertos_test_bsp//linker.x' -msys-crt0='D:/cs723-assignment1/software/freertos_test_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LD:/cs723-assignment1/software/freertos_test_bsp/   -Wl,-Map=freertos_test.map   -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o freertos_test.elf obj/default//D/cs723-assignment1/software/freertos_test/freertos/croutine.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/event_groups.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/heap.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/list.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/port.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/queue.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/tasks.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/timers.o obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/port_asm.o -lm 
+nios2-elf-insert freertos_test.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "D:/cs723-assignment1/software/freertos_test" --sopcinfo //uoa.auckland.ac.nz/engdfs/home/stoo718/Documents/cs723/nios2.sopcinfo
+      0 [main] sh 752 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] uname 12612 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] cygpath 12912 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12416 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: (freertos_test.elf) 604 KBytes program size (code + initialized data).
+Info:                     130561 KBytes free for stack + heap.
+      0 [main] echo 4320 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Creating freertos_test.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source freertos_test.elf >freertos_test.objdump
+      0 [main] sh 13276 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12592 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[freertos_test build complete]
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project freertos_test ****
+
+make all 
+     10 [main] sh 13216 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12712 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 9632 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 13040 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12076 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 5924 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12968 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12000 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 692 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12716 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 5748 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 8364 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11952 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+/usr/bin/sh: line 0: cd: D:/cs723-assignment1/cs723/: No such file or directory
+      1 [main] sh 11088 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 10444 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 3032 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 13200 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 3464 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11676 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12928 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 2508 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12348 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 2924 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] echo 4420 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Building D:/cs723-assignment1/software/freertos_test_bsp/
+make --no-print-directory -C D:/cs723-assignment1/software/freertos_test_bsp/
+      1 [main] pwd 12728 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 7496 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 1752 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[BSP build complete]
+      0 [main] echo 9528 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Compiling D:/cs723-assignment1/software/freertos_test/freertos_test.c to obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o
+      1 [main] mkdir 668 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+nios2-elf-gcc -xc -MP -MMD -c -ID:/cs723-assignment1/software/freertos_test_bsp//HAL/inc -ID:/cs723-assignment1/software/freertos_test_bsp/ -ID:/cs723-assignment1/software/freertos_test_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o D:/cs723-assignment1/software/freertos_test/freertos_test.c
+      0 [main] true 11680 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] echo 6980 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Linking freertos_test.elf
+nios2-elf-g++  -T'D:/cs723-assignment1/software/freertos_test_bsp//linker.x' -msys-crt0='D:/cs723-assignment1/software/freertos_test_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LD:/cs723-assignment1/software/freertos_test_bsp/   -Wl,-Map=freertos_test.map   -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o freertos_test.elf obj/default//D/cs723-assignment1/software/freertos_test/freertos/croutine.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/event_groups.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/heap.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/list.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/port.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/queue.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/tasks.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/timers.o obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o obj/default//D/cs723-assignment1/software/freertos_test/freertos/port_asm.o -lm 
+nios2-elf-insert freertos_test.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "D:/cs723-assignment1/software/freertos_test" --sopcinfo //uoa.auckland.ac.nz/engdfs/home/stoo718/Documents/cs723/nios2.sopcinfo
+      0 [main] sh 2208 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] uname 4868 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] cygpath 13064 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 4044 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: (freertos_test.elf) 605 KBytes program size (code + initialized data).
+Info:                     130560 KBytes free for stack + heap.
+      0 [main] echo 12812 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Creating freertos_test.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source freertos_test.elf >freertos_test.objdump
+      1 [main] sh 12376 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12484 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[freertos_test build complete]
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project freertos_test ****
+
+make all 
+      1 [main] sh 12892 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12432 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12416 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 10040 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 2656 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12420 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 3160 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 11288 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 9220 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 11844 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 11000 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 11448 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12400 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+/usr/bin/sh: line 0: cd: D:/cs723-assignment1/cs723/: No such file or directory
+      0 [main] sh 3096 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 13252 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 7052 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 4944 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 10544 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 2664 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 13256 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 13284 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 5348 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 4692 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] echo 3640 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Building D:/cs723-assignment1/software/freertos_test_bsp/
+make --no-print-directory -C D:/cs723-assignment1/software/freertos_test_bsp/
+      1 [main] pwd 12776 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 12336 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 13160 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[BSP build complete]
+      1 [main] echo 8152 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Compiling D:/cs723-assignment1/software/freertos_test/freertos_test.c to obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o
+      1 [main] mkdir 10304 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+nios2-elf-gcc -xc -MP -MMD -c -ID:/cs723-assignment1/software/freertos_test_bsp//HAL/inc -ID:/cs723-assignment1/software/freertos_test_bsp/ -ID:/cs723-assignment1/software/freertos_test_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o D:/cs723-assignment1/software/freertos_test/freertos_test.c
+D:/cs723-assignment1/software/freertos_test/freertos_test.c: In function 'VGA_Task':
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:120: error: 'last_wake_time' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:120: error: (Each undeclared identifier is reported only once
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:120: error: for each function it appears in.)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:121: error: 'task_period' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:123: error: 'milisec' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:125: error: 'temp_buf' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:129: error: 'freq_threshold' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:131: error: 'roc_threshold' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:134: error: 'time_taken' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:136: error: 'max_time' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:138: error: 'min_time' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:140: error: 'avg_time' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:149: error: 'FREQPLT_ORI_Y' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:149: error: 'FREQPLT_FREQ_RES' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:149: error: 'MIN_FREQ' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:153: error: 'ROCPLT_ORI_Y' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:153: error: 'ROCPLT_ROC_RES' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:157: error: 'j' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:158: error: 'freq' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:158: error: 'freq_index' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:161: error: 'line_freq' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:161: error: 'FREQPLT_ORI_X' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:161: error: 'FREQPLT_GRID_SIZE_X' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:168: error: 'line_roc' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:168: error: 'ROCPLT_ORI_X' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:168: error: 'ROCPLT_GRID_SIZE_X' undeclared (first use in this function)
+D:/cs723-assignment1/software/freertos_test/freertos_test.c:169: error: 'dfreq' undeclared (first use in this function)
+make: *** [obj/default//D/cs723-assignment1/software/freertos_test/freertos_test.o] Error 1
+
+**** Build Finished ****

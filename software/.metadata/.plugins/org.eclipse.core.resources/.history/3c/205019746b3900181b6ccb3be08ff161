@@ -74,24 +74,51 @@ void freq_relay() {
 
 // VGA_Task
 void VGA_Task(void *pvParameters ){
-//	//reset the display
-//	alt_up_pixel_buffer_dma_dev *pixel_buf;
-//	pixel_buf = alt_up_pixel_buffer_dma_open_dev(VIDEO_PIXEL_BUFFER_DMA_NAME);
-//	if(pixel_buf == NULL){
-//		printf("Cannot find pixel buffer device\n");
-//	}
-//	alt_up_pixel_buffer_dma_clear_screen(pixel_buf, 0);
-//
-//	//initialize character buffer
-//	alt_up_char_buffer_dev *char_buf;
-//	char_buf = alt_up_char_buffer_open_dev("/dev/video_character_buffer_with_dma");
-//	if(char_buf == NULL){
-//		printf("can't find char buffer device\n");
-//	}
-//	alt_up_char_buffer_clear(char_buf);
-//	while(1){
-//		// draw stuff
-//	}
+	//reset the display
+	alt_up_pixel_buffer_dma_dev *pixel_buf;
+	pixel_buf = alt_up_pixel_buffer_dma_open_dev(VIDEO_PIXEL_BUFFER_DMA_NAME);
+	if(pixel_buf == NULL){
+		printf("Cannot find pixel buffer device\n");
+	}
+	alt_up_pixel_buffer_dma_clear_screen(pixel_buf, 0);
+
+	//initialize character buffer
+	alt_up_char_buffer_dev *char_buf;
+	char_buf = alt_up_char_buffer_open_dev("/dev/video_character_buffer_with_dma");
+	if(char_buf == NULL){
+		printf("can't find char buffer device\n");
+	}
+	alt_up_char_buffer_clear(char_buf);
+
+	alt_up_pixel_buffer_dma_draw_hline(pixel_buf, 100, 590, 200, ((0x3ff << 20) + (0x3ff << 10) + (0x3ff)), 0);
+	alt_up_pixel_buffer_dma_draw_hline(pixel_buf, 100, 590, 300, ((0x3ff << 20) + (0x3ff << 10) + (0x3ff)), 0);
+	alt_up_pixel_buffer_dma_draw_vline(pixel_buf, 100, 50, 200, ((0x3ff << 20) + (0x3ff << 10) + (0x3ff)), 0);
+	alt_up_pixel_buffer_dma_draw_vline(pixel_buf, 100, 220, 300, ((0x3ff << 20) + (0x3ff << 10) + (0x3ff)), 0);
+
+	alt_up_char_buffer_string(char_buf, "Frequency(Hz)", 4, 4);
+	alt_up_char_buffer_string(char_buf, "52", 10, 7);
+	alt_up_char_buffer_string(char_buf, "50", 10, 12);
+	alt_up_char_buffer_string(char_buf, "48", 10, 17);
+	alt_up_char_buffer_string(char_buf, "46", 10, 22);
+
+	alt_up_char_buffer_string(char_buf, "df/dt(Hz/s)", 4, 26);
+	alt_up_char_buffer_string(char_buf, "60", 10, 28);
+	alt_up_char_buffer_string(char_buf, "30", 10, 30);
+	alt_up_char_buffer_string(char_buf, "0", 10, 32);
+	alt_up_char_buffer_string(char_buf, "-30", 9, 34);
+	alt_up_char_buffer_string(char_buf, "-60", 9, 36);
+
+	alt_up_char_buffer_string(char_buf, "Run Time (HH:MM:SS.m)    = ", 12, 40);
+	alt_up_char_buffer_string(char_buf, "Frequency Threshold (Hz) =       (UP/DOWN arrow keys)", 12, 42);
+	alt_up_char_buffer_string(char_buf, "RoC Threshold (Hz/s)     =       (LEFT/RIGHT arrow keys)", 12, 44);
+	alt_up_char_buffer_string(char_buf, "Reaction Times (ms)      = ", 12, 46);
+	alt_up_char_buffer_string(char_buf, "Max Reaction Time (ms)   = ", 12, 48);
+	alt_up_char_buffer_string(char_buf, "Min Reaction Time (ms)   = ", 12, 50);
+	alt_up_char_buffer_string(char_buf, "Avg Reaction Time (ms)   = ", 12, 52);
+
+	while(1){
+		// draw stuff
+	}
 }
 
 
