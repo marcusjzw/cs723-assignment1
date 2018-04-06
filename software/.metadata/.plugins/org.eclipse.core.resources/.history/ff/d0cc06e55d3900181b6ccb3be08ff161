@@ -1,0 +1,111 @@
+// Standard includes
+#include <stddef.h>
+#include <stdio.h>
+#include <string.h>
+
+// Scheduler includes
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "freertos/queue.h"
+#include "freertos/semphr.h"
+
+#include <altera_avalon_pio_regs.h>
+
+// Forward declarations
+int initOSDataStructs(void);
+int initCreateTasks(void);
+
+// Definition of Task Stacks
+#define   TASK_STACKSIZE       2048
+
+// Definition of Task Priorities
+#define CALCULATION_TASK_PRIORITY	2
+
+// Definition of Queue Sizes
+#define HW_DATA_QUEUE_SIZE 100
+#define ROC_DATA_QUEUE_SIZE 10
+
+// Definition of Semaphores
+SemaphoreHandle_t freq_buffer_sem;
+
+// Definition of Queue Handles
+QueueHandle_t HW_dataQ;
+QueueHandle_t RoC_dataQ;
+
+// Global variables
+freq_index = 99;
+
+static freqData freq_buffer[100];
+
+typedef struct {
+	double freq;
+	TickType_t timestamp; // if configUSE_16_BIT_TICKS ? u16 : u32
+} freqData;
+
+
+void freq_relay() {
+	freqData temp;
+	int adc_samples;
+
+	adc_reading = IORD(FREQUENCY_ANALYSER_BASE, 0);
+	temp.
+	temp.timestamp = xTaskGetTickCountFromISR();
+	// push values onto queue
+	if (xQueueSendToBackFromISR(HW_dataQ, (void *)&temp, NULL) == pdPASS) // pdPASS == 1
+	{
+		printf("Queue send successful\n");
+	}
+	else {
+		printf("UNSUCCESSFUL!!!!\n");
+	}
+
+	printf("%f Hz\n", 16000/(double)temp.freq);
+	printf("Time stamp: %d\n", (int)temp.timestamp);
+	return;
+}
+
+void calculation_task(void *pvParameters) {
+	int count = 0;
+
+	while (1) {
+		if (count <= 100) {
+			xQueueReceive(HW_dataQ, (&freq_buffer)+freq_index, portMAX_DELAY); //TODO: freq_index mechanism
+			count++;
+		}
+		else {
+			xSemaphoreTake(freq_buffer_sem, portMAX_DELAY); // request semaphore
+			if (freq_index != 0) {
+				roc = ((freq_buffer[freq_index] - freq_buffer[freq_index-1])*16000)/
+			}
+
+			// calculate ROC and store into RoC_dataQ
+			count = 0;
+
+		}
+
+	}
+}
+
+int initOSDataStructs(void)
+{
+	HW_dataQ = xQueueCreate(HW_DATA_QUEUE_SIZE, sizeof(struct freqData*));
+	freq_buffer_sem = xSemaphoreCreateMutex();
+	RoC_dataQ = xQueueCreate(ROC_DATA_QUEUE_SIZE, sizeof(double));
+	return 0;
+}
+
+int main(int argc, char* argv[], char* envp[])
+{
+	alt_irq_register(FREQUENCY_ANALYSER_IRQ, 0, freq_relay);
+	initOSDataStructs();
+	initCreateTasks();
+	vTaskStartScheduler();
+	for (;;);
+
+	return 0;
+}
+
+int initCreateTasks(void) {
+	xTaskCreate(calculation_task, "calculation_task", TASK_STACKSIZE, NULL, CALCULATION_TASK_PRIORITY, NULL);
+	return 0;
+}

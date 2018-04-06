@@ -2,6 +2,7 @@
 #include <stddef.h>
 #include <stdio.h>
 #include <string.h>
+#include <math.h>
 
 // Scheduler includes
 #include "freertos/FreeRTOS.h"
@@ -13,51 +14,78 @@
 
 // Forward declarations
 int initOSDataStructs(void);
+int initCreateTasks(void);
 
 // Definition of Task Stacks
 #define   TASK_STACKSIZE       2048
 
+// Definition of Task Priorities
+#define CALCULATION_TASK_PRIORITY	2
+
 // Definition of Queue Sizes
 #define HW_DATA_QUEUE_SIZE 100
+#define ROC_DATA_QUEUE_SIZE 10
 
-QueueHandle_t HW_dataQ;
+// Definition of Semaphores
+SemaphoreHandle_t freq_buffer_sem;
+
+// Definition of Queue Handles
+QueueHandle_t HW_dataQ; // contains struct with frequency and calculated ROC
+
+// Global variables
+static double old_freq = -1;
+static int old_count = 0;
 
 typedef struct {
-	double freq;
-	TickType_t timestamp; // if configUSE_16_BIT_TICKS ? u16 : u32
+    double freq;
+    double roc;
 } freqData;
 
 void freq_relay() {
-	freqData temp;
-	temp.freq = IORD(FREQUENCY_ANALYSER_BASE, 0);
-	temp.timestamp = xTaskGetTickCountFromISR();
-	// push values onto queue
-	if (xQueueSendFromISR(HW_dataQ, (void *)&temp, NULL) == pdPASS) // pdPASS == 1
-	{
+	unsigned int new_count = IORD(FREQUENCY_ANALYSER_BASE, 0);	// number of ADC samples
+	double new_freq = 16000/(double)new_count;
+
+	int avg_count = (new_count + old_count) / 2;	// avg number of samples between two readings
+	double roc = fabs((new_freq - old_freq) * 16000 / avg_count); // must always be positive
+
+	// need two points for roc value, if -1 that means its the first element
+	if (old_freq == -1)
+    {
+		roc = 0;
+    }
+
+	freqData freqMessageToSend = { new_freq, roc };
+	if (xQueueSendFromISR(HW_dataQ, &freqMessageToSend, NULL) == pdPASS) {
 		printf("Queue send successful\n");
+		printf("Frequency sent: %f\n", new_freq);
+		printf("ROC sent: %f\n", roc);
 	}
 	else {
-		printf("UNSUCCESSFUL!!!!\n");
+		printf("UNSUCCESSFUL\n");
 	}
-
-	printf("%f Hz\n", 16000/(double)temp.freq);
-	printf("Time stamp: %d\n", (int)temp.timestamp);
-	return;
+	old_freq = new_freq;
+	old_count = new_count;
 }
 
 int initOSDataStructs(void)
 {
 	HW_dataQ = xQueueCreate(HW_DATA_QUEUE_SIZE, sizeof(struct freqData*));
+	freq_buffer_sem = xSemaphoreCreateMutex();
+	return 0;
 }
+
 int main(int argc, char* argv[], char* envp[])
 {
 	alt_irq_register(FREQUENCY_ANALYSER_IRQ, 0, freq_relay);
 	initOSDataStructs();
+	initCreateTasks();
 	vTaskStartScheduler();
 	for (;;);
 
 	return 0;
 }
 
+int initCreateTasks(void) {
 
-
+	return 0;
+}
