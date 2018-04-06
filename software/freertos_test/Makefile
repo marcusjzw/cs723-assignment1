@@ -143,17 +143,17 @@ ELF := freertos_test.elf
 
 # Paths to C, C++, and assembly source files.
 
-C_SRCS += //uoa.auckland.ac.nz/engdfs/home/stoo718/Documents/cs723/software/freertos_test/freertos_test.c
-C_SRCS += H:/Documents/cs723/software/freertos_test/freertos/croutine.c
-C_SRCS += H:/Documents/cs723/software/freertos_test/freertos/event_groups.c
-C_SRCS += H:/Documents/cs723/software/freertos_test/freertos/heap.c
-C_SRCS += H:/Documents/cs723/software/freertos_test/freertos/list.c
-C_SRCS += H:/Documents/cs723/software/freertos_test/freertos/port.c
-C_SRCS += H:/Documents/cs723/software/freertos_test/freertos/queue.c
-C_SRCS += H:/Documents/cs723/software/freertos_test/freertos/tasks.c
-C_SRCS += H:/Documents/cs723/software/freertos_test/freertos/timers.c
+C_SRCS += D:/cs723-assignment1/software/freertos_test/freertos_test.c
+C_SRCS += D:/cs723-assignment1/software/freertos_test/freertos/croutine.c
+C_SRCS += D:/cs723-assignment1/software/freertos_test/freertos/event_groups.c
+C_SRCS += D:/cs723-assignment1/software/freertos_test/freertos/heap.c
+C_SRCS += D:/cs723-assignment1/software/freertos_test/freertos/list.c
+C_SRCS += D:/cs723-assignment1/software/freertos_test/freertos/port.c
+C_SRCS += D:/cs723-assignment1/software/freertos_test/freertos/queue.c
+C_SRCS += D:/cs723-assignment1/software/freertos_test/freertos/tasks.c
+C_SRCS += D:/cs723-assignment1/software/freertos_test/freertos/timers.c
 CXX_SRCS :=
-ASM_SRCS := H:/Documents/cs723/software/freertos_test/freertos/port_asm.S
+ASM_SRCS := D:/cs723-assignment1/software/freertos_test/freertos/port_asm.S
 
 
 # Path to root of object file tree.
@@ -186,7 +186,7 @@ CRT0 :=
 SYS_LIB :=
 
 # Define path to the root of the BSP.
-BSP_ROOT_DIR := //uoa.auckland.ac.nz/engdfs/Home/stoo718/Documents/cs723/software/freertos_test_bsp/
+BSP_ROOT_DIR := D:/cs723-assignment1/software/freertos_test_bsp/
 
 # List of application specific include directories, library directories and library names
 APP_INCLUDE_DIRS :=
@@ -197,7 +197,7 @@ APP_LIBRARY_NAMES :=
 BUILD_PRE_PROCESS :=
 BUILD_POST_PROCESS :=
 
-QUARTUS_PROJECT_DIR := //uoa.auckland.ac.nz/engdfs/home/stoo718/Documents/cs723/
+QUARTUS_PROJECT_DIR := D:/cs723-assignment1/cs723/
 
 
 #END GENERATED

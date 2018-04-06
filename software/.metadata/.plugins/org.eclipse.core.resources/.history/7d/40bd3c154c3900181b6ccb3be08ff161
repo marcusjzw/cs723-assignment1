@@ -1,0 +1,59 @@
+// Standard includes
+#include <stddef.h>
+#include <stdio.h>
+#include <string.h>
+
+// Scheduler includes
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "freertos/queue.h"
+#include "freertos/semphr.h"
+
+#include <altera_avalon_pio_regs.h>
+
+// Forward declarations
+int initOSDataStructs(void);
+
+// Definition of Task Stacks
+#define   TASK_STACKSIZE       2048
+
+// Definition of Queue Sizes
+#define HW_DATA_QUEUE_SIZE 100
+
+QueueHandle_t HW_dataQ;
+
+typedef struct {
+	double freq;
+	TickType_t timestamp; // if configUSE_16_BIT_TICKS ? u16 : u32
+} freqData;
+
+void freq_relay() {
+	freqData temp;
+	temp.freq = IORD(FREQUENCY_ANALYSER_BASE, 0);
+	temp.timestamp = xTaskGetTickCountFromISR();
+	// push values onto queue
+	if (xQueueSend(HW_dataQ, (void *)&temp, 0) == pdPASS) // pdPASS == 1
+	{
+		printf("Queue send successful");
+	}
+	printf("%f Hz\n", 16000/(double)temp.freq);
+	printf("Time stamp: %d", (int)temp.timestamp);
+	return;
+}
+
+int initOSDataStructs(void)
+{
+	HW_dataQ = xQueueCreate(HW_DATA_QUEUE_SIZE, sizeof(void *));
+}
+int main(int argc, char* argv[], char* envp[])
+{
+	alt_irq_register(FREQUENCY_ANALYSER_IRQ, 0, freq_relay);
+	initOSDataStructs();
+	vTaskStartScheduler();
+	for (;;);
+
+	return 0;
+}
+
+
+
