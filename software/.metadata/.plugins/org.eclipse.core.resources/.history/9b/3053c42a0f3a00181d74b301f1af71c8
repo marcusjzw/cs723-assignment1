@@ -1,0 +1,120 @@
+// Standard includes
+#include <stddef.h>
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+
+// Scheduler includes
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "freertos/queue.h"
+#include "freertos/semphr.h"
+
+#include <altera_avalon_pio_regs.h>
+#include <altera_up_avalon_video_pixel_buffer_dma.h>
+#include <altera_up_avalon_video_character_buffer_with_dma.h>
+
+// Forward declarations
+int initOSDataStructs(void);
+int initCreateTasks(void);
+
+// Definition of Task Stacks
+#define   TASK_STACKSIZE       2048
+
+// Definition of Task Priorities
+#define VGA_TASK_PRIORITY 4
+
+// Definition of Queue Sizes
+#define HW_DATA_QUEUE_SIZE 100
+#define ROC_DATA_QUEUE_SIZE 10
+
+// Definition of Semaphores
+SemaphoreHandle_t freq_buffer_sem;
+
+// Definition of Handles
+QueueHandle_t HW_dataQ; // contains struct with frequency and calculated ROC
+
+// Global variables
+static double old_freq = -1;
+static int old_count = 0;
+
+typedef struct {
+    double freq;
+    double roc;
+} freqData;
+
+// ISR
+void freq_relay() {
+	unsigned int new_count = IORD(FREQUENCY_ANALYSER_BASE, 0);	// number of ADC samples
+	double new_freq = 16000/(double)new_count;
+	int avg_count = (new_count + old_count) / 2;	// avg number of samples between two readings
+	double roc = fabs(((new_freq - old_freq) * 16000)/ avg_count); // must always be positive
+
+	// need two points for roc value, if -1 that means its the first element
+	if (old_freq == -1)
+    {
+		roc = 0;
+    }
+
+	if (new_freq == old_freq) { // don't send to queue if its useless data
+		return;
+	}
+	freqData freqMessageToSend = { new_freq, roc };
+	if (xQueueSendFromISR(HW_dataQ, &freqMessageToSend, NULL) == pdPASS) {
+		printf("Queue send successful\n");
+		printf("Frequency sent: %f\n", new_freq);
+		printf("ROC sent: %f\n", roc);
+	}
+	else {
+		printf("UNSUCCESSFUL\n");
+	}
+	old_freq = new_freq;
+	old_count = new_count;
+}
+
+// VGA_Task
+void VGA_Task(void *pvParameters ){
+//	//reset the display
+//	alt_up_pixel_buffer_dma_dev *pixel_buf;
+//	pixel_buf = alt_up_pixel_buffer_dma_open_dev(VIDEO_PIXEL_BUFFER_DMA_NAME);
+//	if(pixel_buf == NULL){
+//		printf("Cannot find pixel buffer device\n");
+//	}
+//	alt_up_pixel_buffer_dma_clear_screen(pixel_buf, 0);
+//
+//	//initialize character buffer
+//	alt_up_char_buffer_dev *char_buf;
+//	char_buf = alt_up_char_buffer_open_dev("/dev/video_character_buffer_with_dma");
+//	if(char_buf == NULL){
+//		printf("can't find char buffer device\n");
+//	}
+//	alt_up_char_buffer_clear(char_buf);
+//	while(1){
+//		// draw stuff
+//	}
+}
+
+
+int initOSDataStructs(void)
+{
+	HW_dataQ = xQueueCreate(HW_DATA_QUEUE_SIZE, sizeof(struct freqData*));
+	freq_buffer_sem = xSemaphoreCreateMutex();
+	return 0;
+}
+
+int main(int argc, char* argv[], char* envp[])
+{
+	alt_irq_register(FREQUENCY_ANALYSER_IRQ, 0, freq_relay);
+	initOSDataStructs();
+	initCreateTasks();
+	vTaskStartScheduler();
+	for (;;);
+
+	return 0;
+}
+
+int initCreateTasks(void) {
+	// 4th arg is to pass to pvParameters
+	xTaskCreate(VGA_Task, "VGA_Task", configMINIMAL_STACK_SIZE, NULL, VGA_TASK_PRIORITY, NULL);
+	return 0;
+}

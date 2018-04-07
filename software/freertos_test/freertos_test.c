@@ -2,13 +2,14 @@
 #include <stddef.h>
 #include <stdio.h>
 #include <string.h>
-#include <math.h>
+#include <stdlib.h>
+#include "io.h"
 
 // Scheduler includes
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
-#include "freertos/queue.h"
-#include "freertos/semphr.h"
+#include "FreeRTOS/FreeRTOS.h"
+#include "FreeRTOS/task.h"
+#include "FreeRTOS/queue.h"
+#include "FreeRTOS/semphr.h"
 
 #include <altera_avalon_pio_regs.h>
 #include <altera_up_avalon_video_pixel_buffer_dma.h>
@@ -18,20 +19,32 @@
 int initOSDataStructs(void);
 int initCreateTasks(void);
 
+// Definitions for frequency plot
+#define FREQPLT_ORI_X 101		//x axis pixel position at the plot origin
+#define FREQPLT_GRID_SIZE_X 5	//pixel separation in the x axis between two data points
+#define FREQPLT_ORI_Y 199.0		//y axis pixel position at the plot origin
+#define FREQPLT_FREQ_RES 20.0	//number of pixels per Hz (y axis scale)
+
+#define ROCPLT_ORI_X 101
+#define ROCPLT_GRID_SIZE_X 5
+#define ROCPLT_ORI_Y 259.0
+#define ROCPLT_ROC_RES 0.5		//number of pixels per Hz/s (y axis scale)
+
+#define MIN_FREQ 45.0 //minimum frequency to draw
 // Definition of Task Stacks
 #define   TASK_STACKSIZE       2048
 
 // Definition of Task Priorities
-#define VGA_TASK_PRIORITY 4
+#define VGA_TASK_PRIORITY (tskIDLE_PRIORITY+4)
 
 // Definition of Queue Sizes
 #define HW_DATA_QUEUE_SIZE 100
 #define ROC_DATA_QUEUE_SIZE 10
 
-// Definition of Semaphores
-SemaphoreHandle_t freq_buffer_sem;
+// Definition of Semaphore Handles
+SemaphoreHandle_t vga_sem;
 
-// Definition of Handles
+// Definition of Queue Handles
 QueueHandle_t HW_dataQ; // contains struct with frequency and calculated ROC
 
 // Global variables
@@ -43,12 +56,21 @@ typedef struct {
     double roc;
 } freqData;
 
+typedef struct{
+    unsigned int x1;
+    unsigned int y1;
+    unsigned int x2;
+    unsigned int y2;
+} Line;
+
 // ISR
 void freq_relay() {
+	#define SAMPLING_FREQ 16000.0
+
 	unsigned int new_count = IORD(FREQUENCY_ANALYSER_BASE, 0);	// number of ADC samples
 	double new_freq = 16000/(double)new_count;
 	int avg_count = (new_count + old_count) / 2;	// avg number of samples between two readings
-	double roc = fabs(((new_freq - old_freq) * 16000)/ avg_count); // must always be positive
+	double roc = (new_freq - old_freq) * 16000/ avg_count; // must always be positive
 
 	// need two points for roc value, if -1 that means its the first element
 	if (old_freq == -1)
@@ -61,9 +83,9 @@ void freq_relay() {
 	}
 	freqData freqMessageToSend = { new_freq, roc };
 	if (xQueueSendFromISR(HW_dataQ, &freqMessageToSend, NULL) == pdPASS) {
-		printf("Queue send successful\n");
-		printf("Frequency sent: %f\n", new_freq);
-		printf("ROC sent: %f\n", roc);
+//		printf("Queue send successful\n");
+//		printf("Frequency sent: %f\n", freqMessageToSend.freq);
+//		printf("ROC sent: %f\n", freqMessageToSend.roc);
 	}
 	else {
 		printf("UNSUCCESSFUL\n");
@@ -73,32 +95,100 @@ void freq_relay() {
 }
 
 // VGA_Task
-void VGA_Task(void *pvParameters ){
-//	//reset the display
-//	alt_up_pixel_buffer_dma_dev *pixel_buf;
-//	pixel_buf = alt_up_pixel_buffer_dma_open_dev(VIDEO_PIXEL_BUFFER_DMA_NAME);
-//	if(pixel_buf == NULL){
-//		printf("Cannot find pixel buffer device\n");
-//	}
-//	alt_up_pixel_buffer_dma_clear_screen(pixel_buf, 0);
-//
-//	//initialize character buffer
-//	alt_up_char_buffer_dev *char_buf;
-//	char_buf = alt_up_char_buffer_open_dev("/dev/video_character_buffer_with_dma");
-//	if(char_buf == NULL){
-//		printf("can't find char buffer device\n");
-//	}
-//	alt_up_char_buffer_clear(char_buf);
-//	while(1){
-//		// draw stuff
-//	}
+void VGA_Task(void *pvParameters){
+	//initialize VGA controllers
+	alt_up_pixel_buffer_dma_dev *pixel_buf;
+	pixel_buf = alt_up_pixel_buffer_dma_open_dev(VIDEO_PIXEL_BUFFER_DMA_NAME);
+	if(pixel_buf == NULL){
+		printf("can't find pixel buffer device\n");
+	}
+	alt_up_pixel_buffer_dma_clear_screen(pixel_buf, 0);
+
+	alt_up_char_buffer_dev *char_buf;
+	char_buf = alt_up_char_buffer_open_dev("/dev/video_character_buffer_with_dma");
+	if(char_buf == NULL){
+		printf("can't find char buffer device\n");
+	}
+	alt_up_char_buffer_clear(char_buf);
+
+	//Set up plot axes
+	alt_up_pixel_buffer_dma_draw_hline(pixel_buf, 100, 590, 200, ((0x3ff << 20) + (0x3ff << 10) + (0x3ff)), 0);
+	alt_up_pixel_buffer_dma_draw_hline(pixel_buf, 100, 590, 300, ((0x3ff << 20) + (0x3ff << 10) + (0x3ff)), 0);
+	alt_up_pixel_buffer_dma_draw_vline(pixel_buf, 100, 50, 200, ((0x3ff << 20) + (0x3ff << 10) + (0x3ff)), 0);
+	alt_up_pixel_buffer_dma_draw_vline(pixel_buf, 100, 220, 300, ((0x3ff << 20) + (0x3ff << 10) + (0x3ff)), 0);
+
+	alt_up_char_buffer_string(char_buf, "Frequency(Hz)", 4, 4);
+	alt_up_char_buffer_string(char_buf, "52", 10, 7);
+	alt_up_char_buffer_string(char_buf, "50", 10, 12);
+	alt_up_char_buffer_string(char_buf, "48", 10, 17);
+	alt_up_char_buffer_string(char_buf, "46", 10, 22);
+
+	alt_up_char_buffer_string(char_buf, "df/dt(Hz/s)", 4, 26);
+	alt_up_char_buffer_string(char_buf, "60", 10, 28);
+	alt_up_char_buffer_string(char_buf, "30", 10, 30);
+	alt_up_char_buffer_string(char_buf, "0", 10, 32);
+	alt_up_char_buffer_string(char_buf, "-30", 9, 34);
+	alt_up_char_buffer_string(char_buf, "-60", 9, 36);
+
+	freqData freq_roc_buffer[100];
+	int i = 0, j = 0;
+	Line line_freq, line_roc;
+	while(1) {
+		// xSemaphoreTake(vga_sem, portMAX_DELAY);
+		while (uxQueueMessagesWaiting(HW_dataQ) != 0) { // while there are non zero messages
+			xQueueReceive(HW_dataQ, freq_roc_buffer+i,0);
+			printf("Queue receive successful\n");
+			printf("Frequency received: %f, ROC received: %f\n ", freq_roc_buffer[i].freq, freq_roc_buffer[i].roc);
+			i = ((i+1) % 100);
+		}
+		// xSemaphoreGive(vga_sem);
+
+		//clear old graph to draw new graph
+		alt_up_pixel_buffer_dma_draw_box(pixel_buf, 101, 0, 639, 199, 0, 0);
+		alt_up_pixel_buffer_dma_draw_box(pixel_buf, 101, 201, 639, 299, 0, 0);
+
+		for(j=0;j<99;++j){ //i here points to the oldest data, j loops through all the data to be drawn on VGA
+			if (((int)(freq_roc_buffer[(i+j)%100].freq) > MIN_FREQ) && ((int)(freq_roc_buffer[(i+j+1)%100].freq) > MIN_FREQ)){
+				//Calculate coordinates of the two data points to draw a line in between
+				//Frequency plot
+				line_freq.x1 = FREQPLT_ORI_X + FREQPLT_GRID_SIZE_X * j;
+				line_freq.y1 = (int)(FREQPLT_ORI_Y - FREQPLT_FREQ_RES * (freq_roc_buffer[(i+j)%100].freq - MIN_FREQ));
+
+				line_freq.x2 = FREQPLT_ORI_X + FREQPLT_GRID_SIZE_X * (j + 1);
+				line_freq.y2 = (int)(FREQPLT_ORI_Y - FREQPLT_FREQ_RES * (freq_roc_buffer[(i+j+1)%100].freq - MIN_FREQ));
+
+				//Frequency RoC plot
+				line_roc.x1 = ROCPLT_ORI_X + ROCPLT_GRID_SIZE_X * j;
+				line_roc.y1 = (int)(ROCPLT_ORI_Y - ROCPLT_ROC_RES * freq_roc_buffer[(i+j)%100].roc);
+
+				line_roc.x2 = ROCPLT_ORI_X + ROCPLT_GRID_SIZE_X * (j + 1);
+				line_roc.y2 = (int)(ROCPLT_ORI_Y - ROCPLT_ROC_RES * freq_roc_buffer[(i+j+1)%100].roc);
+
+				//Draw
+				alt_up_pixel_buffer_dma_draw_line(pixel_buf, line_freq.x1, line_freq.y1, line_freq.x2, line_freq.y2, 0x3ff << 0, 0);
+				alt_up_pixel_buffer_dma_draw_line(pixel_buf, line_roc.x1, line_roc.y1, line_roc.x2, line_roc.y2, 0x3ff << 0, 0);
+			}
+		}
+		vTaskDelay(10);
+
+	}
 }
 
+int initCreateTasks(void) {
+	// 4th arg is to pass to pvParameters
+	xTaskCreate(VGA_Task, "VGA_Task", configMINIMAL_STACK_SIZE, NULL, VGA_TASK_PRIORITY, NULL);
+	return 0;
+}
 
 int initOSDataStructs(void)
 {
 	HW_dataQ = xQueueCreate(HW_DATA_QUEUE_SIZE, sizeof(struct freqData*));
-	freq_buffer_sem = xSemaphoreCreateMutex();
+	vga_sem = xSemaphoreCreateMutex();
+	if (vga_sem == NULL) {
+		printf("Creation of vga_sem failed\n");
+	}
+
+
 	return 0;
 }
 
@@ -113,8 +203,4 @@ int main(int argc, char* argv[], char* envp[])
 	return 0;
 }
 
-int initCreateTasks(void) {
-	// 4th arg is to pass to pvParameters
-	xTaskCreate(VGA_Task, "VGA_Task", configMINIMAL_STACK_SIZE, NULL, VGA_TASK_PRIORITY, NULL);
-	return 0;
-}
+

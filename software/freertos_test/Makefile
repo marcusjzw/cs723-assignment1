@@ -129,12 +129,12 @@ BUILD_CONFIGS := default
 
 # This following VERSION comment indicates the version of the tool used to 
 # generate this makefile. A makefile variable is provided for VERSION as well. 
-# ACDS_VERSION: 13.0
-ACDS_VERSION := 13.0
+# ACDS_VERSION: 11.0sp1
+ACDS_VERSION := 11.0sp1
 
 # This following BUILD_NUMBER comment indicates the build number of the tool 
 # used to generate this makefile. 
-# BUILD_NUMBER: 156
+# BUILD_NUMBER: 208
 
 # Define path to the application ELF. 
 # It may be used by the makefile fragments so is defined before including them. 
@@ -142,18 +142,16 @@ ACDS_VERSION := 13.0
 ELF := freertos_test.elf
 
 # Paths to C, C++, and assembly source files.
-
-C_SRCS += D:/cs723-assignment1/software/freertos_test/freertos_test.c
-C_SRCS += D:/cs723-assignment1/software/freertos_test/freertos/croutine.c
-C_SRCS += D:/cs723-assignment1/software/freertos_test/freertos/event_groups.c
-C_SRCS += D:/cs723-assignment1/software/freertos_test/freertos/heap.c
-C_SRCS += D:/cs723-assignment1/software/freertos_test/freertos/list.c
-C_SRCS += D:/cs723-assignment1/software/freertos_test/freertos/port.c
-C_SRCS += D:/cs723-assignment1/software/freertos_test/freertos/queue.c
-C_SRCS += D:/cs723-assignment1/software/freertos_test/freertos/tasks.c
-C_SRCS += D:/cs723-assignment1/software/freertos_test/freertos/timers.c
+C_SRCS += FreeRTOS/croutine.c
+C_SRCS += FreeRTOS/heap.c
+C_SRCS += FreeRTOS/list.c
+C_SRCS += FreeRTOS/port.c
+C_SRCS += FreeRTOS/queue.c
+C_SRCS += FreeRTOS/tasks.c
+C_SRCS += FreeRTOS/timers.c
+C_SRCS += freertos_test.c
 CXX_SRCS :=
-ASM_SRCS := D:/cs723-assignment1/software/freertos_test/freertos/port_asm.S
+ASM_SRCS := FreeRTOS/port_asm.S
 
 
 # Path to root of object file tree.
@@ -186,7 +184,7 @@ CRT0 :=
 SYS_LIB :=
 
 # Define path to the root of the BSP.
-BSP_ROOT_DIR := D:/cs723-assignment1/software/freertos_test_bsp/
+BSP_ROOT_DIR := ../freertos_test_bsp/
 
 # List of application specific include directories, library directories and library names
 APP_INCLUDE_DIRS :=
@@ -197,7 +195,7 @@ APP_LIBRARY_NAMES :=
 BUILD_PRE_PROCESS :=
 BUILD_POST_PROCESS :=
 
-QUARTUS_PROJECT_DIR := D:/cs723-assignment1/cs723/
+QUARTUS_PROJECT_DIR := ../../
 
 
 #END GENERATED
@@ -230,9 +228,6 @@ all : build_pre_process libs app build_post_process
 #                 VARIABLES DEPENDENT ON GENERATED CONTENT
 #------------------------------------------------------------------------------
 
-# Define object file directory per build configuration
-CONFIG_OBJ_DIR := $(OBJ_ROOT_DIR)/$(ACTIVE_BUILD_CONFIG)
-
 ifeq ($(BSP_ROOT_DIR),)
 $(error Edit Makefile and provide a value for BSP_ROOT_DIR)
 endif
@@ -249,8 +244,7 @@ ABS_BSP_ROOT_DIR := $(call adjust-path-mixed,$(shell cd "$(BSP_ROOT_DIR)"; pwd))
 BSP_INCLUDE_FILE := $(BSP_ROOT_DIR)/public.mk
 ALT_LIBRARY_ROOT_DIR := $(BSP_ROOT_DIR)
 include $(BSP_INCLUDE_FILE)
-# C2H will need this to touch the BSP public.mk and avoid the sopc file 
-# out-of-date error during a BSP make
+# C2H will need this to touch the BSP public.mk and avoid the sopc file out-of-date error during a BSP make
 ABS_BSP_INCLUDE_FILE := $(ABS_BSP_ROOT_DIR)/public.mk
 
 
@@ -268,8 +262,8 @@ ifneq ($(filter -DALT_SIM_OPTIMIZE,$(ALT_CPPFLAGS)),)
 ELF := RUN_ON_HDL_SIMULATOR_ONLY_$(ELF)
 endif
 
-# If the BSP public.mk indicates that ALT_PROVIDE_GMON is set, add option to 
-# download_elf target
+
+# If the BSP public.mk indicates that ALT_PROVIDE_GMON is set, add option to download_elf target
 ifneq ($(filter -DALT_PROVIDE_GMON,$(ALT_CPPFLAGS)),)
 GMON_OUT_FILENAME := gmon.out
 WRITE_GMON_OPTION := --write-gmon $(GMON_OUT_FILENAME)
@@ -401,23 +395,20 @@ ifeq ($(CREATE_LINKER_MAP), 1)
 APP_LDFLAGS += -Wl,-Map=$(LINKER_MAP_NAME)
 endif
 
-# QUARTUS_PROJECT_DIR and SOPC_NAME need to be defined if you want the 
-# mem_init_install target of the mem_init.mk (located in the associated BSP) 
-# to know how to copy memory initialization files (e.g. .dat, .hex) into 
-# directories required for Quartus compilation or RTL simulation.
+# QUARTUS_PROJECT_DIR and SOPC_NAME need to be defined if you want the mem_init_install target of the mem_init.mk
+# (located in the associated BSP) to know how to copy memory initialization files (e.g. .dat, .hex)
+# into directories required for Quartus compilation or RTL simulation.
 
-# Defining QUARTUS_PROJECT_DIR causes mem_init_install to copy memory 
-# initialization files into your Quartus project directory. This is required 
-# to provide the initial memory contents of FPGA memories that can be 
-# initialized by the programming file (.sof) or Hardcopy ROMs. It is also used 
-# for VHDL simulation of on-chip memories.
+# Defining QUARTUS_PROJECT_DIR causes mem_init_install to copy memory initialization files into your
+# Quartus project directory. This is required to provide the initial memory contents of
+# FPGA memories that can be initialized by the programming file (.sof) or Hardcopy ROMs.
+# It is also used for VHDL simulation of on-chip memories.
 
-# Defining SOPC_NAME causes the mem_init_install target to copy memory 
-# initialization files into your RTL simulation directory.  This is required 
-# to provide the initial memory contents of all memories that can be 
-# initialized by RTL simulation. This variable should be set to the same name 
-# as your SOPC Builder system name. For example, if you have a system called 
-# "foo.sopc", this variable should be set to "foo".
+# Defining SOPC_NAME causes the mem_init_install target to copy memory initialization files into your
+# RTL simulation directory.  This is required to provide the initial memory contents of all
+# memories that can be initialized by RTL simulation.
+# This variable should be set to the same name as your SOPC Builder system name.
+# For example, if you have a system called "foo.sopc", this variable should be set to "foo".
 
 # If SOPC_NAME is not set and QUARTUS_PROJECT_DIR is set, then derive SOPC_NAME.
 ifeq ($(SOPC_NAME),)
@@ -426,16 +417,11 @@ SOPC_NAME := $(basename $(notdir $(wildcard $(QUARTUS_PROJECT_DIR)/*.sopcinfo)))
 endif
 endif
 
-# Defining JDI_FILE is required to specify the JTAG Debug Information File 
-# path. This file is generated by Quartus, and is needed along with the 
-# .sopcinfo file to resolve processor instance ID's from names in a multi-CPU 
-# systems. For multi-CPU systems, the processor instance ID is used to select 
-# from multiple CPU's during ELF download.
+# Defining JDI_FILE is required to specify the JTAG Debug Information File path. This file is generated by Quartus,
+# and is needed to resolve processor instance ID's from names in a multi-CPU SOPC Information file.
+# For multi-CPU systems, the processor instance ID is used to select from multiple CPU's during ELF download.
 
-# Both JDI_FILE and SOPCINFO_FILE are provided by the BSP if they found during 
-# BSP creation. If JDI_FILE is not set and QUARTUS_PROJECT_DIR is set, then 
-# derive JDI_FILE. We do not attempt to derive SOPCINFO_FILE since there may be 
-# multiple .sopcinfo files in a Quartus project. 
+# If JDI_FILE is not set and QUARTUS_PROJECT_DIR is set, then derive JDI_FILE.
 ifeq ($(JDI_FILE),)
 ifneq ($(QUARTUS_PROJECT_DIR),)
 JDI_FILE := $(wildcard $(QUARTUS_PROJECT_DIR)/*.jdi)
@@ -443,7 +429,7 @@ endif
 endif
 
 # Path to root runtime directory used for hdl simulation 
-RUNTIME_ROOT_DIR := $(CONFIG_OBJ_DIR)/runtime
+RUNTIME_ROOT_DIR := $(OBJ_ROOT_DIR)/runtime
 
 
 
@@ -491,7 +477,7 @@ SDIR_OBJ_LIST := $(sort $(SDIR_OBJ_LIST_C) $(SDIR_OBJ_LIST_CPP) \
 # Relative-pathed objects that being with "../" are handled differently.
 #
 # Regular objects are created as 
-#   $(CONFIG_OBJ_DIR)/<path>/<filename>.o
+#   $(OBJ_ROOT_DIR)/<path>/<filename>.o
 # where the path structure is maintained under the obj directory.  This
 # applies for both absolute and relative paths; in the absolute path
 # case this means the entire source path will be recreated under the obj
@@ -502,10 +488,10 @@ SDIR_OBJ_LIST := $(sort $(SDIR_OBJ_LIST_C) $(SDIR_OBJ_LIST_CPP) \
 # the cygpath -u output path.
 #
 # Relative-path objects that begin with "../" cause problems under this 
-# scheme, as $(CONFIG_OBJ_DIR)/../<rest of path>/ can potentially put the object
+# scheme, as $(OBJ_ROOT_DIR)/../<rest of path>/ can potentially put the object
 # files anywhere in the system, creating clutter and polluting the source tree.
 # As such, their paths are flattened - the object file created will be 
-# $(CONFIG_OBJ_DIR)/<filename>.o.  Due to this, two files specified with 
+# $(OBJ_ROOT_DIR)/<filename>.o.  Due to this, two files specified with 
 # "../" in the beginning cannot have the same name in the project.  VPATH 
 # will be set for these sources to allow make to relocate the source file 
 # via %.o rules.
@@ -514,7 +500,7 @@ SDIR_OBJ_LIST := $(sort $(SDIR_OBJ_LIST_C) $(SDIR_OBJ_LIST_CPP) \
 # lists, and then handles them as appropriate.
 
 FLATTEN_OBJ_LIST := $(filter ../%,$(OBJ_LIST))
-FLATTEN_APP_OBJS := $(addprefix $(CONFIG_OBJ_DIR)/,$(notdir $(FLATTEN_OBJ_LIST)))
+FLATTEN_APP_OBJS := $(addprefix $(OBJ_ROOT_DIR)/,$(notdir $(FLATTEN_OBJ_LIST)))
 
 REGULAR_OBJ_LIST 		:= $(filter-out $(FLATTEN_OBJ_LIST),$(OBJ_LIST))
 REGULAR_OBJ_LIST_C 		:= $(filter $(OBJ_LIST_C),$(REGULAR_OBJ_LIST))
@@ -525,7 +511,7 @@ REGULAR_OBJ_LIST_S 		:= $(filter $(OBJ_LIST_S),$(REGULAR_OBJ_LIST))
 REGULAR_OBJ_LIST_SS		:= $(filter $(OBJ_LIST_SS),$(REGULAR_OBJ_LIST))
 
 FLATTEN_SDIR_OBJ_LIST := $(filter ../%,$(SDIR_OBJ_LIST))
-FLATTEN_SDIR_APP_OBJS := $(addprefix $(CONFIG_OBJ_DIR)/,$(notdir $(FLATTEN_SDIR_OBJ_LIST)))
+FLATTEN_SDIR_APP_OBJS := $(addprefix $(OBJ_ROOT_DIR)/,$(notdir $(FLATTEN_SDIR_OBJ_LIST)))
 
 REGULAR_SDIR_OBJ_LIST 		:= $(filter-out $(FLATTEN_SDIR_OBJ_LIST),$(SDIR_OBJ_LIST))
 REGULAR_SDIR_OBJ_LIST_C 	:= $(filter $(SDIR_OBJ_LIST_C),$(REGULAR_SDIR_OBJ_LIST))
@@ -537,27 +523,27 @@ REGULAR_SDIR_OBJ_LIST_SS	:= $(filter $(SDIR_OBJ_LIST_SS),$(REGULAR_SDIR_OBJ_LIST
 
 VPATH := $(sort $(dir $(FLATTEN_OBJ_LIST)) $(dir $(FLATTEN_SDIR_OBJ_LIST)))
 
-APP_OBJS_C := $(addprefix $(CONFIG_OBJ_DIR)/,\
+APP_OBJS_C := $(addprefix $(OBJ_ROOT_DIR)/,\
 	$(REGULAR_SDIR_OBJ_LIST_C) \
 	$(foreach s,$(REGULAR_OBJ_LIST_C),$(call adjust-path,$s)))
 
-APP_OBJS_CPP := $(addprefix $(CONFIG_OBJ_DIR)/,\
+APP_OBJS_CPP := $(addprefix $(OBJ_ROOT_DIR)/,\
 	$(REGULAR_SDIR_OBJ_LIST_CPP) \
 	$(foreach s,$(REGULAR_OBJ_LIST_CPP),$(call adjust-path,$s)))
 
-APP_OBJS_CXX := $(addprefix $(CONFIG_OBJ_DIR)/,\
+APP_OBJS_CXX := $(addprefix $(OBJ_ROOT_DIR)/,\
 	$(REGULAR_SDIR_OBJ_LIST_CXX) \
 	$(foreach s,$(REGULAR_OBJ_LIST_CXX),$(call adjust-path,$s)))
 
-APP_OBJS_CC := $(addprefix $(CONFIG_OBJ_DIR)/,\
+APP_OBJS_CC := $(addprefix $(OBJ_ROOT_DIR)/,\
 	$(REGULAR_SDIR_OBJ_LIST_CC) \
 	$(foreach s,$(REGULAR_OBJ_LIST_CC),$(call adjust-path,$s)))
 
-APP_OBJS_S := $(addprefix $(CONFIG_OBJ_DIR)/,\
+APP_OBJS_S := $(addprefix $(OBJ_ROOT_DIR)/,\
 	$(REGULAR_SDIR_OBJ_LIST_S) \
 	$(foreach s,$(REGULAR_OBJ_LIST_S),$(call adjust-path,$s)))
 
-APP_OBJS_SS := $(addprefix $(CONFIG_OBJ_DIR)/,\
+APP_OBJS_SS := $(addprefix $(OBJ_ROOT_DIR)/,\
 	$(REGULAR_SDIR_OBJ_LIST_SS) \
 	$(foreach s,$(REGULAR_OBJ_LIST_SS),$(call adjust-path,$s)))
 
@@ -588,11 +574,6 @@ endif
 ifneq ($(wildcard $(JDI_FILE)),)
 ELF_PATCH_FLAG += --jdi $(JDI_FILE)
 DOWNLOAD_JDI_FLAG := --jdi $(JDI_FILE)
-endif
-
-# Patch the Elf with the SOPCINFO_FILE if specified
-ifneq ($(wildcard $(SOPCINFO_FILE)),)
-ELF_PATCH_FLAG += --sopcinfo $(SOPCINFO_FILE)
 endif
 
 # Use the DOWNLOAD_CABLE variable to specify which JTAG cable to use. 
@@ -647,10 +628,6 @@ ifeq ($(DEFAULT_RM),)
 DEFAULT_RM := rm -f
 endif
 
-ifeq ($(DEFAULT_CP),)
-DEFAULT_CP := cp -f
-endif
-
 ifeq ($(DEFAULT_MKDIR),)
 DEFAULT_MKDIR := mkdir -p
 endif
@@ -690,10 +667,6 @@ endif
 
 ifeq ($(origin RM),default)
 RM := $(DEFAULT_RM)
-endif
-
-ifeq ($(origin CP),default)
-CP := $(DEFAULT_CP)
 endif
 
 ifeq ($(OBJDUMP),)
@@ -762,42 +735,42 @@ endef
 ifeq ($(MAKE_VERSION),3.81) 
 .SECONDEXPANSION:
 
-$(APP_OBJS_C): $(CONFIG_OBJ_DIR)/%.o: $$(call adjust-path-mixed,%.c)
+$(APP_OBJS_C): $(OBJ_ROOT_DIR)/%.o: $$(call adjust-path-mixed,%.c)
 	$(compile.c)
 
-$(APP_OBJS_CPP): $(CONFIG_OBJ_DIR)/%.o: $$(call adjust-path-mixed,%.cpp)
+$(APP_OBJS_CPP): $(OBJ_ROOT_DIR)/%.o: $$(call adjust-path-mixed,%.cpp)
 	$(compile.cpp)
 
-$(APP_OBJS_CC): $(CONFIG_OBJ_DIR)/%.o: $$(call adjust-path-mixed,%.cc)
+$(APP_OBJS_CC): $(OBJ_ROOT_DIR)/%.o: $$(call adjust-path-mixed,%.cc)
 	$(compile.cpp)
 
-$(APP_OBJS_CXX): $(CONFIG_OBJ_DIR)/%.o: $$(call adjust-path-mixed,%.cxx)
+$(APP_OBJS_CXX): $(OBJ_ROOT_DIR)/%.o: $$(call adjust-path-mixed,%.cxx)
 	$(compile.cpp)
 
-$(APP_OBJS_S): $(CONFIG_OBJ_DIR)/%.o: $$(call adjust-path-mixed,%.S)
+$(APP_OBJS_S): $(OBJ_ROOT_DIR)/%.o: $$(call adjust-path-mixed,%.S)
 	$(compile.s)
 
-$(APP_OBJS_SS): $(CONFIG_OBJ_DIR)/%.o: $$(call adjust-path-mixed,%.s)
+$(APP_OBJS_SS): $(OBJ_ROOT_DIR)/%.o: $$(call adjust-path-mixed,%.s)
 	$(compile.s)
 
 endif # MAKE_VERSION != 3.81
 
-$(CONFIG_OBJ_DIR)/%.o: %.c
+$(OBJ_ROOT_DIR)/%.o: %.c
 	$(compile.c)
 
-$(CONFIG_OBJ_DIR)/%.o: %.cpp
+$(OBJ_ROOT_DIR)/%.o: %.cpp
 	$(compile.cpp)
 
-$(CONFIG_OBJ_DIR)/%.o: %.cc
+$(OBJ_ROOT_DIR)/%.o: %.cc
 	$(compile.cpp)
 
-$(CONFIG_OBJ_DIR)/%.o: %.cxx
+$(OBJ_ROOT_DIR)/%.o: %.cxx
 	$(compile.cpp)
 
-$(CONFIG_OBJ_DIR)/%.o: %.S
+$(OBJ_ROOT_DIR)/%.o: %.S
 	$(compile.s)
 
-$(CONFIG_OBJ_DIR)/%.o: %.s
+$(OBJ_ROOT_DIR)/%.o: %.s
 	$(compile.s)
 
 
@@ -805,42 +778,42 @@ $(CONFIG_OBJ_DIR)/%.o: %.s
 #                     PATTERN RULES TO INTERMEDIATE FILES
 #------------------------------------------------------------------------------
 
-$(CONFIG_OBJ_DIR)/%.s: %.c
+$(OBJ_ROOT_DIR)/%.s: %.c
 	@$(ECHO) Info: Compiling $< to $@
 	@$(MKDIR) $(@D)
 	$(CC) -S $(APP_CPPFLAGS) $(APP_CFLAGS) -o $@ $<
 
-$(CONFIG_OBJ_DIR)/%.s: %.cpp
+$(OBJ_ROOT_DIR)/%.s: %.cpp
 	@$(ECHO) Info: Compiling $< to $@
 	@$(MKDIR) $(@D)
 	$(CXX) -S $(APP_CPPFLAGS) $(APP_CXXFLAGS) $(APP_CFLAGS) -o $@ $<
 
-$(CONFIG_OBJ_DIR)/%.s: %.cc
+$(OBJ_ROOT_DIR)/%.s: %.cc
 	@$(ECHO) Info: Compiling $< to $@
 	@$(MKDIR) $(@D)
 	$(CXX) -S $(APP_CPPFLAGS) $(APP_CXXFLAGS) $(APP_CFLAGS) -o $@ $<
 
-$(CONFIG_OBJ_DIR)/%.s: %.cxx
+$(OBJ_ROOT_DIR)/%.s: %.cxx
 	@$(ECHO) Info: Compiling $< to $@
 	@$(MKDIR) $(@D)
 	$(CXX) -S $(APP_CPPFLAGS) $(APP_CXXFLAGS) $(APP_CFLAGS) -o $@ $<
 
-$(CONFIG_OBJ_DIR)/%.i: %.c
+$(OBJ_ROOT_DIR)/%.i: %.c
 	@$(ECHO) Info: Compiling $< to $@
 	@$(MKDIR) $(@D)
 	$(CC) -E $(APP_CPPFLAGS) $(APP_CFLAGS) -o $@ $<
 
-$(CONFIG_OBJ_DIR)/%.i: %.cpp
+$(OBJ_ROOT_DIR)/%.i: %.cpp
 	@$(ECHO) Info: Compiling $< to $@
 	@$(MKDIR) $(@D)
 	$(CXX) -E $(APP_CPPFLAGS) $(APP_CXXFLAGS) $(APP_CFLAGS) -o $@ $<
 
-$(CONFIG_OBJ_DIR)/%.i: %.cc
+$(OBJ_ROOT_DIR)/%.i: %.cc
 	@$(ECHO) Info: Compiling $< to $@
 	@$(MKDIR) $(@D)
 	$(CXX) -E $(APP_CPPFLAGS) $(APP_CXXFLAGS) $(APP_CFLAGS) -o $@ $<
 
-$(CONFIG_OBJ_DIR)/%.i: %.cxx
+$(OBJ_ROOT_DIR)/%.i: %.cxx
 	@$(ECHO) Info: Compiling $< to $@
 	@$(MKDIR) $(@D)
 	$(CXX) -E $(APP_CPPFLAGS) $(APP_CXXFLAGS) $(APP_CFLAGS) -o $@ $<
@@ -925,13 +898,13 @@ endif
 FORCE_RELINK_DEP  := .force_relink
 FORCE_REBUILD_DEP := .force_rebuild
 FORCE_REBUILD_ALL_DEP := .force_rebuild_all
-FORCE_REBUILD_DEP_LIST := $(CONFIG_OBJ_DIR)/$(FORCE_RELINK_DEP) $(CONFIG_OBJ_DIR)/$(FORCE_REBUILD_DEP) $(FORCE_REBUILD_ALL_DEP)
+FORCE_REBUILD_DEP_LIST := $(FORCE_RELINK_DEP) $(FORCE_REBUILD_DEP) $(FORCE_REBUILD_ALL_DEP)
 
 $(FORCE_REBUILD_DEP_LIST):
 
-$(APP_OBJS): $(wildcard $(CONFIG_OBJ_DIR)/$(FORCE_REBUILD_DEP)) $(wildcard $(addsuffix /$(FORCE_REBUILD_ALL_DEP), . $(ALT_LIBRARY_DIRS)))
+$(APP_OBJS): $(wildcard $(FORCE_REBUILD_DEP)) $(wildcard $(addsuffix /$(FORCE_REBUILD_ALL_DEP), . $(ALT_LIBRARY_DIRS)))
 
-$(ELF): $(wildcard $(addsuffix /$(FORCE_RELINK_DEP), $(CONFIG_OBJ_DIR) $(ALT_LIBRARY_DIRS)))
+$(ELF): $(wildcard $(addsuffix /$(FORCE_RELINK_DEP), . $(ALT_LIBRARY_DIRS)))
 
 
 # Clean just the application.
@@ -1021,7 +994,7 @@ ifeq ($(QSYS),1)
 IP_MAKE_SIMSCRIPT := ip-make-simscript
 
 ifeq ($(VSIM),)
-VSIM_EXE := "$(if $(VSIM_DIR),$(VSIM_DIR)/,)vsim"
+VSIM_EXE := $(if $(VSIM_DIR),$(VSIM_DIR)/,)vsim
 ifeq ($(ENABLE_VSIM_GUI),1)
 VSIM := $(VSIM_EXE) -gui
 else
@@ -1038,8 +1011,7 @@ endif # ABS_QUARTUS_PROJECT_DIR set
 endif # SPD == empty string
 
 ifeq ($(MSIM_SCRIPT),)
-SIM_SCRIPT_DIR := $(RUNTIME_ROOT_DIR)/sim
-MSIM_SCRIPT := $(SIM_SCRIPT_DIR)/mentor/msim_setup.tcl
+MSIM_SCRIPT := $(RUNTIME_ROOT_DIR)/sim/mentor/msim_setup.tcl
 endif # MSIM_SCRIPT == empty string
 
 ifeq ($(MAKE_VERSION),3.81)
@@ -1052,8 +1024,8 @@ $(MSIM_SCRIPT): $(SPD) $(MEM_INIT_DESCRIPTOR_FILE)
 ifeq ($(SPD),)
 	$(error No SPD file specified. Ensure QUARTUS_PROJECT_DIR variable is set)
 endif
-	@$(MKDIR) $(SIM_SCRIPT_DIR)
-	$(IP_MAKE_SIMSCRIPT) --spd=$(SPD) --spd=$(MEM_INIT_DESCRIPTOR_FILE) --output-directory=$(SIM_SCRIPT_DIR)
+	@$(MKDIR) $(@D)
+	$(IP_MAKE_SIMSCRIPT) --spd=$(SPD) --spd=$(MEM_INIT_DESCRIPTOR_FILE) --output-directory=$(@D)
 
 VSIM_COMMAND = \
 	cd $(dir $(MSIM_SCRIPT)) && \
@@ -1080,7 +1052,7 @@ ifneq ($(DISABLE_ELFPATCH),1)
 	$(ELFPATCH) $@ $(ELF_PATCH_FLAG)
 endif
 ifneq ($(DISABLE_STACKREPORT),1)
-	@bash -c "$(STACKREPORT) $@"
+	@$(STACKREPORT) $@
 endif
 
 $(OBJDUMP_NAME) : $(ELF)
