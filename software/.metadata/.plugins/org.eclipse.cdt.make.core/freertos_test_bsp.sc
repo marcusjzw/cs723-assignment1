@@ -4,6 +4,9 @@
 <scannerInfo id="org.eclipse.cdt.make.core.discoveredScannerInfo">
 <instance id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.1098806199;preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.1098806199.;cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.base.747328457;cdt.managedbuild.tool.gnu.cpp.compiler.input.cygwin.893846356">
 <collector id="org.eclipse.cdt.make.core.PerProjectSICollector">
+<includePath path="E:/Documents/cs723-assignment1/software/freertos_test_bsp/HAL/inc"/>
+<includePath path="E:/Documents/cs723-assignment1/software/freertos_test_bsp"/>
+<includePath path="E:/Documents/cs723-assignment1/software/freertos_test_bsp/drivers/inc"/>
 <includePath path="C:\altera\13.0sp1\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\4.5.3\include\c++"/>
 <includePath path="C:\altera\13.0sp1\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\4.5.3\include\c++\i686-pc-cygwin"/>
 <includePath path="C:\altera\13.0sp1\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\4.5.3\include\c++\backward"/>
@@ -239,6 +242,9 @@
 </instance>
 <instance id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.1098806199;preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.1098806199.;cdt.managedbuild.tool.gnu.c.compiler.cygwin.base.967195639;cdt.managedbuild.tool.gnu.c.compiler.input.cygwin.1734084012">
 <collector id="org.eclipse.cdt.make.core.PerProjectSICollector">
+<includePath path="E:/Documents/cs723-assignment1/software/freertos_test_bsp/HAL/inc"/>
+<includePath path="E:/Documents/cs723-assignment1/software/freertos_test_bsp"/>
+<includePath path="E:/Documents/cs723-assignment1/software/freertos_test_bsp/drivers/inc"/>
 <includePath path="C:\altera\13.0sp1\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\4.5.3\include"/>
 <includePath path="C:\altera\13.0sp1\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\4.5.3\include-fixed"/>
 <includePath path="C:\altera\13.0sp1\quartus\bin\cygwin\usr\include"/>

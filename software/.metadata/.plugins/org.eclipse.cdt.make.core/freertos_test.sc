@@ -2,11 +2,11 @@
 <?scdStore version="2"?>
 
 <scannerInfo id="org.eclipse.cdt.make.core.discoveredScannerInfo">
-<instance id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.807500677;preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.807500677.;cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.base.1323624159;cdt.managedbuild.tool.gnu.cpp.compiler.input.cygwin.339231339">
+<instance id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.979770865;preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.979770865.;cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.base.58528044;cdt.managedbuild.tool.gnu.cpp.compiler.input.cygwin.223355281">
 <collector id="org.eclipse.cdt.make.core.PerProjectSICollector">
-<includePath path="C:/Users/Marcus-PC2/Desktop/GithubProjects/cs723-assignment1/software/freertos_test_bsp/HAL/inc"/>
-<includePath path="C:/Users/Marcus-PC2/Desktop/GithubProjects/cs723-assignment1/software/freertos_test_bsp/"/>
-<includePath path="C:/Users/Marcus-PC2/Desktop/GithubProjects/cs723-assignment1/software/freertos_test_bsp/drivers/inc"/>
+<includePath path="E:/Documents/cs723-assignment1/software/freertos_test_bsp/HAL/inc"/>
+<includePath path="E:/Documents/cs723-assignment1/software/freertos_test_bsp/"/>
+<includePath path="E:/Documents/cs723-assignment1/software/freertos_test_bsp/drivers/inc"/>
 <includePath path="C:\altera\13.0sp1\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\4.5.3\include\c++"/>
 <includePath path="C:\altera\13.0sp1\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\4.5.3\include\c++\i686-pc-cygwin"/>
 <includePath path="C:\altera\13.0sp1\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\4.5.3\include\c++\backward"/>
@@ -14,19 +14,6 @@
 <includePath path="C:\altera\13.0sp1\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\4.5.3\include-fixed"/>
 <includePath path="C:\altera\13.0sp1\quartus\bin\cygwin\usr\include"/>
 <includePath path="C:\altera\13.0sp1\quartus\bin\cygwin\usr\include\w32api"/>
-<includePath path="D:/cs723-assignment1/software/freertos_test_bsp/HAL/inc"/>
-<includePath path="D:/cs723-assignment1/software/freertos_test_bsp/"/>
-<includePath path="D:/cs723-assignment1/software/freertos_test_bsp/drivers/inc"/>
-<includePath path="\\uoa.auckland.ac.nz\engdfs\Home\stoo718\Documents\cs723\software\freertos_test_bsp\HAL\inc"/>
-<includePath path="\\uoa.auckland.ac.nz\engdfs\Home\stoo718\Documents\cs723\software\freertos_test_bsp\"/>
-<includePath path="\\uoa.auckland.ac.nz\engdfs\Home\stoo718\Documents\cs723\software\freertos_test_bsp\drivers\inc"/>
-<includePath path="C:\altera\13.0\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\4.5.3\include\c++"/>
-<includePath path="C:\altera\13.0\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\4.5.3\include\c++\i686-pc-cygwin"/>
-<includePath path="C:\altera\13.0\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\4.5.3\include\c++\backward"/>
-<includePath path="C:\altera\13.0\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\4.5.3\include"/>
-<includePath path="C:\altera\13.0\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\4.5.3\include-fixed"/>
-<includePath path="C:\altera\13.0\quartus\bin\cygwin\usr\include"/>
-<includePath path="C:\altera\13.0\quartus\bin\cygwin\usr\include\w32api"/>
 <definedSymbol symbol="__STDC__=1"/>
 <definedSymbol symbol="__cplusplus=1"/>
 <definedSymbol symbol="__STDC_HOSTED__=1"/>
@@ -243,25 +230,15 @@
 <definedSymbol symbol="ALT_SINGLE_THREADED=1"/>
 </collector>
 </instance>
-<instance id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.807500677;preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.807500677.;cdt.managedbuild.tool.gnu.c.compiler.cygwin.base.336930018;cdt.managedbuild.tool.gnu.c.compiler.input.cygwin.414735662">
+<instance id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.979770865;preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.979770865.;cdt.managedbuild.tool.gnu.c.compiler.cygwin.base.1612029643;cdt.managedbuild.tool.gnu.c.compiler.input.cygwin.1292161048">
 <collector id="org.eclipse.cdt.make.core.PerProjectSICollector">
-<includePath path="C:/Users/Marcus-PC2/Desktop/GithubProjects/cs723-assignment1/software/freertos_test_bsp/HAL/inc"/>
-<includePath path="C:/Users/Marcus-PC2/Desktop/GithubProjects/cs723-assignment1/software/freertos_test_bsp/"/>
-<includePath path="C:/Users/Marcus-PC2/Desktop/GithubProjects/cs723-assignment1/software/freertos_test_bsp/drivers/inc"/>
+<includePath path="E:/Documents/cs723-assignment1/software/freertos_test_bsp/HAL/inc"/>
+<includePath path="E:/Documents/cs723-assignment1/software/freertos_test_bsp/"/>
+<includePath path="E:/Documents/cs723-assignment1/software/freertos_test_bsp/drivers/inc"/>
 <includePath path="C:\altera\13.0sp1\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\4.5.3\include"/>
 <includePath path="C:\altera\13.0sp1\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\4.5.3\include-fixed"/>
 <includePath path="C:\altera\13.0sp1\quartus\bin\cygwin\usr\include"/>
 <includePath path="C:\altera\13.0sp1\quartus\bin\cygwin\usr\include\w32api"/>
-<includePath path="D:/cs723-assignment1/software/freertos_test_bsp/HAL/inc"/>
-<includePath path="D:/cs723-assignment1/software/freertos_test_bsp/"/>
-<includePath path="D:/cs723-assignment1/software/freertos_test_bsp/drivers/inc"/>
-<includePath path="\\uoa.auckland.ac.nz\engdfs\Home\stoo718\Documents\cs723\software\freertos_test_bsp\HAL\inc"/>
-<includePath path="\\uoa.auckland.ac.nz\engdfs\Home\stoo718\Documents\cs723\software\freertos_test_bsp\"/>
-<includePath path="\\uoa.auckland.ac.nz\engdfs\Home\stoo718\Documents\cs723\software\freertos_test_bsp\drivers\inc"/>
-<includePath path="C:\altera\13.0\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\4.5.3\include"/>
-<includePath path="C:\altera\13.0\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\4.5.3\include-fixed"/>
-<includePath path="C:\altera\13.0\quartus\bin\cygwin\usr\include"/>
-<includePath path="C:\altera\13.0\quartus\bin\cygwin\usr\include\w32api"/>
 <definedSymbol symbol="__STDC__=1"/>
 <definedSymbol symbol="__STDC_HOSTED__=1"/>
 <definedSymbol symbol="__GNUC__=4"/>

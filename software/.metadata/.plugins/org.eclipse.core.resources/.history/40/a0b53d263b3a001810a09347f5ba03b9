@@ -103,7 +103,7 @@ ACDS_VERSION := 13.0
 # BUILD_NUMBER: 156
 
 SETTINGS_FILE := settings.bsp
-SOPC_FILE := ../../nios2.sopcinfo
+SOPC_FILE := //uoa.auckland.ac.nz/engdfs/home/stoo718/Documents/cs723/nios2.sopcinfo
 
 #-------------------------------------------------------------------------------
 #                             TOOL & COMMAND DEFINITIONS
