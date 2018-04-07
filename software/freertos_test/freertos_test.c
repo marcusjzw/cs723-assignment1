@@ -14,6 +14,9 @@
 #include <altera_avalon_pio_regs.h>
 #include <altera_up_avalon_video_pixel_buffer_dma.h>
 #include <altera_up_avalon_video_character_buffer_with_dma.h>
+#include "altera_up_avalon_ps2.h"
+#include "altera_up_ps2_keyboard.h"
+#include "sys/alt_irq.h"
 
 // Forward declarations
 int initOSDataStructs(void);
@@ -82,9 +85,41 @@ void freq_relay() {
 		printf("Frequency sent: %f\n", new_freq);
 	}
 	else {
-		printf("UNSUCCESSFUL\n");
+		//printf("UNSUCCESSFUL\n");
 	}
 	return;
+}
+
+// ISR for keyboard input
+void ps2_isr (void* context, alt_u32 id)
+{
+	char ascii;
+	int status = 0;
+	unsigned char key = 0;
+	KB_CODE_TYPE decode_mode;
+	status = decode_scancode (context, &decode_mode , &key , &ascii) ;
+	if ( status == 0 ) //success
+	{
+		// print out the result
+		printf("%x\n", key);
+		IOWR(SEVEN_SEG_BASE,0 ,key);
+		if (key == 75) { // up arrow
+			freq_threshold++;
+			printf("Frequency threshold: %f\n", freq_threshold);
+		}
+		else if (key == 72) { // down arrow
+			freq_threshold--;
+			printf("Frequency threshold: %f\n", freq_threshold);
+		}
+		else if (key == 0x7d) { // pg up
+			roc_threshold++;
+			printf("RoC threshold: %f\n", roc_threshold);
+		}
+		else if (key == 0x7d) { // pg down
+			roc_threshold--;
+			printf("RoC threshold: %f\n", roc_threshold);
+		}
+	}
 }
 
 // ROC Calculation Task
@@ -224,9 +259,26 @@ int initOSDataStructs(void)
 	return 0;
 }
 
+// Initialisations for keyboard
+int ps2_init(void) {
+	alt_up_ps2_dev * ps2_device = alt_up_ps2_open_dev(PS2_NAME);
+
+	if(ps2_device == NULL){
+		printf("can't find PS/2 device\n");
+		return 1;
+	}
+
+	alt_up_ps2_clear_fifo (ps2_device) ;
+
+	alt_irq_register(PS2_IRQ, ps2_device, ps2_isr);
+	// register the PS/2 interrupt
+	IOWR_8DIRECT(PS2_BASE,4,1);
+}
+
 int main(int argc, char* argv[], char* envp[])
 {
 	alt_irq_register(FREQUENCY_ANALYSER_IRQ, 0, freq_relay);
+	//ps2_init();
 	initOSDataStructs();
 	initCreateTasks();
 	vTaskStartScheduler();
@@ -234,5 +286,4 @@ int main(int argc, char* argv[], char* envp[])
 
 	return 0;
 }
-
 
