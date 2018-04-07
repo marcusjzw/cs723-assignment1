@@ -6,7 +6,7 @@
         <BspGeneratedUnixTimeStamp>1521153215552</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>\\uoa.auckland.ac.nz\engdfs\home\stoo718\Documents\cs723\software\freertos_test_bsp</BspGeneratedLocation>
         <BspSettingsFile>.\settings.bsp</BspSettingsFile>
-        <SopcDesignFile>\\uoa.auckland.ac.nz\engdfs\home\stoo718\Documents\cs723\nios2.sopcinfo</SopcDesignFile>
+        <SopcDesignFile>..\..\nios2.sopcinfo</SopcDesignFile>
         <JdiFile>default</JdiFile>
         <Cpu>nios2</Cpu>
         <SchemaVersion>1.9</SchemaVersion>
