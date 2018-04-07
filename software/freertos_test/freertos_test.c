@@ -91,6 +91,7 @@ void freq_relay() {
 }
 
 // ISR for keyboard input
+// can this all just be done in the ISR?? is there any need for a kb_inputQ/kb_update_task??
 void ps2_isr (void* context, alt_u32 id)
 {
 	char ascii;
@@ -100,23 +101,25 @@ void ps2_isr (void* context, alt_u32 id)
 	status = decode_scancode (context, &decode_mode , &key , &ascii) ;
 	if ( status == 0 ) //success
 	{
-		// print out the result
 		printf("%x\n", key);
-		IOWR(SEVEN_SEG_BASE,0 ,key);
-		if (key == 75) { // up arrow
-			freq_threshold++;
+
+		// adjust thresholds according to keycode
+		// 0.5 because every time you press a key it goes twice
+		// may need to implement real debouncing w/ timers?? delays??
+		if (key == 0x75) { // up arrow
+			freq_threshold += 0.5;
 			printf("Frequency threshold: %f\n", freq_threshold);
 		}
-		else if (key == 72) { // down arrow
-			freq_threshold--;
+		else if (key == 0x72) { // down arrow
+			freq_threshold -= 0.5;
 			printf("Frequency threshold: %f\n", freq_threshold);
 		}
 		else if (key == 0x7d) { // pg up
-			roc_threshold++;
+			roc_threshold += 0.5;
 			printf("RoC threshold: %f\n", roc_threshold);
 		}
-		else if (key == 0x7d) { // pg down
-			roc_threshold--;
+		else if (key == 0x7a) { // pg down
+			roc_threshold -= 0.5;
 			printf("RoC threshold: %f\n", roc_threshold);
 		}
 	}
@@ -278,7 +281,7 @@ int ps2_init(void) {
 int main(int argc, char* argv[], char* envp[])
 {
 	alt_irq_register(FREQUENCY_ANALYSER_IRQ, 0, freq_relay);
-	//ps2_init();
+	ps2_init();
 	initOSDataStructs();
 	initCreateTasks();
 	vTaskStartScheduler();
