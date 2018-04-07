@@ -8,3 +8,9 @@
 - Load management FSM with LEDs
 - Maintenance mode
 
+## How to fix Nios II Issues:
+#### Missing ELF file:
+- Go to 'run configurations' and toggle the ELF file, run
+
+#### Indexer error when starting Nios II 
+- Delete the .pdom files from \\.metadata\.plugins\org.eclipse.cdt.core and \software\.metadata\.plugins\org.eclipse.cdt.core
