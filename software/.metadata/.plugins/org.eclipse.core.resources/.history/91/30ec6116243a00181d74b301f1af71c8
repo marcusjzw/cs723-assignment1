@@ -36,8 +36,7 @@ int initCreateTasks(void);
 
 // Definition of Task Priorities
 #define VGA_TASK_PRIORITY (tskIDLE_PRIORITY+4)
-#define CALCULATION_TASK_PRIORITY (tskIDLE_PRIORITY+4)
-#define FSM_TASK_PRIORITY (tskIDLE_PRIORITY+5)
+#define CALCULATION_TASK_PRIORITY (tskIDLE_PRIORITY+5)
 
 // Definition of Queue Sizes
 #define HW_DATA_QUEUE_SIZE 100
@@ -199,16 +198,10 @@ void VGA_Task(void *pvParameters){
 	}
 }
 
-// Load Management Task
-void Load_Management_Task(void *pvParameters) {
-
-}
-
 int initCreateTasks(void) {
 	// 4th arg is to pass to pvParameters
 	xTaskCreate(VGA_Task, "VGA_Task", configMINIMAL_STACK_SIZE, NULL, VGA_TASK_PRIORITY, NULL);
 	xTaskCreate(ROC_Calculation_Task, "Calculation_Task", configMINIMAL_STACK_SIZE, NULL, CALCULATION_TASK_PRIORITY, NULL);
-	xTaskCreate(Load_Management_Task, "FSM_Task", configMINIMAL_STACK_SIZE, NULL, FSM_TASK_PRIORITY, NULL);
 	return 0;
 }
 

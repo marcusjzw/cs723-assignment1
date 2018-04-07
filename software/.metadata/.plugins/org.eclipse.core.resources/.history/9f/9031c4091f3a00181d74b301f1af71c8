@@ -36,22 +36,11 @@ int initCreateTasks(void);
 
 // Definition of Task Priorities
 #define VGA_TASK_PRIORITY (tskIDLE_PRIORITY+4)
-#define CALCULATION_TASK_PRIORITY (tskIDLE_PRIORITY+4)
-#define FSM_TASK_PRIORITY (tskIDLE_PRIORITY+5)
+#define CALCULATION_TASK_PRIORITY (tskIDLE_PRIORITY+5)
 
 // Definition of Queue Sizes
 #define HW_DATA_QUEUE_SIZE 100
 #define ROC_DATA_QUEUE_SIZE 10
-
-// Definition of enums and structs
-typedef enum {STABLE, LOAD_MANAGEMENT_MODE, MAINTENANCE_MODE} state;
-
-typedef struct{
-    unsigned int x1;
-    unsigned int y1;
-    unsigned int x2;
-    unsigned int y2;
-} Line;
 
 // Definition of Semaphore Handles
 SemaphoreHandle_t freq_roc_sem;
@@ -60,14 +49,18 @@ SemaphoreHandle_t freq_roc_sem;
 QueueHandle_t HW_dataQ; // contains frequency
 
 // Global variables
-int freq_idx = 99; // used for configuring HW_dataQ with f values and displaying
+int freq_idx = 99;
+
+
 double freq[100];
 double roc[100];
 
-double freq_threshold = 50;
-double roc_threshold = 10;
-state system_state = STABLE;
-
+typedef struct{
+    unsigned int x1;
+    unsigned int y1;
+    unsigned int x2;
+    unsigned int y2;
+} Line;
 
 // ISR
 void freq_relay() {
@@ -90,11 +83,11 @@ void freq_relay() {
 // ROC Calculation Task
 void ROC_Calculation_Task(void *pvParameters) {
 	while(1) {
-		xQueueReceive(HW_dataQ, freq+freq_idx, portMAX_DELAY); // pops new f value from back of q to freq array
+		xQueueReceive(HW_dataQ, freq+freq_idx, portMAX_DELAY); // pops new f value from back
 		xSemaphoreTake(freq_roc_sem, portMAX_DELAY);
 
 		// calculate frequency ROC based on example code
-		if(freq_idx == 0) { // roc needs two points, account for edge case
+		if(freq_idx == 0){
 			roc[0] = (freq[0]-freq[99]) * 2.0 * freq[0] * freq[99] / (freq[0]+freq[99]);
 		} else {
 			roc[freq_idx] = (freq[freq_idx]-freq[freq_idx-1]) * 2.0 * freq[freq_idx]* freq[freq_idx-1] / (freq[freq_idx]+freq[freq_idx-1]);
@@ -149,26 +142,7 @@ void VGA_Task(void *pvParameters){
 
 	int j = 0;
 	Line line_freq, line_roc;
-	char vga_info_buf[50];
 	while(1) {
-
-		// print out thresholds
-		sprintf(vga_info_buf, "Frequency threshold: %2.1f", freq_threshold);
-		alt_up_char_buffer_string(char_buf, vga_info_buf, 12, 42);
-		sprintf(vga_info_buf, "ROC threshold: %2.1f ", roc_threshold);
-		alt_up_char_buffer_string(char_buf, vga_info_buf, 12, 44);
-
-		// print system state
-		if (system_state == STABLE) {
-			sprintf(vga_info_buf, "Current state: STABLE");
-		}
-		else if (system_state == LOAD_MANAGEMENT_MODE) {
-			sprintf(vga_info_buf, "Current state: MANAGING LOAD");
-		}
-		else if (system_state == MAINTENANCE_MODE) {
-			sprintf(vga_info_buf, "Current state: MAINTENANCE MODE");
-		}
-		alt_up_char_buffer_string(char_buf, vga_info_buf, 12, 46);
 
 		//clear old graph to draw new graph
 		alt_up_pixel_buffer_dma_draw_box(pixel_buf, 101, 0, 639, 199, 0, 0);
@@ -176,6 +150,7 @@ void VGA_Task(void *pvParameters){
 
 		for(j=0;j<99;++j){ //i here points to the oldest data, j loops through all the data to be drawn on VGA
 			if (((int)(freq[(freq_idx+j)%100]) > MIN_FREQ) && ((int)(freq[(freq_idx+j+1)%100]) > MIN_FREQ)){
+				//Calculate coordinates of the two data points to draw a line in between
 				//Frequency plot
 				line_freq.x1 = FREQPLT_ORI_X + FREQPLT_GRID_SIZE_X * j;
 				line_freq.y1 = (int)(FREQPLT_ORI_Y - FREQPLT_FREQ_RES * (freq[(freq_idx+j)%100] - MIN_FREQ));
@@ -199,16 +174,10 @@ void VGA_Task(void *pvParameters){
 	}
 }
 
-// Load Management Task
-void Load_Management_Task(void *pvParameters) {
-
-}
-
 int initCreateTasks(void) {
 	// 4th arg is to pass to pvParameters
 	xTaskCreate(VGA_Task, "VGA_Task", configMINIMAL_STACK_SIZE, NULL, VGA_TASK_PRIORITY, NULL);
 	xTaskCreate(ROC_Calculation_Task, "Calculation_Task", configMINIMAL_STACK_SIZE, NULL, CALCULATION_TASK_PRIORITY, NULL);
-	xTaskCreate(Load_Management_Task, "FSM_Task", configMINIMAL_STACK_SIZE, NULL, FSM_TASK_PRIORITY, NULL);
 	return 0;
 }
 

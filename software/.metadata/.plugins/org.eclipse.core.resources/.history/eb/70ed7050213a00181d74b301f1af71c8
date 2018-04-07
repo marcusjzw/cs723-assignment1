@@ -36,15 +36,14 @@ int initCreateTasks(void);
 
 // Definition of Task Priorities
 #define VGA_TASK_PRIORITY (tskIDLE_PRIORITY+4)
-#define CALCULATION_TASK_PRIORITY (tskIDLE_PRIORITY+4)
-#define FSM_TASK_PRIORITY (tskIDLE_PRIORITY+5)
+#define CALCULATION_TASK_PRIORITY (tskIDLE_PRIORITY+5)
 
 // Definition of Queue Sizes
 #define HW_DATA_QUEUE_SIZE 100
 #define ROC_DATA_QUEUE_SIZE 10
 
 // Definition of enums and structs
-typedef enum {STABLE, LOAD_MANAGEMENT_MODE, MAINTENANCE_MODE} state;
+typedef enum {STABLE, LOAD_MANAGEMENT_MODE, MAINTENANCE_MODE} system_state;
 
 typedef struct{
     unsigned int x1;
@@ -66,7 +65,7 @@ double roc[100];
 
 double freq_threshold = 50;
 double roc_threshold = 10;
-state system_state = STABLE;
+system_state system_state = STABLE;
 
 
 // ISR
@@ -148,8 +147,9 @@ void VGA_Task(void *pvParameters){
 	alt_up_char_buffer_string(char_buf, "-60", 9, 36);
 
 	int j = 0;
+	char current_system_state[20];
 	Line line_freq, line_roc;
-	char vga_info_buf[50];
+	char vga_info_buf[30];
 	while(1) {
 
 		// print out thresholds
@@ -157,17 +157,16 @@ void VGA_Task(void *pvParameters){
 		alt_up_char_buffer_string(char_buf, vga_info_buf, 12, 42);
 		sprintf(vga_info_buf, "ROC threshold: %2.1f ", roc_threshold);
 		alt_up_char_buffer_string(char_buf, vga_info_buf, 12, 44);
-
-		// print system state
 		if (system_state == STABLE) {
-			sprintf(vga_info_buf, "Current state: STABLE");
+			current_system_state = "Stable";
 		}
 		else if (system_state == LOAD_MANAGEMENT_MODE) {
-			sprintf(vga_info_buf, "Current state: MANAGING LOAD");
+			current_system_state = "Load management";
 		}
 		else if (system_state == MAINTENANCE_MODE) {
-			sprintf(vga_info_buf, "Current state: MAINTENANCE MODE");
+			current_system_state = "Maintenance mode";
 		}
+		sprintf(vga_info_buf, "Current state: " + current_system_state);
 		alt_up_char_buffer_string(char_buf, vga_info_buf, 12, 46);
 
 		//clear old graph to draw new graph
@@ -199,16 +198,10 @@ void VGA_Task(void *pvParameters){
 	}
 }
 
-// Load Management Task
-void Load_Management_Task(void *pvParameters) {
-
-}
-
 int initCreateTasks(void) {
 	// 4th arg is to pass to pvParameters
 	xTaskCreate(VGA_Task, "VGA_Task", configMINIMAL_STACK_SIZE, NULL, VGA_TASK_PRIORITY, NULL);
 	xTaskCreate(ROC_Calculation_Task, "Calculation_Task", configMINIMAL_STACK_SIZE, NULL, CALCULATION_TASK_PRIORITY, NULL);
-	xTaskCreate(Load_Management_Task, "FSM_Task", configMINIMAL_STACK_SIZE, NULL, FSM_TASK_PRIORITY, NULL);
 	return 0;
 }
 
