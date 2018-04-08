@@ -147,6 +147,7 @@ void Keyboard_Update_Task(void *pvParameters) {
 
 // ROC Calculation Task
 void ROC_Calculation_Task(void *pvParameters) {
+	printf("calculating!!!");
 	while(1) {
 		xQueueReceive(HW_dataQ, freq+freq_idx, portMAX_DELAY); // pops new f value from back of q to freq array
 		xSemaphoreTake(freq_roc_sem, portMAX_DELAY);
@@ -257,16 +258,16 @@ void VGA_Task(void *pvParameters){
 	}
 }
 
-// Load Management Task
-void Load_Management_Task(void *pvParameters) {
-
-}
+//// Load Management Task
+//void Load_Management_Task(void *pvParameters) {
+//
+//}
 
 int initCreateTasks(void) {
 	// 4th arg is to pass to pvParameters
 	xTaskCreate(VGA_Task, "VGA_Task", configMINIMAL_STACK_SIZE, NULL, VGA_TASK_PRIORITY, NULL);
 	xTaskCreate(ROC_Calculation_Task, "Calculation_Task", configMINIMAL_STACK_SIZE, NULL, CALCULATION_TASK_PRIORITY, NULL);
-	xTaskCreate(Load_Management_Task, "FSM_Task", configMINIMAL_STACK_SIZE, NULL, FSM_TASK_PRIORITY, NULL);
+	//xTaskCreate(Load_Management_Task, "FSM_Task", configMINIMAL_STACK_SIZE, NULL, FSM_TASK_PRIORITY, NULL);
 	xTaskCreate(Keyboard_Update_Task, "Keyboard_Update_Task", configMINIMAL_STACK_SIZE, NULL, KEYBOARD_UPDATE_TASK_PRIORITY, NULL);
 	return 0;
 }
