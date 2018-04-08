@@ -41,7 +41,7 @@ int initCreateTasks(void);
 #define VGA_TASK_PRIORITY 				(tskIDLE_PRIORITY+4)
 #define CALCULATION_TASK_PRIORITY 		(tskIDLE_PRIORITY+4)
 #define FSM_TASK_PRIORITY 				(tskIDLE_PRIORITY+5)
-#define KEYBOARD_UPDATE_TASK_PRIORITY 	(tskIDLE_PRIORITY+6)
+#define KEYBOARD_UPDATE_TASK_PRIORITY 	(tskIDLE_PRIORITY+4) // task never executes if i make it +3
 
 // Definition of Queue Sizes
 #define HW_DATA_QUEUE_SIZE 	100
