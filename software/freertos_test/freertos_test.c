@@ -38,13 +38,15 @@ int initCreateTasks(void);
 #define   TASK_STACKSIZE       2048
 
 // Definition of Task Priorities
-#define VGA_TASK_PRIORITY (tskIDLE_PRIORITY+4)
-#define CALCULATION_TASK_PRIORITY (tskIDLE_PRIORITY+4)
-#define FSM_TASK_PRIORITY (tskIDLE_PRIORITY+5)
+#define VGA_TASK_PRIORITY 				(tskIDLE_PRIORITY+4)
+#define CALCULATION_TASK_PRIORITY 		(tskIDLE_PRIORITY+4)
+#define FSM_TASK_PRIORITY 				(tskIDLE_PRIORITY+5)
+#define KEYBOARD_UPDATE_TASK_PRIORITY 	(tskIDLE_PRIORITY+6)
 
 // Definition of Queue Sizes
-#define HW_DATA_QUEUE_SIZE 100
+#define HW_DATA_QUEUE_SIZE 	100
 #define ROC_DATA_QUEUE_SIZE 10
+#define KB_DATA_QUEUE_SIZE 	10
 
 // Definition of enums and structs
 typedef enum {STABLE, LOAD_MANAGEMENT_MODE, MAINTENANCE_MODE} state;
@@ -58,9 +60,11 @@ typedef struct{
 
 // Definition of Semaphore Handles
 SemaphoreHandle_t freq_roc_sem;
+SemaphoreHandle_t thresholds_sem;
 
 // Definition of Queue Handles
 QueueHandle_t HW_dataQ; // contains frequency
+QueueHandle_t kb_dataQ; // stores keystrokes
 
 // Global variables
 int freq_idx = 99; // used for configuring HW_dataQ with f values and displaying
@@ -101,7 +105,21 @@ void ps2_isr (void* context, alt_u32 id)
 	status = decode_scancode (context, &decode_mode , &key , &ascii) ;
 	if ( status == 0 ) //success
 	{
-		printf("%x\n", key);
+		if (xQueueSendFromISR(kb_dataQ, &key, pdFALSE) == pdPASS) {
+			printf("keycode sent successfully: %x\n", key);
+		}
+		else {
+			printf("Keycode queue full!");
+		}
+	}
+}
+
+void Keyboard_Update_Task(void *pvParameters) {
+	unsigned char key;
+	printf("in keyboard task!!!");
+	while(1) {
+		xQueueReceive(kb_dataQ, &key, portMAX_DELAY);
+		xSemaphoreTake(thresholds_sem, portMAX_DELAY);
 
 		// adjust thresholds according to keycode
 		// 0.5 because every time you press a key it goes twice
@@ -122,11 +140,14 @@ void ps2_isr (void* context, alt_u32 id)
 			roc_threshold -= 0.5;
 			printf("RoC threshold: %f\n", roc_threshold);
 		}
+
+		xSemaphoreGive(thresholds_sem);
 	}
 }
 
 // ROC Calculation Task
 void ROC_Calculation_Task(void *pvParameters) {
+	printf("calculating!!!");
 	while(1) {
 		xQueueReceive(HW_dataQ, freq+freq_idx, portMAX_DELAY); // pops new f value from back of q to freq array
 		xSemaphoreTake(freq_roc_sem, portMAX_DELAY);
@@ -237,23 +258,26 @@ void VGA_Task(void *pvParameters){
 	}
 }
 
-// Load Management Task
-void Load_Management_Task(void *pvParameters) {
-
-}
+//// Load Management Task
+//void Load_Management_Task(void *pvParameters) {
+//
+//}
 
 int initCreateTasks(void) {
 	// 4th arg is to pass to pvParameters
 	xTaskCreate(VGA_Task, "VGA_Task", configMINIMAL_STACK_SIZE, NULL, VGA_TASK_PRIORITY, NULL);
 	xTaskCreate(ROC_Calculation_Task, "Calculation_Task", configMINIMAL_STACK_SIZE, NULL, CALCULATION_TASK_PRIORITY, NULL);
-	xTaskCreate(Load_Management_Task, "FSM_Task", configMINIMAL_STACK_SIZE, NULL, FSM_TASK_PRIORITY, NULL);
+	//xTaskCreate(Load_Management_Task, "FSM_Task", configMINIMAL_STACK_SIZE, NULL, FSM_TASK_PRIORITY, NULL);
+	xTaskCreate(Keyboard_Update_Task, "Keyboard_Update_Task", configMINIMAL_STACK_SIZE, NULL, KEYBOARD_UPDATE_TASK_PRIORITY, NULL);
 	return 0;
 }
 
 int initOSDataStructs(void)
 {
 	HW_dataQ = xQueueCreate(HW_DATA_QUEUE_SIZE, sizeof(double));
+	kb_dataQ = xQueueCreate(KB_DATA_QUEUE_SIZE, sizeof(unsigned char));
 	freq_roc_sem = xSemaphoreCreateMutex();
+	thresholds_sem = xSemaphoreCreateMutex();
 	if (freq_roc_sem == NULL) {
 		printf("Creation of vga_sem failed\n");
 	}
