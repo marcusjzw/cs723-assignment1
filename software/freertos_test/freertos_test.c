@@ -73,7 +73,9 @@ double roc[100];
 
 double freq_threshold = 50;
 double roc_threshold = 10;
-state system_state = STABLE;
+volatile state system_state = STABLE;
+volatile state prev_state;
+
 
 
 // ISR
@@ -85,8 +87,8 @@ void freq_relay() {
 
 	// ROC calculation done in separate Calculation task to minimise ISR time
 	if (xQueueSendToBackFromISR(HW_dataQ, &new_freq, NULL) == pdPASS) {
-		printf("Queue send successful\n");
-		printf("Frequency sent: %f\n", new_freq);
+//		printf("Queue send successful\n");
+//		printf("Frequency sent: %f\n", new_freq);
 	}
 	else {
 		//printf("UNSUCCESSFUL\n");
@@ -106,12 +108,28 @@ void ps2_isr (void* context, alt_u32 id)
 	if ( status == 0 ) //success
 	{
 		if (xQueueSendFromISR(kb_dataQ, &key, pdFALSE) == pdPASS) {
-			printf("keycode sent successfully: %x\n", key);
+			printf("keycode sent: %x\n", key);
 		}
 		else {
 			printf("Keycode queue full!");
 		}
 	}
+}
+
+void button_irq(void* context, alt_u32 id)
+{
+	if (IORD_ALTERA_AVALON_PIO_EDGE_CAP(PUSH_BUTTON_BASE) == 4) {
+		if (system_state != MAINTENANCE_MODE) {
+			prev_state = system_state; // save previous state
+			system_state = MAINTENANCE_MODE;
+		}
+		else {
+			system_state = prev_state;
+		}
+	}
+
+   //clears the edge capture register
+  IOWR_ALTERA_AVALON_PIO_EDGE_CAP(PUSH_BUTTON_BASE, 0x7);
 }
 
 void Keyboard_Update_Task(void *pvParameters) {
@@ -219,12 +237,14 @@ void VGA_Task(void *pvParameters){
 
 		// print system state
 		if (system_state == STABLE) {
-			sprintf(vga_info_buf, "Current state: STABLE");
+			//memset(&vga_info_buf[0], 0, sizeof(vga_info_buf));
+			sprintf(vga_info_buf, "Current state: STABLE           ");
 		}
 		else if (system_state == LOAD_MANAGEMENT_MODE) {
 			sprintf(vga_info_buf, "Current state: MANAGING LOAD");
 		}
 		else if (system_state == MAINTENANCE_MODE) {
+			//memset(&vga_info_buf[0], 0, sizeof(vga_info_buf));
 			sprintf(vga_info_buf, "Current state: MAINTENANCE MODE");
 		}
 		alt_up_char_buffer_string(char_buf, vga_info_buf, 12, 46);
@@ -258,7 +278,7 @@ void VGA_Task(void *pvParameters){
 	}
 }
 
-//// Load Management Task
+// Load Management Task
 //void Load_Management_Task(void *pvParameters) {
 //
 //}
@@ -286,7 +306,7 @@ int initOSDataStructs(void)
 	return 0;
 }
 
-// Initialisations for keyboard
+// Initialisations for keyboard/ISR
 int ps2_init(void) {
 	alt_up_ps2_dev * ps2_device = alt_up_ps2_open_dev(PS2_NAME);
 
@@ -302,10 +322,17 @@ int ps2_init(void) {
 	IOWR_8DIRECT(PS2_BASE,4,1);
 }
 
+void button_init(void) {
+	IOWR_ALTERA_AVALON_PIO_IRQ_MASK(PUSH_BUTTON_BASE, 0x7); // enable interrupt for 1 button
+	IOWR_ALTERA_AVALON_PIO_EDGE_CAP(PUSH_BUTTON_BASE, 0x7); //write 1 to edge capture to clear pending interrupts
+	alt_irq_register(PUSH_BUTTON_IRQ, 0, button_irq);  //register ISR for push button interrupt request
+}
+
 int main(int argc, char* argv[], char* envp[])
 {
 	alt_irq_register(FREQUENCY_ANALYSER_IRQ, 0, freq_relay);
 	ps2_init();
+	button_init();
 	initOSDataStructs();
 	initCreateTasks();
 	vTaskStartScheduler();
