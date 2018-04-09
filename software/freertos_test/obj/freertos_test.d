@@ -11,7 +11,7 @@ obj/freertos_test.o: freertos_test.c ../freertos_test_bsp//HAL/inc/io.h \
   ../freertos_test_bsp//HAL/inc/alt_types.h \
   ../freertos_test_bsp//HAL/inc/sys/alt_irq.h FreeRTOS/mpu_wrappers.h \
   FreeRTOS/task.h FreeRTOS/list.h FreeRTOS/queue.h FreeRTOS/semphr.h \
-  FreeRTOS/queue.h \
+  FreeRTOS/queue.h FreeRTOS/timers.h FreeRTOS/task.h \
   ../freertos_test_bsp//drivers/inc/altera_avalon_pio_regs.h \
   ../freertos_test_bsp//HAL/inc/io.h \
   ../freertos_test_bsp//drivers/inc/altera_up_avalon_video_pixel_buffer_dma.h \
@@ -75,6 +75,10 @@ FreeRTOS/queue.h:
 FreeRTOS/semphr.h:
 
 FreeRTOS/queue.h:
+
+FreeRTOS/timers.h:
+
+FreeRTOS/task.h:
 
 ../freertos_test_bsp//drivers/inc/altera_avalon_pio_regs.h:
 

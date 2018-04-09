@@ -10,7 +10,6 @@
 #include "FreeRTOS/task.h"
 #include "FreeRTOS/queue.h"
 #include "FreeRTOS/semphr.h"
-#include "FreeRTOS/timers.h"
 
 #include <altera_avalon_pio_regs.h>
 #include <altera_up_avalon_video_pixel_buffer_dma.h>
@@ -56,7 +55,7 @@ int initCreateTasks(void);
 #define TIMER_PERIOD (500 / portTICK_RATE_MS)
 
 // Definition of enums and structs
-typedef enum {NORMAL_OPERATION, LOAD_MANAGEMENT_MODE, MAINTENANCE_MODE} state;
+typedef enum {STABLE, LOAD_MANAGEMENT_MODE, MAINTENANCE_MODE} state;
 
 typedef struct{
     unsigned int x1;
@@ -85,7 +84,7 @@ double roc[100];
 double freq_threshold = 49;
 double roc_threshold = 10;
 bool system_stable = true; // system_stable is manipulated when thresholds are good/bad
-volatile state system_state = NORMAL_OPERATION; // note: not the same as system_stable, system_state describes current mode of operation
+volatile state system_state = STABLE; // note: not the same as system_stable, system_state describes current mode of operation
 volatile state prev_state;
 static bool load_states[NO_OF_LOADS];
 bool timer_expired_flag = false; // high when 500ms timer expires, does not need a sem since data R/W on here is atomic and done by one task
@@ -251,21 +250,14 @@ void VGA_Task(void *pvParameters){
 		alt_up_char_buffer_string(char_buf, vga_info_buf, 12, 44);
 
 		// print system state
-		if (system_state == NORMAL_OPERATION) {
-			alt_up_char_buffer_string(char_buf, "System state: Normal               ", 12, 46);
+		if (system_state == STABLE) {
+			alt_up_char_buffer_string(char_buf, "Current state: Stable               ", 12, 46);
 		}
 		else if (system_state == LOAD_MANAGEMENT_MODE) {
-			alt_up_char_buffer_string(char_buf, "System state: Load managing        ", 12, 46);
+			alt_up_char_buffer_string(char_buf, "Current state: Load managing        ", 12, 46);
 		}
 		else if (system_state == MAINTENANCE_MODE) {
-			alt_up_char_buffer_string(char_buf, "System state: Maintenance mode", 12, 46);
-		}
-
-		if (system_stable == true) {
-			alt_up_char_buffer_string(char_buf, "System is stable    ", 12, 48);
-		}
-		else {
-			alt_up_char_buffer_string(char_buf, "System is not stable", 12, 48);
+			alt_up_char_buffer_string(char_buf, "Current state: Maintenance mode", 12, 46);
 		}
 
 		//clear old graph to draw new graph
