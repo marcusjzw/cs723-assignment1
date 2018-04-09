@@ -344,7 +344,7 @@ void shed_load() {
 			break;
 		}
 	}
-	update_leds_from_fsm();
+	update_leds();
 }
 
 void reconnect_load() {
@@ -355,7 +355,7 @@ void reconnect_load() {
 			break;
 		}
 	}
-	update_leds_from_fsm();
+	update_leds();
 }
 
 void reset_timer() {

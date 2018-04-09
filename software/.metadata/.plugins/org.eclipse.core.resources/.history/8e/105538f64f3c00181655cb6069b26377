@@ -333,6 +333,7 @@ void update_leds_from_fsm() {
 
 	xSemaphoreTake(led_sem, portMAX_DELAY);
 	IOWR_ALTERA_AVALON_PIO_DATA(RED_LEDS_BASE, red_led & switch_cfg ); // This code will ensure the red led only turns on if both switch and load management agree.
+
 	xSemaphoreGive(led_sem);
 }
 
@@ -344,7 +345,7 @@ void shed_load() {
 			break;
 		}
 	}
-	update_leds_from_fsm();
+	update_leds();
 }
 
 void reconnect_load() {
@@ -355,7 +356,7 @@ void reconnect_load() {
 			break;
 		}
 	}
-	update_leds_from_fsm();
+	update_leds();
 }
 
 void reset_timer() {
