@@ -862,3 +862,167 @@ org.osgi.framework.BundleException: The bundle "org.eclipse.equinox.p2.reconcile
 
 !ENTRY com.altera.sbtgui.launch 1 0 2018-04-07 20:13:57.114
 !MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x430f0 /cygdrive/e/Documents/cs723-assignment1/software/freertos_test/freertos_test.elf]
+!SESSION 2018-04-09 21:11:53.952 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_NZ
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-04-09 21:12:04.567
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.cdt.core 1 0 2018-04-09 21:12:12.532
+!MESSAGE Indexed 'freertos_test' (9 sources, 87 headers) in 2.18 sec: 4,229 declarations; 8,537 references; 11 unresolved inclusions; 2 syntax errors; 47 unresolved names (0.37%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2018-04-09 21:12:14.742
+!MESSAGE Indexed 'freertos_test_bsp' (97 sources, 146 headers) in 2.04 sec: 5,363 declarations; 9,520 references; 0 unresolved inclusions; 3 syntax errors; 18 unresolved names (0.12%)
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-04-09 21:14:11.509
+!MESSAGE Unable to validate connection settings.
+!STACK 0
+java.lang.Exception
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.validateConnectionSettings(SystemConsoleConnectionModel.java:555)
+	at com.altera.sbtgui.launch.hardware.AbstractNios2CLaunchDelegate.launch(AbstractNios2CLaunchDelegate.java:115)
+	at com.altera.sbtgui.launch.hardware.Nios2HardwareLaunchDelegate.launch(Nios2HardwareLaunchDelegate.java:98)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:854)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:703)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:937)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1141)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-04-09 21:14:11.514
+!MESSAGE Unable to validate connection settings.
+!STACK 0
+java.lang.Exception
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.validateConnectionSettings(SystemConsoleConnectionModel.java:555)
+	at com.altera.sbtgui.launch.hardware.AbstractNios2CLaunchDelegate.launch(AbstractNios2CLaunchDelegate.java:115)
+	at com.altera.sbtgui.launch.hardware.Nios2HardwareLaunchDelegate.launch(Nios2HardwareLaunchDelegate.java:98)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:854)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:703)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:937)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1141)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-04-09 21:16:01.228
+!MESSAGE Unable to validate connection settings.
+!STACK 0
+java.lang.Exception
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.validateConnectionSettings(SystemConsoleConnectionModel.java:555)
+	at com.altera.sbtgui.launch.hardware.AbstractNios2CLaunchDelegate.launch(AbstractNios2CLaunchDelegate.java:115)
+	at com.altera.sbtgui.launch.hardware.Nios2HardwareLaunchDelegate.launch(Nios2HardwareLaunchDelegate.java:98)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:854)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:703)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:937)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1141)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-04-09 21:16:01.230
+!MESSAGE Unable to validate connection settings.
+!STACK 0
+java.lang.Exception
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.validateConnectionSettings(SystemConsoleConnectionModel.java:555)
+	at com.altera.sbtgui.launch.hardware.AbstractNios2CLaunchDelegate.launch(AbstractNios2CLaunchDelegate.java:115)
+	at com.altera.sbtgui.launch.hardware.Nios2HardwareLaunchDelegate.launch(Nios2HardwareLaunchDelegate.java:98)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:854)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:703)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:937)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1141)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-09 21:16:19.474
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x430f0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-09 21:16:21.824
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x430f0 /cygdrive/c/Users/Marcus-PC2/Desktop/GithubProjects/cs723-assignment1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-09 22:05:59.915
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-09 22:06:00.988
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x430f0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-09 22:06:03.693
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x430f0 /cygdrive/c/Users/Marcus-PC2/Desktop/GithubProjects/cs723-assignment1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-09 22:06:30.394
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-09 22:06:31.117
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x430f0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-09 22:06:33.462
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x430f0 /cygdrive/c/Users/Marcus-PC2/Desktop/GithubProjects/cs723-assignment1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-09 22:09:37.880
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-09 22:09:38.598
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x430f0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-09 22:09:40.967
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x430f0 /cygdrive/c/Users/Marcus-PC2/Desktop/GithubProjects/cs723-assignment1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-09 22:10:55.109
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-09 22:10:56.264
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x430f0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-09 22:10:58.620
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x430f0 /cygdrive/c/Users/Marcus-PC2/Desktop/GithubProjects/cs723-assignment1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-09 22:11:32.566
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-09 22:11:33.256
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x430f0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-09 22:11:35.616
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x430f0 /cygdrive/c/Users/Marcus-PC2/Desktop/GithubProjects/cs723-assignment1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-09 22:12:23.566
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-09 22:12:24.268
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x430f0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-09 22:12:26.608
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x430f0 /cygdrive/c/Users/Marcus-PC2/Desktop/GithubProjects/cs723-assignment1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-09 22:40:54.087
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-09 22:40:54.749
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x430f0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-09 22:40:57.081
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x430f0 /cygdrive/c/Users/Marcus-PC2/Desktop/GithubProjects/cs723-assignment1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-09 22:44:15.926
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-09 22:44:16.574
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x430f0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-09 22:44:18.907
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x430f0 /cygdrive/c/Users/Marcus-PC2/Desktop/GithubProjects/cs723-assignment1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-09 22:44:58.711
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-09 22:44:59.380
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x430f0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-09 22:45:01.716
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x430f0 /cygdrive/c/Users/Marcus-PC2/Desktop/GithubProjects/cs723-assignment1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-10 01:18:05.012
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-10 01:18:05.840
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x430f0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-10 01:18:08.210
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x430f0 /cygdrive/c/Users/Marcus-PC2/Desktop/GithubProjects/cs723-assignment1/software/freertos_test/freertos_test.elf]

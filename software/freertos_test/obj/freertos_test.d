@@ -20,7 +20,11 @@ obj/freertos_test.o: freertos_test.c ../freertos_test_bsp//HAL/inc/io.h \
   ../freertos_test_bsp//HAL/inc/sys/alt_llist.h \
   ../freertos_test_bsp//HAL/inc/priv/alt_dev_llist.h \
   ../freertos_test_bsp//HAL/inc/sys/alt_llist.h \
-  ../freertos_test_bsp//drivers/inc/altera_up_avalon_video_character_buffer_with_dma.h
+  ../freertos_test_bsp//drivers/inc/altera_up_avalon_video_character_buffer_with_dma.h \
+  ../freertos_test_bsp//drivers/inc/altera_up_avalon_ps2.h \
+  ../freertos_test_bsp//drivers/inc/altera_up_ps2_keyboard.h \
+  ../freertos_test_bsp//drivers/inc/altera_up_avalon_ps2.h \
+  ../freertos_test_bsp//HAL/inc/sys/alt_irq.h
 
 ../freertos_test_bsp//HAL/inc/io.h:
 
@@ -89,3 +93,11 @@ FreeRTOS/queue.h:
 ../freertos_test_bsp//HAL/inc/sys/alt_llist.h:
 
 ../freertos_test_bsp//drivers/inc/altera_up_avalon_video_character_buffer_with_dma.h:
+
+../freertos_test_bsp//drivers/inc/altera_up_avalon_ps2.h:
+
+../freertos_test_bsp//drivers/inc/altera_up_ps2_keyboard.h:
+
+../freertos_test_bsp//drivers/inc/altera_up_avalon_ps2.h:
+
+../freertos_test_bsp//HAL/inc/sys/alt_irq.h:

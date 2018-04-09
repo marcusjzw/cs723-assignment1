@@ -34,6 +34,7 @@ int initCreateTasks(void);
 #define ROCPLT_ROC_RES 0.5		//number of pixels per Hz/s (y axis scale)
 
 #define MIN_FREQ 45.0 //minimum frequency to draw
+
 // Definition of Task Stacks
 #define   TASK_STACKSIZE       2048
 
@@ -48,6 +49,11 @@ int initCreateTasks(void);
 #define ROC_DATA_QUEUE_SIZE 10
 #define KB_DATA_QUEUE_SIZE 	10
 
+// Definition of system parameters
+#define SAMPLING_FREQ 16000.0
+#define NO_OF_LOADS 5
+#define TIMER_PERIOD (500 / portTICK_RATE_MS)
+
 // Definition of enums and structs
 typedef enum {STABLE, LOAD_MANAGEMENT_MODE, MAINTENANCE_MODE} state;
 
@@ -58,13 +64,17 @@ typedef struct{
     unsigned int y2;
 } Line;
 
-// Definition of Semaphore Handles
+typedef enum { false, true } bool;
+
+// Definition of RTOS Handles
 SemaphoreHandle_t freq_roc_sem;
 SemaphoreHandle_t thresholds_sem;
+SemaphoreHandle_t state_sem;
 
-// Definition of Queue Handles
 QueueHandle_t HW_dataQ; // contains frequency
 QueueHandle_t kb_dataQ; // stores keystrokes
+
+TimerHandle_t fsm_timer;
 
 // Global variables
 int freq_idx = 99; // used for configuring HW_dataQ with f values and displaying
@@ -73,31 +83,26 @@ double roc[100];
 
 double freq_threshold = 50;
 double roc_threshold = 10;
-volatile state system_state = STABLE;
+bool system_stable = true; // system_stable is manipulated when thresholds are good/bad
+volatile state system_state = STABLE; // note: not the same as system_stable, system_state describes current mode of operation
 volatile state prev_state;
+static bool load_states[NO_OF_LOADS];
+bool timer_expired_flag = false; // high when 500ms timer expires, does not need a sem since data R/W on here is atomic and done by one task
 
 
 
 // ISR
 void freq_relay() {
-	#define SAMPLING_FREQ 16000.0
-
 	unsigned int adc_samples = IORD(FREQUENCY_ANALYSER_BASE, 0);	// number of ADC samples
 	double new_freq = SAMPLING_FREQ/(double)adc_samples;
 
 	// ROC calculation done in separate Calculation task to minimise ISR time
-	if (xQueueSendToBackFromISR(HW_dataQ, &new_freq, NULL) == pdPASS) {
-//		printf("Queue send successful\n");
-//		printf("Frequency sent: %f\n", new_freq);
-	}
-	else {
-		//printf("UNSUCCESSFUL\n");
-	}
+	xQueueSendToBackFromISR(HW_dataQ, &new_freq, NULL);
+
 	return;
 }
 
 // ISR for keyboard input
-// can this all just be done in the ISR?? is there any need for a kb_inputQ/kb_update_task??
 void ps2_isr (void* context, alt_u32 id)
 {
 	char ascii;
@@ -119,6 +124,7 @@ void ps2_isr (void* context, alt_u32 id)
 void button_irq(void* context, alt_u32 id)
 {
 	if (IORD_ALTERA_AVALON_PIO_EDGE_CAP(PUSH_BUTTON_BASE) == 4) {
+		// xSemaphoreTake(state_sem, portMAX_DELAY);
 		if (system_state != MAINTENANCE_MODE) {
 			prev_state = system_state; // save previous state
 			system_state = MAINTENANCE_MODE;
@@ -126,15 +132,16 @@ void button_irq(void* context, alt_u32 id)
 		else {
 			system_state = prev_state;
 		}
+		// xSemaphoreGive(state_sem);
 	}
-
    //clears the edge capture register
   IOWR_ALTERA_AVALON_PIO_EDGE_CAP(PUSH_BUTTON_BASE, 0x7);
+  return;
 }
 
 void Keyboard_Update_Task(void *pvParameters) {
 	unsigned char key;
-	printf("in keyboard task!!!");
+//	printf("in keyboard task!!!");
 	while(1) {
 		xQueueReceive(kb_dataQ, &key, portMAX_DELAY);
 		xSemaphoreTake(thresholds_sem, portMAX_DELAY);
@@ -158,14 +165,13 @@ void Keyboard_Update_Task(void *pvParameters) {
 			roc_threshold -= 0.5;
 			printf("RoC threshold: %f\n", roc_threshold);
 		}
-
 		xSemaphoreGive(thresholds_sem);
 	}
 }
 
 // ROC Calculation Task
 void ROC_Calculation_Task(void *pvParameters) {
-	printf("calculating!!!");
+	// printf("calculating!!!");
 	while(1) {
 		xQueueReceive(HW_dataQ, freq+freq_idx, portMAX_DELAY); // pops new f value from back of q to freq array
 		xSemaphoreTake(freq_roc_sem, portMAX_DELAY);
@@ -237,17 +243,14 @@ void VGA_Task(void *pvParameters){
 
 		// print system state
 		if (system_state == STABLE) {
-			//memset(&vga_info_buf[0], 0, sizeof(vga_info_buf));
-			sprintf(vga_info_buf, "Current state: STABLE           ");
+			alt_up_char_buffer_string(char_buf, "Current state: Stable               ", 12, 46);
 		}
 		else if (system_state == LOAD_MANAGEMENT_MODE) {
-			sprintf(vga_info_buf, "Current state: MANAGING LOAD");
+			alt_up_char_buffer_string(char_buf, "Current state: Load managing        ", 12, 46);
 		}
 		else if (system_state == MAINTENANCE_MODE) {
-			//memset(&vga_info_buf[0], 0, sizeof(vga_info_buf));
-			sprintf(vga_info_buf, "Current state: MAINTENANCE MODE");
+			alt_up_char_buffer_string(char_buf, "Current state: Maintenance mode", 12, 46);
 		}
-		alt_up_char_buffer_string(char_buf, vga_info_buf, 12, 46);
 
 		//clear old graph to draw new graph
 		alt_up_pixel_buffer_dma_draw_box(pixel_buf, 101, 0, 639, 199, 0, 0);
@@ -278,16 +281,67 @@ void VGA_Task(void *pvParameters){
 	}
 }
 
+/* Load Management Task Helper Functions
+ * update_leds: updates leds based on current state configuration
+ * shed_load: shed a single load from the network, starting from lowest prio (lowest led no)
+ * reconnect_load: reconnect a single load to network, starting from highest prio (highest led no)
+ * reset_timer: resets the timer expiry flag and the actual timer handle
+ * timer_expiry_callback: runs when timer expires, sets expiry flag to high
+ */
+
+void update_leds() {
+
+}
+
+void shed_load() {
+	unsigned int i;
+	for (i = 0; i < NO_OF_LOADS; i++) {
+		if (load_states[i] == true) {
+			load_states[i] = false;
+			break;
+		}
+	}
+	update_leds();
+}
+
+void reconnect_load() {
+	unsigned int i;
+	for (i = NO_OF_LOADS - 1; i >= 0; i--) {
+		if (load_states[i] == false) {
+			load_states[i] = true;
+			break;
+		}
+	}
+	update_leds();
+}
+
+void reset_timer() {
+	timer_expired_flag = false;
+	xTimerReset(fsm_timer, 10); //10 ticks that fsm_task is held in blocked state to wait for successful send to timer command q. incr if more timers added to system
+}
+
+void timer_expiry_callback(TimerHandle_t xTimer) {
+	timer_expired_flag = true;
+}
+
+void check_unstable() {
+
+}
+
+// TODO: reflect in LEDs
+
 // Load Management Task
 //void Load_Management_Task(void *pvParameters) {
-//
+//	while(1) {
+//	}
 //}
+
 
 int initCreateTasks(void) {
 	// 4th arg is to pass to pvParameters
 	xTaskCreate(VGA_Task, "VGA_Task", configMINIMAL_STACK_SIZE, NULL, VGA_TASK_PRIORITY, NULL);
 	xTaskCreate(ROC_Calculation_Task, "Calculation_Task", configMINIMAL_STACK_SIZE, NULL, CALCULATION_TASK_PRIORITY, NULL);
-	//xTaskCreate(Load_Management_Task, "FSM_Task", configMINIMAL_STACK_SIZE, NULL, FSM_TASK_PRIORITY, NULL);
+	// xTaskCreate(Load_Management_Task, "FSM_Task", configMINIMAL_STACK_SIZE, NULL, FSM_TASK_PRIORITY, NULL);
 	xTaskCreate(Keyboard_Update_Task, "Keyboard_Update_Task", configMINIMAL_STACK_SIZE, NULL, KEYBOARD_UPDATE_TASK_PRIORITY, NULL);
 	return 0;
 }
@@ -298,11 +352,8 @@ int initOSDataStructs(void)
 	kb_dataQ = xQueueCreate(KB_DATA_QUEUE_SIZE, sizeof(unsigned char));
 	freq_roc_sem = xSemaphoreCreateMutex();
 	thresholds_sem = xSemaphoreCreateMutex();
-	if (freq_roc_sem == NULL) {
-		printf("Creation of vga_sem failed\n");
-	}
-
-
+	state_sem = xSemaphoreCreateBinary(); // binary sem required because sem is used in ISR, mutexes cannot be
+	fsm_timer = xTimerCreate("fsm_timer", TIMER_PERIOD, pdFALSE, NULL, timer_expiry_callback); // create 500ms timer with no autoreload, callback sets timer expiry flag high
 	return 0;
 }
 

@@ -4,6 +4,9 @@
 <scannerInfo id="org.eclipse.cdt.make.core.discoveredScannerInfo">
 <instance id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.979770865;preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.979770865.;cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.base.58528044;cdt.managedbuild.tool.gnu.cpp.compiler.input.cygwin.223355281">
 <collector id="org.eclipse.cdt.make.core.PerProjectSICollector">
+<includePath path="C:/Users/Marcus-PC2/Desktop/GithubProjects/cs723-assignment1/software/freertos_test_bsp/HAL/inc"/>
+<includePath path="C:/Users/Marcus-PC2/Desktop/GithubProjects/cs723-assignment1/software/freertos_test_bsp/"/>
+<includePath path="C:/Users/Marcus-PC2/Desktop/GithubProjects/cs723-assignment1/software/freertos_test_bsp/drivers/inc"/>
 <includePath path="E:/Documents/cs723-assignment1/software/freertos_test_bsp/HAL/inc"/>
 <includePath path="E:/Documents/cs723-assignment1/software/freertos_test_bsp/"/>
 <includePath path="E:/Documents/cs723-assignment1/software/freertos_test_bsp/drivers/inc"/>
@@ -232,6 +235,9 @@
 </instance>
 <instance id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.979770865;preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.979770865.;cdt.managedbuild.tool.gnu.c.compiler.cygwin.base.1612029643;cdt.managedbuild.tool.gnu.c.compiler.input.cygwin.1292161048">
 <collector id="org.eclipse.cdt.make.core.PerProjectSICollector">
+<includePath path="C:/Users/Marcus-PC2/Desktop/GithubProjects/cs723-assignment1/software/freertos_test_bsp/HAL/inc"/>
+<includePath path="C:/Users/Marcus-PC2/Desktop/GithubProjects/cs723-assignment1/software/freertos_test_bsp/"/>
+<includePath path="C:/Users/Marcus-PC2/Desktop/GithubProjects/cs723-assignment1/software/freertos_test_bsp/drivers/inc"/>
 <includePath path="E:/Documents/cs723-assignment1/software/freertos_test_bsp/HAL/inc"/>
 <includePath path="E:/Documents/cs723-assignment1/software/freertos_test_bsp/"/>
 <includePath path="E:/Documents/cs723-assignment1/software/freertos_test_bsp/drivers/inc"/>
