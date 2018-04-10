@@ -380,6 +380,7 @@ void reset_timer() {
 
 void timer_expiry_callback(xTimerHandle xTimer) {
 	timer_expired_flag = true;
+	printf("Timer expired\n");
 }
 
 // Load Management Task
@@ -406,7 +407,7 @@ void Load_Management_Task(void *pvParameters) {
 					reset_timer();
 					shed_load();
 				}
-				else if (system_stable == false) {
+				if (system_stable == false) {
 					system_state = LOAD_MGMT_MONITOR_UNSTABLE;
 				}
 				else {
@@ -419,7 +420,6 @@ void Load_Management_Task(void *pvParameters) {
 				if (timer_expired_flag == true) {
 					reset_timer();
 					if (check_if_all_loads_connected()) {
-						printf("Normal operation enter");
 						system_state = NORMAL_OPERATION; // everything back to normal
 					}
 					else {
@@ -427,7 +427,8 @@ void Load_Management_Task(void *pvParameters) {
 						system_state = LOAD_MGMT_MONITOR_STABLE;
 					}
 				}
-				else if (system_stable == false) {
+
+				if (system_stable == false) {
 					reset_timer();
 					system_state = LOAD_MGMT_MONITOR_UNSTABLE;
 				}
