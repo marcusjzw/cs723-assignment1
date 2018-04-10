@@ -1496,3 +1496,39 @@ org.eclipse.cdt.internal.formatter.AbortFormatting: [60/1] Unexpected token type
 
 !ENTRY com.altera.sbtgui.launch 1 0 2018-04-10 13:40:13.005
 !MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x430f0 /cygdrive/c/Users/Marcus-PC2/Desktop/GithubProjects/cs723-assignment1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-10 13:51:04.972
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-10 13:51:05.670
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x430f0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-10 13:51:08.058
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x430f0 /cygdrive/c/Users/Marcus-PC2/Desktop/GithubProjects/cs723-assignment1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-10 13:52:01.249
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-10 13:52:01.973
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x430f0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-10 13:52:04.345
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x430f0 /cygdrive/c/Users/Marcus-PC2/Desktop/GithubProjects/cs723-assignment1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-10 13:54:23.784
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-10 13:54:24.453
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x430f0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-10 13:54:26.799
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x430f0 /cygdrive/c/Users/Marcus-PC2/Desktop/GithubProjects/cs723-assignment1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-10 13:59:06.960
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-10 13:59:07.716
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x430f0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-10 13:59:10.067
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x430f0 /cygdrive/c/Users/Marcus-PC2/Desktop/GithubProjects/cs723-assignment1/software/freertos_test/freertos_test.elf]

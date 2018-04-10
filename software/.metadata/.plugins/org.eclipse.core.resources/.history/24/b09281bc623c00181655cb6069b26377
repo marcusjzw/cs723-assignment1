@@ -328,6 +328,9 @@ void update_leds_from_fsm() {
 	unsigned long red_led = 0, green_led = 0, bit = 1; // for pio call, ending result of 0 is off and 1 is on
 	unsigned int i;
 	for (i = 0; i < NO_OF_LOADS; i++) {
+//		if ((red_led & switch_cfg) == 0)  {
+//			load_states[i] = false; //
+//		}
 		red_led |= (load_states[i] == true) ? bit : 0;
 		green_led |= (load_states[i] == false) ? bit : 0; // green leds turn on when relay switches off loads
 		bit = bit << 1; // shift left to do logic on next led
@@ -341,10 +344,9 @@ void update_leds_from_fsm() {
 }
 
 void shed_load() {
-	unsigned long switch_cfg = IORD_ALTERA_AVALON_PIO_DATA(SLIDE_SWITCH_BASE) & 0x0FF;
 	unsigned int i;
 	for (i = 0; i < NO_OF_LOADS; i++) {
-		if (load_states[i] == true && (switch_cfg >> i)) {
+		if (load_states[i] == true) {
 			load_states[i] = false;
 			break;
 		}
