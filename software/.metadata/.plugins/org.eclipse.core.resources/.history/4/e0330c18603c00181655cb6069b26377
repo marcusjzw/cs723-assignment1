@@ -324,7 +324,7 @@ void VGA_Task(void *pvParameters){
 // NOTE: I might have coupled switches task stuff here, may need a rework later
 
 void update_leds_from_fsm() {
-	unsigned long switch_cfg = IORD_ALTERA_AVALON_PIO_DATA(SLIDE_SWITCH_BASE); // need to account for sw cfg here, turning off loads in possible in fsm_task
+	// unsigned long switch_cfg = IORD_ALTERA_AVALON_PIO_DATA(SLIDE_SWITCH_BASE); // need to account for sw cfg here, turning off loads in possible in fsm_task
 
 	unsigned long red_led = 0, green_led = 0, bit = 1; // for pio call, ending result of 0 is off and 1 is on
 	unsigned int i;
@@ -334,8 +334,8 @@ void update_leds_from_fsm() {
 		bit = bit << 1; // shift left to do logic on next led
 	}
 	xSemaphoreTake(led_sem, portMAX_DELAY);
-	IOWR_ALTERA_AVALON_PIO_DATA(RED_LEDS_BASE, red_led & switch_cfg); // This code will ensure the red led only turns on if both switch and load management agree.
-
+	IOWR_ALTERA_AVALON_PIO_DATA(RED_LEDS_BASE, red_led); // This code will ensure the red led only turns on if both switch and load management agree.
+	// ^^^^^ add 'red_led & switch_cfg' later
 	xSemaphoreGive(led_sem);
 	IOWR_ALTERA_AVALON_PIO_DATA(GREEN_LEDS_BASE, green_led);
 }

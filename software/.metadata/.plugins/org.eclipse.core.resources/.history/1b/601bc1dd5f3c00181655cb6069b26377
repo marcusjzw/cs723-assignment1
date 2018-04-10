@@ -247,29 +247,29 @@ void VGA_Task(void *pvParameters){
 
 		// print out thresholds
 		sprintf(vga_info_buf, "Frequency threshold: %2.1f", freq_threshold);
-		alt_up_char_buffer_string(char_buf, vga_info_buf, 4, 40);
+		alt_up_char_buffer_string(char_buf, vga_info_buf, 12, 40);
 		sprintf(vga_info_buf, "ROC threshold: %2.1f ", roc_threshold);
-		alt_up_char_buffer_string(char_buf, vga_info_buf, 4, 42);
+		alt_up_char_buffer_string(char_buf, vga_info_buf, 12, 42);
 
 		// print system state
 		if (system_state == NORMAL_OPERATION) {
-			alt_up_char_buffer_string(char_buf, "System state: Normal operation           ", 4, 44);
+			alt_up_char_buffer_string(char_buf, "System state: Normal operation               ", 4, 44);
 		}
 		else if (system_state == LOAD_MGMT_MONITOR_UNSTABLE) {
-			alt_up_char_buffer_string(char_buf, "System state: Load mgmt, monitor unstable", 4, 44);
+			alt_up_char_buffer_string(char_buf, "System state: Load managing, monitor unstable", 4, 44);
 		}
 		else if (system_state == LOAD_MGMT_MONITOR_STABLE) {
-			alt_up_char_buffer_string(char_buf, "System state: Load mgmt, monitor stable  ", 4, 44);
+			alt_up_char_buffer_string(char_buf, "System state: Load managing, monitor stable  ", 4, 44);
 		}
 		else if (system_state == MAINTENANCE_MODE) {
-			alt_up_char_buffer_string(char_buf, "System state: Maintenance mode           ", 4, 44);
+			alt_up_char_buffer_string(char_buf, "System state: Maintenance mode               ", 4, 44);
 		}
 
 		if (system_stable == true) {
-			alt_up_char_buffer_string(char_buf, "System is stable    ", 4, 46);
+			alt_up_char_buffer_string(char_buf, "System is stable    ", 12, 46);
 		}
 		else {
-			alt_up_char_buffer_string(char_buf, "System is not stable", 4, 46);
+			alt_up_char_buffer_string(char_buf, "System is not stable", 12, 46);
 		}
 
 		//clear old graph to draw new graph
@@ -324,7 +324,7 @@ void VGA_Task(void *pvParameters){
 // NOTE: I might have coupled switches task stuff here, may need a rework later
 
 void update_leds_from_fsm() {
-	unsigned long switch_cfg = IORD_ALTERA_AVALON_PIO_DATA(SLIDE_SWITCH_BASE); // need to account for sw cfg here, turning off loads in possible in fsm_task
+	// unsigned long switch_cfg = IORD_ALTERA_AVALON_PIO_DATA(SLIDE_SWITCH_BASE); // need to account for sw cfg here, turning off loads in possible in fsm_task
 
 	unsigned long red_led = 0, green_led = 0, bit = 1; // for pio call, ending result of 0 is off and 1 is on
 	unsigned int i;
@@ -334,8 +334,8 @@ void update_leds_from_fsm() {
 		bit = bit << 1; // shift left to do logic on next led
 	}
 	xSemaphoreTake(led_sem, portMAX_DELAY);
-	IOWR_ALTERA_AVALON_PIO_DATA(RED_LEDS_BASE, red_led & switch_cfg); // This code will ensure the red led only turns on if both switch and load management agree.
-
+	IOWR_ALTERA_AVALON_PIO_DATA(RED_LEDS_BASE, red_led); // This code will ensure the red led only turns on if both switch and load management agree.
+	// ^^^^^ add 'red_led & switch_cfg' later
 	xSemaphoreGive(led_sem);
 	IOWR_ALTERA_AVALON_PIO_DATA(GREEN_LEDS_BASE, green_led);
 }
