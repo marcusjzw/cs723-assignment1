@@ -376,8 +376,7 @@ void reset_timer() {
 	timer_expired_flag = false;
 	//10 ticks that fsm_task is held in blocked state to wait for successful send to timer command q. incr if more timers added to system
 	if (xTimerReset(fsm_timer, 10) == pdFAIL) {
-		xTimerStart(fsm_timer, 10);
-		printf("Timer failed to reset, try start\n");
+		printf("failed to reset timer\n");
 	}
 	else {
 		printf("Timer reset\n");
