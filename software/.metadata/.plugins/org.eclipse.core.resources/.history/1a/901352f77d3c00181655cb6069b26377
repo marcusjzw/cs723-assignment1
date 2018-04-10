@@ -341,9 +341,10 @@ void update_leds_from_fsm() {
 }
 
 void shed_load() {
+	unsigned long switch_cfg = IORD_ALTERA_AVALON_PIO_DATA(SLIDE_SWITCH_BASE) & 0x0FF;
 	unsigned int i;
 	for (i = 0; i < NO_OF_LOADS; i++) {
-		if (load_states[i] == true) {
+		if (load_states[i] == true && (switch_cfg >> i)) {
 			load_states[i] = false;
 			break;
 		}
