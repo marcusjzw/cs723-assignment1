@@ -56,7 +56,7 @@ int initCreateTasks(void);
 #define TIMER_PERIOD (500 / portTICK_RATE_MS)
 
 // Definition of enums and structs
-typedef enum {NORMAL_OPERATION, LOAD_MANAGEMENT_MODE, MAINTENANCE_MODE} state;
+typedef enum {NORMAL_OPERATION, LOAD_MGMT_MONITOR_STABLE, LOAD_MGMT_MONITOR_UNSTABLE, MAINTENANCE_MODE} state;
 
 typedef struct{
     unsigned int x1;
@@ -193,7 +193,7 @@ void ROC_Calculation_Task(void *pvParameters) {
 		// also update whether system is stable or not, done here since it's got both freq and roc
 		if (freq[freq_idx] < freq_threshold || roc[freq_idx] >= roc_threshold) {
 			system_stable = false;
-			system_state = LOAD_MANAGEMENT_MODE; // how to force fsm_task preemption here? not sure if it will be a problem
+			system_state = LOAD_MGMT_MONITOR_UNSTABLE; // how to force fsm_task preemption here? not sure if it will be a problem
 		}
 		else {
 			system_stable = true;
@@ -253,13 +253,16 @@ void VGA_Task(void *pvParameters){
 
 		// print system state
 		if (system_state == NORMAL_OPERATION) {
-			alt_up_char_buffer_string(char_buf, "System state: Normal               ", 12, 46);
+			alt_up_char_buffer_string(char_buf, "System state: Normal operation               ", 12, 46);
 		}
-		else if (system_state == LOAD_MANAGEMENT_MODE) {
-			alt_up_char_buffer_string(char_buf, "System state: Load managing        ", 12, 46);
+		else if (system_state == LOAD_MGMT_MONITOR_UNSTABLE) {
+			alt_up_char_buffer_string(char_buf, "System state: Load managing, monitor unstable", 12, 46);
+		}
+		else if (system_state == LOAD_MGMT_MONITOR_STABLE) {
+			alt_up_char_buffer_string(char_buf, "System state: Load managing, monitor stable  ", 12, 46);
 		}
 		else if (system_state == MAINTENANCE_MODE) {
-			alt_up_char_buffer_string(char_buf, "System state: Maintenance mode", 12, 46);
+			alt_up_char_buffer_string(char_buf, "System state: Maintenance mode               ", 12, 46);
 		}
 
 		if (system_stable == true) {
@@ -302,6 +305,7 @@ void VGA_Task(void *pvParameters){
  * update_leds_from_fsm: updates leds based on current state in FSM_task, different to in maintenance since green leds stuff (may refactor into one function later)
  * shed_load: shed a single load from the network, starting from lowest prio (lowest led no)
  * reconnect_load: reconnect a single load to network, starting from highest prio (highest led no)
+ * check_if_all_loads_connected: used to go back into NORMAL_OPERATION state if all loads are connected back
  * reset_timer: resets the timer expiry flag and the actual timer handle
  * timer_expiry_callback: runs when timer expires, sets expiry flag to high
  */
@@ -317,23 +321,23 @@ void VGA_Task(void *pvParameters){
  * goes back on.
  */
 
-// NOTE: please use xSemaphoreTake(led_sem) before calling because maintenance mode can also access red leds
+// NOTE: I might have coupled switches task stuff here, may need a rework later
 
 void update_leds_from_fsm() {
-	unsigned long switch_cfg = IORD_ALTERA_AVALON_PIO_DATA(SLIDE_SWITCH_BASE); // need to account for sw cfg here, turning off loads in possible in fsm_task
+	// unsigned long switch_cfg = IORD_ALTERA_AVALON_PIO_DATA(SLIDE_SWITCH_BASE); // need to account for sw cfg here, turning off loads in possible in fsm_task
 
 	unsigned long red_led = 0, green_led = 0, bit = 1; // for pio call, ending result of 0 is off and 1 is on
 	unsigned int i;
 	for (i = 0; i < NO_OF_LOADS; i++) {
-		red_led |= (load_states[i] == true) ? bit : 0; //
-		green_led |= (load_states[i] == false) ? bit : 0;
+		red_led |= (load_states[i] == true) ? bit : 0;
+		green_led |= (load_states[i] == false) ? bit : 0; // green leds turn on when relay switches off loads
 		bit = bit << 1; // shift left to do logic on next led
 	}
-	IOWR_ALTERA_AVALON_PIO_DATA(GREEN_LEDS_BASE, green_led);
-
 	xSemaphoreTake(led_sem, portMAX_DELAY);
-	IOWR_ALTERA_AVALON_PIO_DATA(RED_LEDS_BASE, red_led & switch_cfg ); // This code will ensure the red led only turns on if both switch and load management agree.
+	IOWR_ALTERA_AVALON_PIO_DATA(RED_LEDS_BASE, red_led); // This code will ensure the red led only turns on if both switch and load management agree.
+	// ^^^^^ add 'red_led & switch_cfg' later
 	xSemaphoreGive(led_sem);
+	IOWR_ALTERA_AVALON_PIO_DATA(GREEN_LEDS_BASE, green_led);
 }
 
 void shed_load() {
@@ -358,28 +362,95 @@ void reconnect_load() {
 	update_leds_from_fsm();
 }
 
-void reset_timer() {
-	timer_expired_flag = false;
-	xTimerReset(fsm_timer, 10); //10 ticks that fsm_task is held in blocked state to wait for successful send to timer command q. incr if more timers added to system
+bool check_if_all_loads_connected() {
+	unsigned int i;
+	for (i = 0; i < NO_OF_LOADS; i++) {
+		if (load_states[i] == false) {
+			return false;
+		}
+	}
+	return true;
 }
 
-void timer_expiry_callback(TimerHandle_t xTimer) {
+void reset_timer() {
+	timer_expired_flag = false;
+	//10 ticks that fsm_task is held in blocked state to wait for successful send to timer command q. incr if more timers added to system
+	if (xTimerReset(fsm_timer, 10) == pdFAIL) {
+		printf("failed to reset timer\n");
+	}
+	else {
+		printf("Timer reset\n");
+	}
+}
+
+void timer_expiry_callback(xTimerHandle xTimer) {
 	timer_expired_flag = true;
+	printf("Timer expired\n");
 }
 
 // Load Management Task
 
-//void Load_Management_Task(void *pvParameters) {
-//	while(1) {
-//	}
-//}
+void Load_Management_Task(void *pvParameters) {
+	while(1) {
+		switch(system_state)
+		{
+			case MAINTENANCE_MODE:
+				break;
+			case NORMAL_OPERATION:
+				// check if things are still normal
+				if (system_stable != true) {
+					shed_load(); // gotta happen within 200ms, TODO: provisions to check this (may need to reimplement timestamps)
+					reset_timer();
+					system_state = LOAD_MGMT_MONITOR_UNSTABLE;
+				}
+				else {
+					system_state = NORMAL_OPERATION;
+				}
+				break;
+			case LOAD_MGMT_MONITOR_UNSTABLE:
+				if (timer_expired_flag == true) {
+					reset_timer();
+					shed_load();
+				}
+				if (system_stable == false) {
+					system_state = LOAD_MGMT_MONITOR_UNSTABLE;
+				}
+				else {
+					reset_timer(); // check if it is a fluke or not, move to monitor stable state
+					system_state = LOAD_MGMT_MONITOR_STABLE;
+				}
+				break;
+
+			case LOAD_MGMT_MONITOR_STABLE:
+				if (timer_expired_flag == true) {
+					reset_timer();
+					if (check_if_all_loads_connected()) {
+						system_state = NORMAL_OPERATION; // everything back to normal
+					}
+					else {
+						reconnect_load();
+						system_state = LOAD_MGMT_MONITOR_STABLE;
+					}
+				}
+
+				if (system_stable == false) {
+					reset_timer();
+					system_state = LOAD_MGMT_MONITOR_UNSTABLE;
+				}
+				else {
+					system_state = LOAD_MGMT_MONITOR_STABLE;
+				}
+				break;
+		}
+		vTaskDelay(5); // place into blocked state for 5ms so other low prio tasks can run
+	}
+}
 
 
 int initCreateTasks(void) {
-	// 4th arg is to pass to pvParameters
 	xTaskCreate(VGA_Task, "VGA_Task", configMINIMAL_STACK_SIZE, NULL, VGA_TASK_PRIORITY, NULL);
 	xTaskCreate(ROC_Calculation_Task, "Calculation_Task", configMINIMAL_STACK_SIZE, NULL, CALCULATION_TASK_PRIORITY, NULL);
-	// xTaskCreate(Load_Management_Task, "FSM_Task", configMINIMAL_STACK_SIZE, NULL, FSM_TASK_PRIORITY, NULL);
+	xTaskCreate(Load_Management_Task, "FSM_Task", configMINIMAL_STACK_SIZE, NULL, FSM_TASK_PRIORITY, NULL);
 	xTaskCreate(Keyboard_Update_Task, "Keyboard_Update_Task", configMINIMAL_STACK_SIZE, NULL, KEYBOARD_UPDATE_TASK_PRIORITY, NULL);
 	return 0;
 }
@@ -392,7 +463,13 @@ int initOSDataStructs(void)
 	thresholds_sem = xSemaphoreCreateMutex();
 	led_sem = xSemaphoreCreateMutex();
 	state_sem = xSemaphoreCreateBinary(); // binary sem required because sem is used in ISR, mutexes cannot be
-	fsm_timer = xTimerCreate("fsm_timer", TIMER_PERIOD, pdFALSE, NULL, timer_expiry_callback); // create 500ms timer with no autoreload, callback sets timer expiry flag high
+	fsm_timer = xTimerCreate("fsm_timer", TIMER_PERIOD, pdTRUE, (void*)0, timer_expiry_callback); // create 500ms timer with autoreload, callback sets timer expiry flag high
+	xTimerStart(fsm_timer, 0);
+	unsigned int i;
+	for (i = 0; i < NO_OF_LOADS; i++) {
+		load_states[i] = true; // turn all LEDs on initially because all loads are on
+	}
+
 	return 0;
 }
 
