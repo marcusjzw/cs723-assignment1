@@ -325,38 +325,6 @@ void VGA_Task(void *pvParameters){
  * goes back on.
  */
 
-// NOTE: I might have coupled switches task stuff here, may need a rework later
-
-void update_leds_from_fsm() {
-	unsigned long switch_cfg = IORD_ALTERA_AVALON_PIO_DATA(SLIDE_SWITCH_BASE); // need to account for sw cfg here, turning off loads in possible in fsm_task
-	unsigned long red_led = 0, green_led = 0, bit = 1; // for pio call, ending result of 0 is off and 1 is on
-	unsigned int i;
-
-	update_loads_from_switches();
-
-	for (i = 0; i < NO_OF_LOADS; i++) {
-		red_led |= (load_states[i] == true && sw_load_states[i] == true) ? bit : 0;
-		green_led |= (load_states[i] == false && sw_load_states[i] == true) ? bit : 0; // green leds turn on when relay switches off loads AND switch is high
-		bit = bit << 1; // shift left to do logic on next led
-	}
-
-	xSemaphoreTake(led_sem, portMAX_DELAY);
-	IOWR_ALTERA_AVALON_PIO_DATA(RED_LEDS_BASE, red_led);
-	xSemaphoreGive(led_sem);
-	IOWR_ALTERA_AVALON_PIO_DATA(GREEN_LEDS_BASE, green_led);
-}
-
-void shed_load() {
-	unsigned int i;
-	for (i = 0; i < NO_OF_LOADS; i++) {
-		if (load_states[i] == true) {
-			load_states[i] = false;
-			break;
-		}
-	}
-	update_leds_from_fsm();
-}
-
 // Manages operation of switches
 // i.e. in Normal Operation or Maintenance Mode, loads can be switched on/off freely
 // However under Load Management Mode, switches can only turn off loads
@@ -385,6 +353,35 @@ void update_loads_from_switches() {
 			}
 		}
 	}
+}
+
+void update_leds_from_fsm() {
+	unsigned long red_led = 0, green_led = 0, bit = 1; // for pio call, ending result of 0 is off and 1 is on
+	unsigned int i;
+
+	update_loads_from_switches();
+
+	for (i = 0; i < NO_OF_LOADS; i++) {
+		red_led |= (load_states[i] == true && sw_load_states[i] == true) ? bit : 0;
+		green_led |= (load_states[i] == false && sw_load_states[i] == true) ? bit : 0; // green leds turn on when relay switches off loads AND switch is high
+		bit = bit << 1; // shift left to do logic on next led
+	}
+
+	xSemaphoreTake(led_sem, portMAX_DELAY);
+	IOWR_ALTERA_AVALON_PIO_DATA(RED_LEDS_BASE, red_led);
+	xSemaphoreGive(led_sem);
+	IOWR_ALTERA_AVALON_PIO_DATA(GREEN_LEDS_BASE, green_led);
+}
+
+void shed_load() {
+	unsigned int i;
+	for (i = 0; i < NO_OF_LOADS; i++) {
+		if (load_states[i] == true) {
+			load_states[i] = false;
+			break;
+		}
+	}
+	update_leds_from_fsm();
 }
 
 void reconnect_load() {
