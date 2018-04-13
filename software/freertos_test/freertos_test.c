@@ -106,7 +106,7 @@ void freq_relay() {
 	// ROC calculation done in separate Calculation task to minimise ISR time
 	xQueueSendToBackFromISR(HW_dataQ, &new_freq, NULL);
 	time_before_shed = xTaskGetTickCountFromISR();
-	printf("time before shed: %d\n", time_before_shed);
+	//printf("time before shed: %d\n", time_before_shed);
 	return;
 }
 
@@ -197,7 +197,7 @@ void ROC_Calculation_Task(void *pvParameters) {
 		xSemaphoreGive(freq_roc_sem);
 
 		// also update whether system is stable or not, done here since it's got both freq and roc
-		if (freq[freq_idx] < freq_threshold || roc[freq_idx] >= roc_threshold) {
+		if (((freq[freq_idx] < freq_threshold) || (roc[freq_idx] >= roc_threshold)) && (system_state != MAINTENANCE_MODE)) {
 			system_stable = false;
 			system_state = LOAD_MGMT_MONITOR_UNSTABLE; // how to force fsm_task preemption here? not sure if it will be a problem
 		}
