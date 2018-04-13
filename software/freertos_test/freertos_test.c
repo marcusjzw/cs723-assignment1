@@ -341,9 +341,7 @@ void update_leds_from_fsm() {
 	}
 
 	xSemaphoreTake(led_sem, portMAX_DELAY);
-	//IOWR_ALTERA_AVALON_PIO_DATA(RED_LEDS_BASE, red_led & switch_cfg); // This code will ensure the load only turns on if both switch and load management agree.
 	IOWR_ALTERA_AVALON_PIO_DATA(RED_LEDS_BASE, red_led);
-
 	xSemaphoreGive(led_sem);
 	IOWR_ALTERA_AVALON_PIO_DATA(GREEN_LEDS_BASE, green_led);
 }
@@ -359,7 +357,9 @@ void shed_load() {
 	update_leds_from_fsm();
 }
 
-// manages operation of switches
+// Manages operation of switches
+// i.e. in Normal Operation or Maintenance Mode, loads can be switched on/off freely
+// However under Load Management Mode, switches can only turn off loads
 void update_loads_from_switches() {
 	unsigned long switch_cfg = IORD_ALTERA_AVALON_PIO_DATA(SLIDE_SWITCH_BASE);
 	unsigned int i;
@@ -390,7 +390,7 @@ void update_loads_from_switches() {
 void reconnect_load() {
 	unsigned int i;
 	for (i = NO_OF_LOADS - 1; i >= 0; i--) {
-		if (load_states[i] == false && sw_load_states[i] == true) {
+		if (load_states[i] == false && sw_load_states[i] == true) { // only turn back on the load if it is actually switched on
 			load_states[i] = true;
 			break;
 		}
@@ -401,7 +401,7 @@ void reconnect_load() {
 bool check_if_all_loads_connected() {
 	unsigned int i;
 	for (i = 0; i < NO_OF_LOADS; i++) {
-		if (load_states[i] == false && sw_load_states[i] == true) {
+		if (load_states[i] == false && sw_load_states[i] == true) { // do not check if load is connected if it's not actually switched on
 			return false;
 		}
 	}
