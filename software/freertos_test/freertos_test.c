@@ -55,6 +55,9 @@ int initCreateTasks(void);
 #define NO_OF_LOADS 5
 #define TIMER_PERIOD (500 / portTICK_RATE_MS)
 
+// Macro to check if bit is set
+#define CHECK_BIT(var,pos) ((var) & (1<<(pos)))
+
 // Definition of enums and structs
 typedef enum {NORMAL_OPERATION, LOAD_MGMT_MONITOR_STABLE, LOAD_MGMT_MONITOR_UNSTABLE, MAINTENANCE_MODE} state;
 
@@ -89,6 +92,7 @@ bool system_stable = true; // system_stable is manipulated when thresholds are g
 volatile state system_state = NORMAL_OPERATION; // note: not the same as system_stable, system_state describes current mode of operation
 volatile state prev_state;
 static bool load_states[NO_OF_LOADS];
+static bool switches_load_states[NO_OF_LOADS];
 bool timer_expired_flag = false; // high when 500ms timer expires, does not need a sem since data R/W on here is atomic and done by one task
 
 
@@ -327,14 +331,36 @@ void update_leds_from_fsm() {
 	unsigned long switch_cfg = IORD_ALTERA_AVALON_PIO_DATA(SLIDE_SWITCH_BASE); // need to account for sw cfg here, turning off loads in possible in fsm_task
 	unsigned long red_led = 0, green_led = 0, bit = 1; // for pio call, ending result of 0 is off and 1 is on
 	unsigned int i;
+
+	// update load status
+	if ((system_state == NORMAL_OPERATION) || (system_state == MAINTENANCE_MODE)) { // can turn on or off loads w/ switches freely
+		// load state (red LEDs) reflects whatever the switch config is
+		for (i = 0; i < NO_OF_LOADS; i++) {
+			if (CHECK_BIT(switch_cfg, i)) { // if bit is set
+				load_states[i] = 1;
+			}
+			else {
+				load_states[i] = 0;
+			}
+		}
+	}
+	else if ((system_state == LOAD_MGMT_MONITOR_UNSTABLE) || (LOAD_MGMT_MONITOR_STABLE)) { // can only turn off loads
+		for (i = 0; i < NO_OF_LOADS; i++) {
+			if (!(CHECK_BIT(switch_cfg, i))) { // if bit is not set
+				load_states[i] = 0; // turn off the load
+			}
+		}
+	}
+
 	for (i = 0; i < NO_OF_LOADS; i++) {
 		red_led |= (load_states[i] == true) ? bit : 0;
-		green_led |= (load_states[i] == false) ? bit : 0; // green leds turn on when relay switches off loads
+		green_led |= (load_states[i] == false && CHECK_BIT(switch_cfg, i)) ? bit : 0; // green leds turn on when relay switches off loads AND switch is high
 		bit = bit << 1; // shift left to do logic on next led
 	}
 
 	xSemaphoreTake(led_sem, portMAX_DELAY);
-	IOWR_ALTERA_AVALON_PIO_DATA(RED_LEDS_BASE, red_led & switch_cfg); // This code will ensure the load only turns on if both switch and load management agree.
+	//IOWR_ALTERA_AVALON_PIO_DATA(RED_LEDS_BASE, red_led & switch_cfg); // This code will ensure the load only turns on if both switch and load management agree.
+	IOWR_ALTERA_AVALON_PIO_DATA(RED_LEDS_BASE, red_led);
 
 	xSemaphoreGive(led_sem);
 	IOWR_ALTERA_AVALON_PIO_DATA(GREEN_LEDS_BASE, green_led);
@@ -389,6 +415,7 @@ void Load_Management_Task(void *pvParameters) {
 		switch(system_state)
 		{
 			case MAINTENANCE_MODE:
+				update_leds_from_fsm();
 				break;
 			case NORMAL_OPERATION:
 				// check if things are still normal
@@ -398,6 +425,7 @@ void Load_Management_Task(void *pvParameters) {
 					system_state = LOAD_MGMT_MONITOR_UNSTABLE;
 				}
 				else {
+					update_leds_from_fsm();
 					system_state = NORMAL_OPERATION;
 				}
 				break;
