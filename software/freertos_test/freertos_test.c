@@ -86,7 +86,7 @@ int freq_idx = 99; // used for configuring HW_dataQ with f values and displaying
 double freq[100];
 double roc[100];
 
-double freq_threshold = 49;
+double freq_threshold = 50;
 double roc_threshold = 10;
 bool system_stable = true; // system_stable is manipulated when thresholds are good/bad
 volatile state system_state = NORMAL_OPERATION; // note: not the same as system_stable, system_state describes current mode of operation
@@ -94,7 +94,8 @@ volatile state prev_state;
 static bool load_states[NO_OF_LOADS];
 static bool sw_load_states[NO_OF_LOADS];
 bool timer_expired_flag = false; // high when 500ms timer expires, does not need a sem since data R/W on here is atomic and done by one task
-
+volatile unsigned int time_before_shed = 0;
+unsigned int shed_time = 0;
 
 
 // ISR
@@ -104,7 +105,8 @@ void freq_relay() {
 
 	// ROC calculation done in separate Calculation task to minimise ISR time
 	xQueueSendToBackFromISR(HW_dataQ, &new_freq, NULL);
-
+	time_before_shed = xTaskGetTickCountFromISR();
+	printf("time before shed: %d\n", time_before_shed);
 	return;
 }
 
@@ -276,6 +278,11 @@ void VGA_Task(void *pvParameters){
 			alt_up_char_buffer_string(char_buf, "System is not stable", 4, 46);
 		}
 
+		// print shed time
+		sprintf(vga_info_buf, "Shed time: %d ms   ", shed_time);
+		alt_up_char_buffer_string(char_buf, vga_info_buf, 4, 48);
+
+
 		//clear old graph to draw new graph
 		alt_up_pixel_buffer_dma_draw_box(pixel_buf, 101, 0, 639, 199, 0, 0);
 		alt_up_pixel_buffer_dma_draw_box(pixel_buf, 101, 201, 639, 299, 0, 0);
@@ -382,6 +389,7 @@ void shed_load() {
 		}
 	}
 	update_leds_from_fsm();
+	shed_time = xTaskGetTickCount() - time_before_shed;
 }
 
 void reconnect_load() {
@@ -418,6 +426,7 @@ void timer_expiry_callback(xTimerHandle xTimer) {
 // Load Management Task
 
 void Load_Management_Task(void *pvParameters) {
+
 	while(1) {
 		switch(system_state)
 		{
