@@ -3,9 +3,7 @@
 # Important Note:
 - Make sure all switches for loads are set high initially for ease of testing, or else they will be switched off by default by the load management task (it allows switching off).
 ## To do:
-- Fix switches problem somehow
-- Maintenance mode task
-- Show timing for 200ms guarantee and display it on the VGA
+- Test/fix shed timing
 - Testing everything
 - Writing the doc
 
