@@ -102,6 +102,7 @@ unsigned int min_shed_time = 0;
 unsigned int max_shed_time = 0;
 float avg_shed_time = 0;
 bool array_filled = 0;
+unsigned int shed_count = 0;
 
 // ISR
 void freq_relay() {
@@ -228,6 +229,7 @@ void update_shed_stats() {
 		for (i = 0; i < 5; i++) {
 			if (shed_time_measurements[i] == 0) { // if array element has yet to be assigned
 				shed_time_measurements[i] = shed_time;
+				shed_count++;
 				if (i == 4) { // if we are on the last array element
 					array_filled = 1;
 				}
@@ -262,7 +264,7 @@ void update_shed_stats() {
 	for (i = 0; i < 5; i++) {
 		sum += shed_time_measurements[i];
 	}
-	avg_shed_time = sum/5;
+	avg_shed_time = (float)sum/(float)shed_count;
 }
 // VGA_Task
 void VGA_Task(void *pvParameters){
