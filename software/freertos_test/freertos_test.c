@@ -40,10 +40,10 @@ int initCreateTasks(void);
 #define   TASK_STACKSIZE       2048
 
 // Definition of Task Priorities
-#define VGA_TASK_PRIORITY 				(tskIDLE_PRIORITY+4)
-#define CALCULATION_TASK_PRIORITY 		(tskIDLE_PRIORITY+4)
-#define FSM_TASK_PRIORITY 				(tskIDLE_PRIORITY+5)
-#define KEYBOARD_UPDATE_TASK_PRIORITY 	(tskIDLE_PRIORITY+4)
+#define VGA_TASK_PRIORITY 				(tskIDLE_PRIORITY+2)
+#define CALCULATION_TASK_PRIORITY 		(tskIDLE_PRIORITY+3)
+#define FSM_TASK_PRIORITY 				(tskIDLE_PRIORITY+4)
+#define KEYBOARD_UPDATE_TASK_PRIORITY 	(tskIDLE_PRIORITY+1)
 
 // Definition of Queue Sizes
 #define HW_DATA_QUEUE_SIZE 	100
@@ -380,14 +380,7 @@ void VGA_Task(void *pvParameters){
 	}
 }
 
-/* Load Management Task Helper Functions
- * update_leds_from_fsm: updates leds based on current state in FSM_task, different to in maintenance since green leds stuff (may refactor into one function later)
- * shed_load: shed a single load from the network, starting from lowest prio (lowest led no)
- * reconnect_load: reconnect a single load to network, starting from highest prio (highest led no)
- * check_if_all_loads_connected: used to go back into NORMAL_OPERATION state if all loads are connected back
- * reset_timer: resets the timer expiry flag and the actual timer handle
- * timer_expiry_callback: runs when timer expires, sets expiry flag to high
- */
+
 
 /*
  * Red LEDs essentially correspond to the load state. In all tasks (including maintenance), red LEDs show this.
@@ -429,6 +422,15 @@ void update_loads_from_switches() {
 		}
 	}
 }
+
+/* Load Management Task Helper Functions
+ * update_leds_from_fsm: updates leds based on current state in FSM_task, different to in maintenance since green leds stuff (may refactor into one function later)
+ * shed_load: shed a single load from the network, starting from lowest prio (lowest led no)
+ * reconnect_load: reconnect a single load to network, starting from highest prio (highest led no)
+ * check_if_all_loads_connected: used to go back into NORMAL_OPERATION state if all loads are connected back
+ * reset_timer: resets the timer expiry flag and the actual timer handle
+ * timer_expiry_callback: runs when timer expires, sets expiry flag to high
+ */
 
 void update_leds_from_fsm() {
 	unsigned long red_led = 0, green_led = 0, bit = 1; // for pio call, ending result of 0 is off and 1 is on
