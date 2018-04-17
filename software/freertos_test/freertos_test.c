@@ -43,7 +43,7 @@ int initCreateTasks(void);
 #define VGA_TASK_PRIORITY 				(tskIDLE_PRIORITY+4)
 #define CALCULATION_TASK_PRIORITY 		(tskIDLE_PRIORITY+4)
 #define FSM_TASK_PRIORITY 				(tskIDLE_PRIORITY+5)
-#define KEYBOARD_UPDATE_TASK_PRIORITY 	(tskIDLE_PRIORITY+4) // task never executes if i make it +3
+#define KEYBOARD_UPDATE_TASK_PRIORITY 	(tskIDLE_PRIORITY+4)
 
 // Definition of Queue Sizes
 #define HW_DATA_QUEUE_SIZE 	100
@@ -52,7 +52,7 @@ int initCreateTasks(void);
 
 // Definition of system parameters
 #define SAMPLING_FREQ 16000.0
-#define NO_OF_LOADS 5
+#define NO_OF_LOADS 8
 #define TIMER_PERIOD (500 / portTICK_RATE_MS)
 
 // Macro to check if bit is set
@@ -86,7 +86,7 @@ int freq_idx = 99; // used for configuring HW_dataQ with f values and displaying
 double freq[100];
 double roc[100];
 
-double freq_threshold = 50;
+double freq_threshold = 50; // TODO: change this back to 50
 double roc_threshold = 10;
 bool system_stable = true; // system_stable is manipulated when thresholds are good/bad
 volatile state system_state = NORMAL_OPERATION; // note: not the same as system_stable, system_state describes current mode of operation
@@ -94,9 +94,14 @@ volatile state prev_state;
 static bool load_states[NO_OF_LOADS];
 static bool sw_load_states[NO_OF_LOADS];
 bool timer_expired_flag = false; // high when 500ms timer expires, does not need a sem since data R/W on here is atomic and done by one task
+
 volatile unsigned int time_before_shed = 0;
 unsigned int shed_time = 0;
-
+unsigned int shed_time_measurements[5] = {0}; // init so no garbage values screwing up avg
+unsigned int min_shed_time = 0;
+unsigned int max_shed_time = 0;
+float avg_shed_time = 0;
+bool array_filled = 0;
 
 // ISR
 void freq_relay() {
@@ -105,7 +110,6 @@ void freq_relay() {
 
 	// ROC calculation done in separate Calculation task to minimise ISR time
 	xQueueSendToBackFromISR(HW_dataQ, &new_freq, NULL);
-	time_before_shed = xTaskGetTickCountFromISR();
 	//printf("time before shed: %d\n", time_before_shed);
 	return;
 }
@@ -197,9 +201,10 @@ void ROC_Calculation_Task(void *pvParameters) {
 		xSemaphoreGive(freq_roc_sem);
 
 		// also update whether system is stable or not, done here since it's got both freq and roc
-		if (((freq[freq_idx] < freq_threshold) || (roc[freq_idx] >= roc_threshold)) && (system_state != MAINTENANCE_MODE)) {
+		if (((freq[freq_idx] < freq_threshold) || (fabs(roc[freq_idx]) >= roc_threshold)) && (system_state != MAINTENANCE_MODE)) {
+			time_before_shed = xTaskGetTickCountFromISR();
 			system_stable = false;
-			system_state = LOAD_MGMT_MONITOR_UNSTABLE; // how to force fsm_task preemption here? not sure if it will be a problem
+			//system_state = LOAD_MGMT_MONITOR_UNSTABLE; // how to force fsm_task preemption here? not sure if it will be a problem
 		}
 		else {
 			system_stable = true;
@@ -210,6 +215,55 @@ void ROC_Calculation_Task(void *pvParameters) {
 	}
 }
 
+void update_shed_stats() {
+	shed_time = xTaskGetTickCount() - time_before_shed;
+	int i = 0;
+
+	if (shed_time_measurements[0] == 0) { // first assignment of minimum should be the first shed time
+		min_shed_time = shed_time;
+	}
+
+	// when not all array elements have been filled yet
+	if (array_filled == 0) {
+		for (i = 0; i < 5; i++) {
+			if (shed_time_measurements[i] == 0) { // if array element has yet to be assigned
+				shed_time_measurements[i] = shed_time;
+				if (i == 4) { // if we are on the last array element
+					array_filled = 1;
+				}
+				break;
+			}
+		}
+	}
+	else {
+		for (i = 0; i < 4; i++) {
+			// if array is full
+			// oldest element needs to be discarded, adding new shed time to end of array
+			shed_time_measurements[i] = shed_time_measurements[i+1]; // shift elements to the left
+		}
+		shed_time_measurements[4] = shed_time;
+	}
+
+	// calculate running minimum and maximum
+	for (i = 0; i < 5; i++) {
+		if (shed_time_measurements[i] < min_shed_time && shed_time_measurements[i] != 0) {
+			min_shed_time = shed_time_measurements[i];
+		}
+
+		// calculate max
+		if (shed_time_measurements[i] > max_shed_time) {
+			max_shed_time = shed_time_measurements[i];
+		}
+	}
+
+
+	// calculate average
+	unsigned int sum = 0;
+	for (i = 0; i < 5; i++) {
+		sum += shed_time_measurements[i];
+	}
+	avg_shed_time = sum/5;
+}
 // VGA_Task
 void VGA_Task(void *pvParameters){
 	//initialize VGA controllers
@@ -278,9 +332,17 @@ void VGA_Task(void *pvParameters){
 			alt_up_char_buffer_string(char_buf, "System is not stable", 4, 46);
 		}
 
-		// print shed time
-		sprintf(vga_info_buf, "Shed time: %d ms   ", shed_time);
+		// print shed times
+		sprintf(vga_info_buf, "Time taken for initial load shed: %d ms   ", shed_time);
 		alt_up_char_buffer_string(char_buf, vga_info_buf, 4, 48);
+		sprintf(vga_info_buf, "Last 5 initial load sheds: %d ms, %d ms, %d ms, %d ms, %d ms ", shed_time_measurements[0], shed_time_measurements[1], shed_time_measurements[2], shed_time_measurements[3], shed_time_measurements[4]);
+		alt_up_char_buffer_string(char_buf, vga_info_buf, 4, 50);
+		sprintf(vga_info_buf, "Minimum shed time: %d ms   ", min_shed_time);
+		alt_up_char_buffer_string(char_buf, vga_info_buf, 4, 52);
+		sprintf(vga_info_buf, "Maximum shed time: %d ms   ", max_shed_time);
+		alt_up_char_buffer_string(char_buf, vga_info_buf, 4, 54);
+		sprintf(vga_info_buf, "Average shed time: %2.1f ms   ", avg_shed_time);
+		alt_up_char_buffer_string(char_buf, vga_info_buf, 4, 56);
 
 
 		//clear old graph to draw new graph
@@ -389,7 +451,6 @@ void shed_load() {
 		}
 	}
 	update_leds_from_fsm();
-	shed_time = xTaskGetTickCount() - time_before_shed;
 }
 
 void reconnect_load() {
@@ -437,6 +498,7 @@ void Load_Management_Task(void *pvParameters) {
 				// check if things are still normal
 				if (system_stable != true) {
 					shed_load(); // gotta happen within 200ms, TODO: provisions to check this (may need to reimplement timestamps)
+					update_shed_stats();
 					reset_timer();
 					system_state = LOAD_MGMT_MONITOR_UNSTABLE;
 				}
