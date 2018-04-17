@@ -346,6 +346,10 @@ void VGA_Task(void *pvParameters){
 		sprintf(vga_info_buf, "Average shed time: %2.1f ms   ", avg_shed_time);
 		alt_up_char_buffer_string(char_buf, vga_info_buf, 4, 56);
 
+		unsigned int uptime = xTaskGetTickCount()/1000;
+		// System active time
+		sprintf(vga_info_buf, "System uptime: %d m %d s    ", uptime/60, uptime%60);
+		alt_up_char_buffer_string(char_buf, vga_info_buf, 4, 58);
 
 		//clear old graph to draw new graph
 		alt_up_pixel_buffer_dma_draw_box(pixel_buf, 101, 0, 639, 199, 0, 0);
