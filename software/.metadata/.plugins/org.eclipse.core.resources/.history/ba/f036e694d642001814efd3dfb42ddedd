@@ -4,7 +4,6 @@
 #include <string.h>
 #include <stdlib.h>
 #include "io.h"
-#include "math.h"
 
 // Scheduler includes
 #include "FreeRTOS/FreeRTOS.h"
@@ -180,7 +179,6 @@ void Keyboard_Update_Task(void *pvParameters) {
 			printf("RoC threshold: %f\n", roc_threshold);
 		}
 		xSemaphoreGive(thresholds_sem);
-		vTaskDelay(30);
 	}
 }
 
@@ -215,7 +213,6 @@ void ROC_Calculation_Task(void *pvParameters) {
 		}
 
 		freq_idx = (++freq_idx) % 100; // point to the next data (oldest) to be overwritten
-		vTaskDelay(10);
 	}
 }
 
@@ -379,7 +376,7 @@ void VGA_Task(void *pvParameters){
 				alt_up_pixel_buffer_dma_draw_line(pixel_buf, line_roc.x1, line_roc.y1, line_roc.x2, line_roc.y2, 0x3ff << 0, 0);
 			}
 		}
-		vTaskDelay(15);
+
 	}
 }
 

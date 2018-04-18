@@ -4,7 +4,6 @@
 #include <string.h>
 #include <stdlib.h>
 #include "io.h"
-#include "math.h"
 
 // Scheduler includes
 #include "FreeRTOS/FreeRTOS.h"
