@@ -10765,8 +10765,8 @@ void update_shed_stats() {
     52d0:	d0a03c17 	ldw	r2,-32528(gp)
     52d4:	1004c03a 	cmpne	r2,r2,zero
     52d8:	1000021e 	bne	r2,zero,52e4 <update_shed_stats+0xa8>
-					shed_time = 99; // round up
-    52dc:	008018c4 	movi	r2,99
+					shed_time = 1; // round up
+    52dc:	00800044 	movi	r2,1
     52e0:	d0a03c15 	stw	r2,-32528(gp)
 				}
 				shed_time_measurements[i] = shed_time;
@@ -10849,8 +10849,8 @@ void update_shed_stats() {
     53a0:	d0a03c17 	ldw	r2,-32528(gp)
     53a4:	1004c03a 	cmpne	r2,r2,zero
     53a8:	1000021e 	bne	r2,zero,53b4 <update_shed_stats+0x178>
-			shed_time = 99; // round up
-    53ac:	008018c4 	movi	r2,99
+			shed_time = 1; // round up
+    53ac:	00800044 	movi	r2,1
     53b0:	d0a03c15 	stw	r2,-32528(gp)
 		}
 		shed_time_measurements[4] = shed_time;
@@ -10911,7 +10911,7 @@ void update_shed_stats() {
     546c:	10c5883a 	add	r2,r2,r3
     5470:	10800017 	ldw	r2,0(r2)
     5474:	d0a03e15 	stw	r2,-32520(gp)
-			shed_time = 99; // round up
+			shed_time = 1; // round up
 		}
 		shed_time_measurements[4] = shed_time;
 	}
