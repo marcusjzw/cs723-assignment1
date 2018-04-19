@@ -2927,3 +2927,250 @@ the public mailing list cygwin@cygwin.com
 [freertos_test build complete]
 
 **** Build Finished ****
+
+**** Build of configuration Nios II for project freertos_test ****
+
+make all 
+      6 [main] sh 16316 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 18468 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] echo 14808 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+Info: Building ../freertos_test_bsp/
+the public mailing list cygwin@cygwin.com
+make --no-print-directory -C ../freertos_test_bsp/
+      0 [main] pwd 11924 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 19872 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      6 [main] sh 18520 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[BSP build complete]
+      0 [main] echo 252 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+Info: Compiling FreeRTOS/croutine.c to obj/FreeRTOS/croutine.o
+the public mailing list cygwin@cygwin.com
+      0 [main] mkdir 9484 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+nios2-elf-gcc -xc -MP -MMD -c -I../freertos_test_bsp//HAL/inc -I../freertos_test_bsp/ -I../freertos_test_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o obj/FreeRTOS/croutine.o FreeRTOS/croutine.c
+the public mailing list cygwin@cygwin.com
+      0 [main] echo 19168 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+Info: Compiling FreeRTOS/heap.c to obj/FreeRTOS/heap.o
+the public mailing list cygwin@cygwin.com
+      0 [main] mkdir 15872 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+nios2-elf-gcc -xc -MP -MMD -c -I../freertos_test_bsp//HAL/inc -I../freertos_test_bsp/ -I../freertos_test_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o obj/FreeRTOS/heap.o FreeRTOS/heap.c
+      0 [main] echo 9324 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Compiling FreeRTOS/list.c to obj/FreeRTOS/list.o
+      0 [main] mkdir 5468 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+nios2-elf-gcc -xc -MP -MMD -c -I../freertos_test_bsp//HAL/inc -I../freertos_test_bsp/ -I../freertos_test_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o obj/FreeRTOS/list.o FreeRTOS/list.c
+the public mailing list cygwin@cygwin.com
+      0 [main] echo 6544 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+Info: Compiling FreeRTOS/port.c to obj/FreeRTOS/port.o
+the public mailing list cygwin@cygwin.com
+      0 [main] mkdir 19808 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+nios2-elf-gcc -xc -MP -MMD -c -I../freertos_test_bsp//HAL/inc -I../freertos_test_bsp/ -I../freertos_test_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o obj/FreeRTOS/port.o FreeRTOS/port.c
+the public mailing list cygwin@cygwin.com
+FreeRTOS/port.c:90:1: warning: "configTICK_RATE_HZ" redefined
+In file included from FreeRTOS/FreeRTOS.h:98,
+                 from FreeRTOS/port.c:84:
+FreeRTOS/FreeRTOSConfig.h:97:1: warning: this is the location of the previous definition
+FreeRTOS/port.c:91:1: warning: "configCPU_CLOCK_HZ" redefined
+FreeRTOS/FreeRTOSConfig.h:98:1: warning: this is the location of the previous definition
+FreeRTOS/port.c: In function 'vApplicationStackOverflowHook':
+FreeRTOS/port.c:96: warning: implicit declaration of function 'printf'
+FreeRTOS/port.c:96: warning: incompatible implicit declaration of built-in function 'printf'
+      0 [main] echo 16468 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+Info: Compiling FreeRTOS/queue.c to obj/FreeRTOS/queue.o
+the public mailing list cygwin@cygwin.com
+      1 [main] mkdir 7368 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+nios2-elf-gcc -xc -MP -MMD -c -I../freertos_test_bsp//HAL/inc -I../freertos_test_bsp/ -I../freertos_test_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o obj/FreeRTOS/queue.o FreeRTOS/queue.c
+      0 [main] echo 16392 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+Info: Compiling FreeRTOS/tasks.c to obj/FreeRTOS/tasks.o
+the public mailing list cygwin@cygwin.com
+      0 [main] mkdir 19900 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+nios2-elf-gcc -xc -MP -MMD -c -I../freertos_test_bsp//HAL/inc -I../freertos_test_bsp/ -I../freertos_test_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o obj/FreeRTOS/tasks.o FreeRTOS/tasks.c
+the public mailing list cygwin@cygwin.com
+      0 [main] echo 8352 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+Info: Compiling FreeRTOS/timers.c to obj/FreeRTOS/timers.o
+the public mailing list cygwin@cygwin.com
+      0 [main] mkdir 17584 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+nios2-elf-gcc -xc -MP -MMD -c -I../freertos_test_bsp//HAL/inc -I../freertos_test_bsp/ -I../freertos_test_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o obj/FreeRTOS/timers.o FreeRTOS/timers.c
+the public mailing list cygwin@cygwin.com
+      0 [main] echo 20460 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+Info: Compiling freertos_test.c to obj/freertos_test.o
+the public mailing list cygwin@cygwin.com
+      0 [main] mkdir 16316 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+nios2-elf-gcc -xc -MP -MMD -c -I../freertos_test_bsp//HAL/inc -I../freertos_test_bsp/ -I../freertos_test_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o obj/freertos_test.o freertos_test.c
+the public mailing list cygwin@cygwin.com
+freertos_test.c: In function 'ROC_Calculation_Task':
+freertos_test.c:209: warning: operation on 'freq_idx' may be undefined
+freertos_test.c: In function 'ps2_init':
+freertos_test.c:586: warning: control reaches end of non-void function
+      1 [main] true 19872 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] echo 3104 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+Info: Linking freertos_test.elf
+the public mailing list cygwin@cygwin.com
+nios2-elf-g++  -T'../freertos_test_bsp//linker.x' -msys-crt0='../freertos_test_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../freertos_test_bsp/   -Wl,-Map=freertos_test.map   -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o freertos_test.elf obj/FreeRTOS/croutine.o obj/FreeRTOS/heap.o obj/FreeRTOS/list.o obj/FreeRTOS/port.o obj/FreeRTOS/queue.o obj/FreeRTOS/tasks.o obj/FreeRTOS/timers.o obj/freertos_test.o obj/FreeRTOS/port_asm.o -lm 
+      0 [main] sh 20188 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+nios2-elf-insert freertos_test.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "C:/Users/Marcus-PC2/Desktop/GithubProjects/cs723-assignment1"
+the public mailing list cygwin@cygwin.com
+      0 [main] uname 2588 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] bash 5308 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: (freertos_test.elf) 616 KBytes program size (code + initialized data).
+Info:                     130557 KBytes free for stack + heap.
+      0 [main] echo 7952 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+Info: Creating freertos_test.objdump
+the public mailing list cygwin@cygwin.com
+nios2-elf-objdump --disassemble --syms --all-header --source freertos_test.elf >freertos_test.objdump
+      0 [main] sh 1532 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 8740 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[freertos_test build complete]
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project freertos_test ****
+
+make all 
+      6 [main] sh 17940 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 15000 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] echo 7664 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+Info: Building ../freertos_test_bsp/
+the public mailing list cygwin@cygwin.com
+make --no-print-directory -C ../freertos_test_bsp/
+      0 [main] pwd 6116 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 20356 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 14748 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[BSP build complete]
+      0 [main] echo 17744 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+Info: Compiling freertos_test.c to obj/freertos_test.o
+the public mailing list cygwin@cygwin.com
+      0 [main] mkdir 6848 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+nios2-elf-gcc -xc -MP -MMD -c -I../freertos_test_bsp//HAL/inc -I../freertos_test_bsp/ -I../freertos_test_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o obj/freertos_test.o freertos_test.c
+the public mailing list cygwin@cygwin.com
+freertos_test.c: In function 'ROC_Calculation_Task':
+freertos_test.c:209: warning: operation on 'freq_idx' may be undefined
+freertos_test.c: In function 'ps2_init':
+freertos_test.c:586: warning: control reaches end of non-void function
+      0 [main] true 17832 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] echo 16304 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+Info: Linking freertos_test.elf
+the public mailing list cygwin@cygwin.com
+nios2-elf-g++  -T'../freertos_test_bsp//linker.x' -msys-crt0='../freertos_test_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../freertos_test_bsp/   -Wl,-Map=freertos_test.map   -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o freertos_test.elf obj/FreeRTOS/croutine.o obj/FreeRTOS/heap.o obj/FreeRTOS/list.o obj/FreeRTOS/port.o obj/FreeRTOS/queue.o obj/FreeRTOS/tasks.o obj/FreeRTOS/timers.o obj/freertos_test.o obj/FreeRTOS/port_asm.o -lm 
+nios2-elf-insert freertos_test.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "C:/Users/Marcus-PC2/Desktop/GithubProjects/cs723-assignment1"
+      1 [main] sh 8776 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] uname 19596 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] bash 1704 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] perl 3960 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x27D0000)
+      0 [main] perl 20356 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2DB0000)
+      0 [main] perl 12512 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2E00000)
+      0 [main] perl 9108 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2F80000)
+      6 [main] perl 17316 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2DF0000)
+      0 [main] perl 16568 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2DE0000)
+      0 [main] perl 8188 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2E80000)
+      0 [main] perl 9428 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2E80000)
+      0 [main] perl 18756 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2BB0000)
+      0 [main] perl 19788 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2EA0000)
+      0 [main] perl 19608 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2DD0000)
+      0 [main] perl 9688 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2660000)
+      0 [main] perl 17608 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2CD0000)
+      0 [main] perl 1396 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2CB0000)
+      0 [main] perl 19080 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2E60000)
+      0 [main] perl 8740 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2DC0000)
+      0 [main] perl 9124 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2E20000)
+      0 [main] perl 1968 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2B80000)
+      0 [main] perl 17132 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2C10000)
+      0 [main] perl 18276 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2E00000)
+      0 [main] perl 15088 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2C30000)
+      0 [main] perl 19080 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2EA0000)
+      0 [main] perl 8056 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2FE0000)
+      0 [main] perl 13588 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2E20000)
+      0 [main] perl 5840 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2C00000)
+      1 [main] perl 20376 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2DE0000)
+      0 [main] perl 1396 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2D90000)
+      0 [main] perl 8056 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2E10000)
+      0 [main] perl 252 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x3050000)
+      0 [main] perl 20772 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2E60000)
+      6 [main] perl 21052 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2DF0000)
+      0 [main] perl 21084 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2820000)
+      0 [main] perl 21200 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2BC0000)
+      0 [main] perl 21412 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2DD0000)
+      1 [main] perl 20992 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2E90000)
+      1 [main] perl 16416 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2ED0000)
+      0 [main] perl 21144 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x27E0000)
+      0 [main] perl 21496 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2E40000)
+      0 [main] perl 18468 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2E10000)
+      0 [main] perl 21016 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2BF0000)
+      0 [main] perl 15524 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2C20000)
+      0 [main] perl 7128 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2CD0000)
+      0 [main] perl 20908 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2660000)
+Info: (freertos_test.elf) 616 KBytes program size (code + initialized data).
+      0 [main] perl 616 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x3030000)
+      0 [main] perl 21320 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2E00000)
+      0 [main] perl 21116 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x3050000)
+      0 [main] perl 21212 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2DE0000)
+      0 [main] perl 18300 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2660000)
+      0 [main] perl 16344 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x27F0000)
+      0 [main] perl 13588 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2CB0000)
+      6 [main] perl 16576 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2DC0000)
+      0 [main] perl 18420 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2FA0000)
+      0 [main] perl 20516 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x27E0000)
+      6 [main] perl 2280 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2C30000)
+      1 [main] perl 14016 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2E70000)
+      1 [main] perl 5016 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2DD0000)
+      0 [main] perl 16004 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2DB0000)
+      0 [main] perl 17692 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2C10000)
+      0 [main] perl 10224 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2C20000)
+      0 [main] perl 2816 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2E10000)
+      0 [main] perl 1968 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2E30000)
+      0 [main] perl 19312 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2E20000)
+      0 [main] perl 21088 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2C90000)
+      0 [main] perl 2536 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2E20000)
+      0 [main] perl 21432 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2660000)
+      0 [main] perl 21008 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2C50000)
+      0 [main] perl 20984 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2DE0000)
+      0 [main] perl 21412 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2770000)
+      0 [main] perl 20960 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2BB0000)
+      0 [main] perl 16576 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2F00000)
+      0 [main] perl 21144 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2EC0000)
+      0 [main] perl 19920 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2BA0000)
+      0 [main] perl 17904 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2820000)
+      0 [main] perl 21252 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2DF0000)
+      6 [main] perl 11680 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x3050000)
+      0 [main] perl 17444 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2BB0000)
+      0 [main] perl 4664 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2F50000)
+      0 [main] perl 19880 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2E00000)
+      0 [main] perl 16656 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2DF0000)
+      0 [main] perl 19408 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2DD0000)
+      0 [main] perl 7424 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2E00000)
+      0 [main] perl 4344 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2DC0000)
+      0 [main] perl 21456 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2DF0000)
+      0 [main] perl 6916 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2D30000)
+      0 [main] perl 6436 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2E90000)
+      0 [main] perl 19568 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2F90000)
+      6 [main] perl 8588 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2E40000)
+      0 [main] perl 2176 child_info_fork::abort: C:\altera\13.0sp1\quartus\bin\cygwin\bin\cygperl5_14.dll: Loaded to different address: parent(0x2EB0000) != child(0x2F70000)
+Info:                     130557 KBytes free for stack + heap.
+      0 [main] echo 17944 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+Info: Creating freertos_test.objdump
+the public mailing list cygwin@cygwin.com
+nios2-elf-objdump --disassemble --syms --all-header --source freertos_test.elf >freertos_test.objdump
+      0 [main] sh 20976 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 20780 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[freertos_test build complete]

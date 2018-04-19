@@ -369,7 +369,7 @@ void VGA_Task(void *pvParameters){
 			}
 		}
 		xSemaphoreGive(freq_roc_sem);
-		vTaskDelay(15);
+		// vTaskDelay(15);
 	}
 }
 

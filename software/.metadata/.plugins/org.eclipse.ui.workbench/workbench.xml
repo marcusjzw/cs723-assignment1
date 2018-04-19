@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="34" version="2.0">
+<workbench progressCount="33" version="2.0">
 <workbenchAdvisor/>
 <window height="768" maximized="true" width="1024" x="130" y="130">
 <fastViewData fastViewLocation="1024"/>
@@ -33,14 +33,12 @@
 <part id="1"/>
 <part id="2"/>
 <part id="3"/>
+<part id="4"/>
+<part id="5"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="freertos_test.c" partName="freertos_test.c" path="C:/Users/Marcus-PC2/Desktop/GithubProjects/cs723-assignment1/software/freertos_test/freertos_test.c" title="freertos_test.c" tooltip="freertos_test/freertos_test.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/freertos_test/freertos_test.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="7774" selectionTopPixel="2595"/>
-</editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="altera_up_avalon_video_character_buffer_with_dma.h" partName="altera_up_avalon_video_character_buffer_with_dma.h" path="C:/Users/Marcus-PC2/Desktop/GithubProjects/cs723-assignment1/software/freertos_test_bsp/drivers/inc/altera_up_avalon_video_character_buffer_with_dma.h" title="altera_up_avalon_video_character_buffer_with_dma.h" tooltip="freertos_test_bsp/drivers/inc/altera_up_avalon_video_character_buffer_with_dma.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/freertos_test_bsp/drivers/inc/altera_up_avalon_video_character_buffer_with_dma.h"/>
 <editorState selectionHorizontalPixel="0" selectionLength="25" selectionOffset="2723" selectionTopPixel="1113"/>
@@ -53,17 +51,40 @@
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/freertos_test/Makefile"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="5430" selectionTopPixel="2400"/>
 </editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="system.h" partName="system.h" path="C:/Users/Marcus-PC2/Desktop/GithubProjects/cs723-assignment1/software/freertos_test_bsp/system.h" title="system.h" tooltip="freertos_test_bsp/system.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/freertos_test_bsp/system.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="13" selectionOffset="11047" selectionTopPixel="5916"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="FreeRTOSConfig.h" partName="FreeRTOSConfig.h" path="C:/Users/Marcus-PC2/Desktop/GithubProjects/cs723-assignment1/software/freertos_test/FreeRTOS/FreeRTOSConfig.h" title="FreeRTOSConfig.h" tooltip="freertos_test/FreeRTOS/FreeRTOSConfig.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/freertos_test/FreeRTOS/FreeRTOSConfig.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3999" selectionTopPixel="935"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="freertos_test.c" partName="freertos_test.c" path="C:/Users/Marcus-PC2/Desktop/GithubProjects/cs723-assignment1/software/freertos_test/freertos_test.c" title="freertos_test.c" tooltip="freertos_test/freertos_test.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/freertos_test/freertos_test.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
 </editors>
 <views>
 <view id="org.eclipse.ui.navigator.ProjectExplorer" partName="Project Explorer">
 <viewState CommonNavigator.LINKING_ENABLED="0" org.eclipse.cdt.ui.cview.groupincludes="false" org.eclipse.cdt.ui.cview.groupmacros="false" org.eclipse.cdt.ui.editor.CUChildren="true" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0"/>
 </view>
-<view id="org.eclipse.ui.views.PropertySheet" partName="Properties"/>
+<view id="org.eclipse.ui.views.PropertySheet" partName="Properties">
+<viewState/>
+</view>
+<view id="org.eclipse.search.ui.views.SearchView" partName="Search">
+<viewState isPinned="false">
+<view IMemento.internal.id="org.eclipse.cdt.ui.pdomSearchViewPage" definitionColumnWidth="150" locationColumnWidth="300" matchColumnWidth="300" org.eclipse.search.lastActivation="1" org.eclipse.search.resultpage.layout="2" showEnclosingDefinitions="true"/>
+<view IMemento.internal.id="" org.eclipse.search.lastActivation="0"/>
+</viewState>
+</view>
 <view id="org.eclipse.cdt.make.ui.views.MakeView" partName="Make Target"/>
+<view id="org.eclipse.cdt.ui.callHierarchy" partName="Call Hierarchy">
+<viewState showFilesInLabels="false" variableFilter="false"/>
+</view>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
-<category IMemento.internal.id="Warnings (3 items)"/>
+<category IMemento.internal.id="Warnings (4 items)"/>
 <category IMemento.internal.id="Errors"/>
 <category IMemento.internal.id="Warnings"/>
 </expanded>
@@ -79,12 +100,23 @@
 <viewState/>
 </view>
 <view id="org.eclipse.mylyn.tasks.ui.views.tasks" partName="Task List"/>
-<view id="org.eclipse.ui.views.TaskList" partName="Tasks"/>
+<view id="org.eclipse.ui.views.TaskList" partName="Tasks">
+<viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.completionField" categoryGroup="none" markerContentGenerator="org.eclipse.ui.ide.tasksGenerator" partName="Tasks">
+<columnWidths org.eclipse.ui.ide.completionField="40" org.eclipse.ui.ide.descriptionField="300" org.eclipse.ui.ide.locationField="90" org.eclipse.ui.ide.markerType="90" org.eclipse.ui.ide.pathField="120" org.eclipse.ui.ide.priorityField="30" org.eclipse.ui.ide.resourceField="90"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.completionField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.priorityField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.descriptionField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.pathField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.locationField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.markerType"/>
+</viewState>
+</view>
 <view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
 <viewState/>
 </view>
 </views>
-<perspectives activePart="com.altera.sbtgui.launch.hardware.ByteStreamConsoleView:USB-Blaster on localhost [USB-0].1.0" activePerspective="com.altera.sbtgui.ui.cPerspective">
+<perspectives activePart="org.eclipse.cdt.ui.editor.CEditor" activePerspective="com.altera.sbtgui.ui.cPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.cdt.internal.ui.CPerspectiveFactory" id="org.eclipse.cdt.ui.CPerspective" label="C/C++"/>
 <alwaysOnActionSet id="org.eclipse.mylyn.context.ui.actionSet"/>
@@ -229,6 +261,8 @@
 <view id="org.eclipse.ui.views.TaskList"/>
 <view id="org.eclipse.ui.console.ConsoleView"/>
 <view id="org.eclipse.ui.views.PropertySheet"/>
+<view id="org.eclipse.cdt.ui.callHierarchy"/>
+<view id="org.eclipse.search.ui.views.SearchView"/>
 <view id="org.eclipse.ui.views.ContentOutline"/>
 <fastViewBars/>
 <layout>
@@ -253,12 +287,14 @@
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.25" ratioLeft="250" ratioRight="750" relationship="2" relative="topLeft"/>
 <info folder="true" part="bottom" ratio="0.74922603" ratioLeft="484" ratioRight="162" relationship="4" relative="org.eclipse.ui.editorss">
-<folder activePageID="com.altera.sbtgui.launch.hardware.ByteStreamConsoleView:USB-Blaster on localhost [USB-0].1.0" appearance="2" expanded="2">
+<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
 <page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
 <page content="org.eclipse.ui.views.PropertySheet" label="Properties"/>
 <page content="com.altera.sbtgui.launch.hardware.ByteStreamConsoleView:USB-Blaster on localhost [USB-0].1.0" label="Nios II Console"/>
+<page content="org.eclipse.cdt.ui.callHierarchy" label="Call Hierarchy"/>
+<page content="org.eclipse.search.ui.views.SearchView" label="Search"/>
 <page content="com.altera.sbtgui.launch.hardware.ByteStreamConsoleView:*" label="LabelNotFound"/>
 <page content="com.altera.sbtgui.launch.hardware.ByteStreamConsoleView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
@@ -267,6 +303,8 @@
 <part id="2"/>
 <part id="3"/>
 <part id="4"/>
+<part id="5"/>
+<part id="6"/>
 </presentation>
 </folder>
 </info>
@@ -286,23 +324,10 @@
 <navigationHistory>
 <editors>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/freertos_test/freertos_test.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.make.editor" path="/freertos_test/Makefile"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/freertos_test/FreeRTOS/semphr.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.make.editor" path="/freertos_test/Makefile"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/freertos_test_bsp/drivers/src/altera_up_ps2_keyboard.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/freertos_test/FreeRTOS/FreeRTOSConfig.h"/>
 </editors>
 <item historyLabel="freertos_test.c" index="0">
-<position info="not_deleted" x="5199" y="0"/>
-</item>
-<item historyLabel="freertos_test.c" index="0">
-<position/>
-</item>
-<item historyLabel="freertos_test.c" index="0">
-<position/>
-</item>
-<item historyLabel="freertos_test.c" index="0">
-<position info="not_deleted" x="5491" y="0"/>
-</item>
-<item historyLabel="freertos_test.c" index="0">
 <position/>
 </item>
 <item historyLabel="freertos_test.c" index="0">
@@ -320,26 +345,11 @@
 <item historyLabel="freertos_test.c" index="0">
 <position/>
 </item>
-<item historyLabel="freertos_test.c" index="0">
-<position info="not_deleted" x="5786" y="0"/>
+<item historyLabel="altera_up_ps2_keyboard.c" index="1">
+<position info="not_deleted" x="5154" y="0"/>
 </item>
 <item historyLabel="freertos_test.c" index="0">
-<position/>
-</item>
-<item historyLabel="Makefile" index="1">
-<position info="not_deleted" x="798" y="0"/>
-</item>
-<item historyLabel="freertos_test.c" index="0">
-<position/>
-</item>
-<item historyLabel="freertos_test.c" index="0">
-<position info="not_deleted" x="6850" y="0"/>
-</item>
-<item historyLabel="freertos_test.c" index="0">
-<position info="not_deleted" x="5722" y="0"/>
-</item>
-<item historyLabel="freertos_test.c" index="0">
-<position info="not_deleted" x="5662" y="0"/>
+<position info="not_deleted" x="20851" y="0"/>
 </item>
 <item historyLabel="freertos_test.c" index="0">
 <position/>
@@ -351,94 +361,121 @@
 <position/>
 </item>
 <item historyLabel="freertos_test.c" index="0">
-<position info="not_deleted" x="5491" y="0"/>
-</item>
-<item historyLabel="freertos_test.c" index="0">
-<position info="not_deleted" x="5042" y="0"/>
-</item>
-<item historyLabel="freertos_test.c" index="0">
-<position info="not_deleted" x="5491" y="0"/>
-</item>
-<item historyLabel="freertos_test.c" index="0">
-<position info="not_deleted" x="5431" y="0"/>
-</item>
-<item historyLabel="freertos_test.c" index="0">
-<position info="not_deleted" x="7536" y="0"/>
-</item>
-<item historyLabel="freertos_test.c" index="0">
-<position info="not_deleted" x="1311" y="0"/>
-</item>
-<item historyLabel="freertos_test.c" index="0">
-<position info="not_deleted" x="7195" y="0"/>
-</item>
-<item historyLabel="freertos_test.c" index="0">
-<position info="not_deleted" x="11385" y="0"/>
-</item>
-<item historyLabel="freertos_test.c" index="0">
-<position info="not_deleted" x="9515" y="15"/>
-</item>
-<item historyLabel="freertos_test.c" index="0">
-<position info="not_deleted" x="9430" y="2"/>
-</item>
-<item historyLabel="freertos_test.c" index="0">
-<position info="not_deleted" x="9415" y="10"/>
-</item>
-<item historyLabel="freertos_test.c" index="0">
-<position info="not_deleted" x="10566" y="0"/>
-</item>
-<item historyLabel="freertos_test.c" index="0">
-<position info="not_deleted" x="10547" y="3"/>
-</item>
-<item historyLabel="freertos_test.c" index="0">
-<position info="not_deleted" x="9493" y="0"/>
-</item>
-<item historyLabel="freertos_test.c" index="0">
-<position info="not_deleted" x="11384" y="0"/>
-</item>
-<item historyLabel="freertos_test.c" index="0">
-<position info="not_deleted" x="9515" y="15"/>
-</item>
-<item historyLabel="freertos_test.c" index="0">
-<position info="not_deleted" x="2393" y="10"/>
-</item>
-<item historyLabel="freertos_test.c" index="0">
-<position info="not_deleted" x="11367" y="0"/>
-</item>
-<item historyLabel="freertos_test.c" index="0">
-<position info="not_deleted" x="10056" y="17"/>
-</item>
-<item historyLabel="freertos_test.c" index="0">
-<position info="not_deleted" x="10339" y="0"/>
+<position/>
 </item>
 <item historyLabel="freertos_test.c" index="0">
 <position/>
 </item>
-<item historyLabel="semphr.h" index="2">
-<position info="not_deleted" x="10872" y="0"/>
-</item>
 <item historyLabel="freertos_test.c" index="0">
-<position info="not_deleted" x="8085" y="0"/>
-</item>
-<item historyLabel="freertos_test.c" index="0">
-<position info="not_deleted" x="9800" y="0"/>
-</item>
-<item historyLabel="Makefile" index="3">
-<position info="not_deleted" x="5430" y="0"/>
-</item>
-<item historyLabel="freertos_test.c" index="0">
-<position info="not_deleted" x="9800" y="0"/>
-</item>
-<item historyLabel="freertos_test.c" index="0">
-<position info="not_deleted" x="7665" y="402"/>
-</item>
-<item historyLabel="freertos_test.c" index="0">
-<position info="not_deleted" x="10547" y="3"/>
+<position/>
 </item>
 <item historyLabel="freertos_test.c" index="0">
 <position/>
+</item>
+<item historyLabel="freertos_test.c" index="0">
+<position/>
+</item>
+<item historyLabel="freertos_test.c" index="0">
+<position/>
+</item>
+<item historyLabel="freertos_test.c" index="0">
+<position/>
+</item>
+<item historyLabel="freertos_test.c" index="0">
+<position/>
+</item>
+<item historyLabel="freertos_test.c" index="0">
+<position/>
+</item>
+<item historyLabel="freertos_test.c" index="0">
+<position/>
+</item>
+<item historyLabel="freertos_test.c" index="0">
+<position info="not_deleted" x="10413" y="0"/>
+</item>
+<item historyLabel="freertos_test.c" index="0">
+<position info="not_deleted" x="1802" y="0"/>
+</item>
+<item historyLabel="FreeRTOSConfig.h" index="2">
+<position info="not_deleted" x="6424" y="9"/>
+</item>
+<item historyLabel="freertos_test.c" index="0">
+<position/>
+</item>
+<item historyLabel="freertos_test.c" index="0">
+<position/>
+</item>
+<item historyLabel="freertos_test.c" index="0">
+<position/>
+</item>
+<item historyLabel="freertos_test.c" index="0">
+<position/>
+</item>
+<item historyLabel="freertos_test.c" index="0">
+<position info="not_deleted" x="10109" y="0"/>
+</item>
+<item historyLabel="freertos_test.c" index="0">
+<position/>
+</item>
+<item historyLabel="freertos_test.c" index="0">
+<position/>
+</item>
+<item historyLabel="freertos_test.c" index="0">
+<position/>
+</item>
+<item historyLabel="freertos_test.c" index="0">
+<position/>
+</item>
+<item historyLabel="freertos_test.c" index="0">
+<position/>
+</item>
+<item historyLabel="freertos_test.c" index="0">
+<position/>
+</item>
+<item historyLabel="FreeRTOSConfig.h" index="2">
+<position info="not_deleted" x="6749" y="0"/>
+</item>
+<item historyLabel="freertos_test.c" index="0">
+<position/>
+</item>
+<item historyLabel="freertos_test.c" index="0">
+<position/>
+</item>
+<item historyLabel="freertos_test.c" index="0">
+<position info="not_deleted" x="6740" y="0"/>
+</item>
+<item historyLabel="freertos_test.c" index="0">
+<position/>
+</item>
+<item historyLabel="freertos_test.c" index="0">
+<position/>
+</item>
+<item historyLabel="freertos_test.c" index="0">
+<position/>
+</item>
+<item historyLabel="freertos_test.c" index="0">
+<position/>
+</item>
+<item historyLabel="FreeRTOSConfig.h" index="2">
+<position info="not_deleted" x="3999" y="0"/>
+</item>
+<item historyLabel="freertos_test.c" index="0">
+<position info="not_deleted" x="0" y="21602"/>
+</item>
+<item historyLabel="FreeRTOSConfig.h" index="2">
+<position info="not_deleted" x="3999" y="0"/>
+</item>
+<item historyLabel="freertos_test.c" index="0">
+<position info="not_deleted" x="5116" y="0"/>
+</item>
+<item historyLabel="freertos_test.c" index="0">
+<position info="not_deleted" x="12827" y="0"/>
+</item>
+<item historyLabel="FreeRTOSConfig.h" index="2">
+<position info="not_deleted" x="3999" y="0"/>
 </item>
 <item active="true" historyLabel="freertos_test.c" index="0">
-<position/>
+<position info="not_deleted" x="0" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -458,6 +495,18 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="freertos_test.c" tooltip="freertos_test/freertos_test.c">
+<persistable path="/freertos_test/freertos_test.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="FreeRTOSConfig.h" tooltip="freertos_test/FreeRTOS/FreeRTOSConfig.h">
+<persistable path="/freertos_test/FreeRTOS/FreeRTOSConfig.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="altera_up_ps2_keyboard.c" tooltip="freertos_test_bsp/drivers/src/altera_up_ps2_keyboard.c">
+<persistable path="/freertos_test_bsp/drivers/src/altera_up_ps2_keyboard.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="system.h" tooltip="freertos_test_bsp/system.h">
+<persistable path="/freertos_test_bsp/system.h"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.make.editor" name="Makefile" tooltip="freertos_test/Makefile">
 <persistable path="/freertos_test/Makefile"/>
 </file>
@@ -472,9 +521,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="croutine.c" tooltip="freertos_test/freertos/croutine.c">
 <persistable path="/freertos_test/freertos/croutine.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="freertos_test.c" tooltip="freertos_test/freertos_test.c">
-<persistable path="/freertos_test/freertos_test.c"/>
 </file>
 </mruList>
 </workbench>
