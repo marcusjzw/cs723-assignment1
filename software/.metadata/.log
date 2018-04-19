@@ -2310,3 +2310,19 @@ java.lang.NullPointerException
 
 !ENTRY com.altera.sbtgui.launch 1 0 2018-04-19 18:06:37.746
 !MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x430f0 /cygdrive/c/Users/Marcus-PC2/Desktop/GithubProjects/cs723-assignment1/software/freertos_test/freertos_test.elf]
+!SESSION 2018-04-19 21:39:07.587 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_NZ
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-04-19 21:39:09.827
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-19 21:39:53.690
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x430f0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-04-19 21:39:55.988
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x430f0 /cygdrive/c/Users/Marcus-PC2/Desktop/GithubProjects/cs723-assignment1/software/freertos_test/freertos_test.elf]

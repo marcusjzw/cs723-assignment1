@@ -12368,7 +12368,7 @@ int initCreateTasks(void) {
     6548:	df000415 	stw	fp,16(sp)
     654c:	df000404 	addi	fp,sp,16
 	xTaskCreate(VGA_Task, "VGA_Task", configMINIMAL_STACK_SIZE, NULL, VGA_TASK_PRIORITY, NULL);
-    6550:	00800084 	movi	r2,2
+    6550:	00800044 	movi	r2,1
     6554:	d8800015 	stw	r2,0(sp)
     6558:	d8000115 	stw	zero,4(sp)
     655c:	d8000215 	stw	zero,8(sp)
@@ -12381,7 +12381,7 @@ int initCreateTasks(void) {
     6578:	000f883a 	mov	r7,zero
     657c:	00024d80 	call	24d8 <xTaskGenericCreate>
 	xTaskCreate(ROC_Calculation_Task, "Calculation_Task", configMINIMAL_STACK_SIZE, NULL, CALCULATION_TASK_PRIORITY, NULL);
-    6580:	008000c4 	movi	r2,3
+    6580:	00800104 	movi	r2,4
     6584:	d8800015 	stw	r2,0(sp)
     6588:	d8000115 	stw	zero,4(sp)
     658c:	d8000215 	stw	zero,8(sp)
@@ -12394,7 +12394,7 @@ int initCreateTasks(void) {
     65a8:	000f883a 	mov	r7,zero
     65ac:	00024d80 	call	24d8 <xTaskGenericCreate>
 	xTaskCreate(Load_Management_Task, "FSM_Task", configMINIMAL_STACK_SIZE, NULL, FSM_TASK_PRIORITY, NULL);
-    65b0:	00800104 	movi	r2,4
+    65b0:	008000c4 	movi	r2,3
     65b4:	d8800015 	stw	r2,0(sp)
     65b8:	d8000115 	stw	zero,4(sp)
     65bc:	d8000215 	stw	zero,8(sp)
@@ -12407,7 +12407,7 @@ int initCreateTasks(void) {
     65d8:	000f883a 	mov	r7,zero
     65dc:	00024d80 	call	24d8 <xTaskGenericCreate>
 	xTaskCreate(Keyboard_Update_Task, "Keyboard_Update_Task", configMINIMAL_STACK_SIZE, NULL, KEYBOARD_UPDATE_TASK_PRIORITY, NULL);
-    65e0:	00800044 	movi	r2,1
+    65e0:	00800084 	movi	r2,2
     65e4:	d8800015 	stw	r2,0(sp)
     65e8:	d8000115 	stw	zero,4(sp)
     65ec:	d8000215 	stw	zero,8(sp)

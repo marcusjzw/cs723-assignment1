@@ -41,10 +41,10 @@ int initCreateTasks(void);
 #define   TASK_STACKSIZE       2048
 
 // Definition of Task Priorities
-#define VGA_TASK_PRIORITY 				(tskIDLE_PRIORITY+2)
-#define CALCULATION_TASK_PRIORITY 		(tskIDLE_PRIORITY+3)
-#define FSM_TASK_PRIORITY 				(tskIDLE_PRIORITY+4)
-#define KEYBOARD_UPDATE_TASK_PRIORITY 	(tskIDLE_PRIORITY+1)
+#define VGA_TASK_PRIORITY 				(tskIDLE_PRIORITY+1)
+#define CALCULATION_TASK_PRIORITY 		(tskIDLE_PRIORITY+4)
+#define FSM_TASK_PRIORITY 				(tskIDLE_PRIORITY+3)
+#define KEYBOARD_UPDATE_TASK_PRIORITY 	(tskIDLE_PRIORITY+2)
 
 // Definition of Queue Sizes
 #define HW_DATA_QUEUE_SIZE 	100
