@@ -223,6 +223,9 @@ void update_shed_stats() {
 	if (array_filled == 0) {
 		for (i = 0; i < 5; i++) {
 			if (shed_time_measurements[i] == 0) { // if array element has yet to be assigned
+				if (shed_time == 0) {
+					shed_time = 1; // round up
+				}
 				shed_time_measurements[i] = shed_time;
 				shed_count++;
 				if (i == 4) { // if we are on the last array element
@@ -236,6 +239,9 @@ void update_shed_stats() {
 		for (i = 0; i < 4; i++) {
 			// if array is full oldest element discards, adding new shed time to end of array
 			shed_time_measurements[i] = shed_time_measurements[i+1]; // shift elements to the left
+		}
+		if (shed_time == 0) {
+			shed_time = 1; // round up
 		}
 		shed_time_measurements[4] = shed_time;
 	}
