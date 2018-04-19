@@ -306,3 +306,6 @@ software/.metadata/.plugins/org.eclipse.core.resources/.history/67/d0f4a001f73e0
 software/.metadata/.plugins/org.eclipse.core.resources/.history/65/d088d2ad113f00181bcab2502c6a8155
 software/.metadata/.plugins/org.eclipse.core.resources/.history/65/10b71170fc3e0018145c9ec152eae429
 software/.metadata/.plugins/org.eclipse.core.resources/.history/
+software/.metadata/.plugins/org.eclipse.epp.usagedata.recording/
+*.pdom
+software/.metadata/.plugins/org.eclipse.ltk.core.refactoring/.refactorings/.workspace/2018/4/16/refactorings.history
