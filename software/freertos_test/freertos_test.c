@@ -125,7 +125,7 @@ void ps2_isr (void* context, alt_u32 id)
 	status = decode_scancode (context, &decode_mode , &key , &ascii) ;
 	if ( status == 0 ) //success
 	{
-		xQueueSendFromISR(kb_dataQ, &key, pdFALSE)
+		xQueueSendFromISR(kb_dataQ, &key, pdFALSE);
 	}
 }
 
@@ -195,13 +195,13 @@ void ROC_Calculation_Task(void *pvParameters) {
 		if (((freq[freq_idx] < freq_threshold) || (fabs(roc[freq_idx]) >= roc_threshold)) && (system_state != MAINTENANCE_MODE)) {
 			xSemaphoreTake(shed_sem, portMAX_DELAY);
 			time_before_shed = xTaskGetTickCountFromISR(); // instability will first be detected here, so get t=0 from here 
-			xSemaphoreGive(shed_sem, portMAX_DELAY);
+			xSemaphoreGive(shed_sem);
 			system_stable = false;
 		}
 		else {
 			system_stable = true;
 		}
-		xSemaphoreGive(state_sem, portMAX_DELAY);
+		xSemaphoreGive(state_sem);
 
 		freq_idx = (++freq_idx) % 100; // point to the next data (oldest) to be overwritten
 		vTaskDelay(10);
@@ -255,7 +255,7 @@ void update_shed_stats() {
 		sum += shed_time_measurements[i];
 	}
 	avg_shed_time = (float)sum/(float)shed_count;
-	xSemaphoreGive(shed_sem, portMAX_DELAY);
+	xSemaphoreGive(shed_sem);
 }
 // VGA_Task
 void VGA_Task(void *pvParameters){
@@ -304,7 +304,7 @@ void VGA_Task(void *pvParameters){
 		alt_up_char_buffer_string(char_buf, vga_info_buf, 4, 40);
 		sprintf(vga_info_buf, "ROC threshold: %2.1f ", roc_threshold);
 		alt_up_char_buffer_string(char_buf, vga_info_buf, 4, 42);
-		xSemaphoreGive(thresholds_sem, portMAX_DELAY);
+		xSemaphoreGive(thresholds_sem);
 
 		// print system state
 		xSemaphoreTake(state_sem, portMAX_DELAY);
@@ -327,7 +327,7 @@ void VGA_Task(void *pvParameters){
 		else {
 			alt_up_char_buffer_string(char_buf, "System is not stable", 4, 46);
 		}
-		xSemaphoreGive(state_sem, portMAX_DELAY);
+		xSemaphoreGive(state_sem);
 
 		// print shed times
 		xSemaphoreTake(shed_sem, portMAX_DELAY); // take sem since reading 
@@ -341,7 +341,7 @@ void VGA_Task(void *pvParameters){
 		alt_up_char_buffer_string(char_buf, vga_info_buf, 4, 54);
 		sprintf(vga_info_buf, "Average shed time: %2.1f ms   ", avg_shed_time);
 		alt_up_char_buffer_string(char_buf, vga_info_buf, 4, 56);
-		xSemaphoreGive(shed_sem, portMAX_DELAY);
+		xSemaphoreGive(shed_sem);
 
 		// System uptime
 		unsigned int uptime = xTaskGetTickCount()/1000; // get seconds 
