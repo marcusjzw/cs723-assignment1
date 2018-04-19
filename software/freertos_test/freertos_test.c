@@ -76,6 +76,7 @@ SemaphoreHandle_t freq_roc_sem;
 SemaphoreHandle_t thresholds_sem;
 SemaphoreHandle_t state_sem;
 SemaphoreHandle_t led_sem;
+SemaphoreHandle_t shed_sem; // time_before_shed is written in roc_calculation task, read in fsm task; stats read in vga_task, written in fsm_task
 
 QueueHandle_t HW_dataQ; // contains frequency
 QueueHandle_t kb_dataQ; // stores keystrokes
@@ -102,7 +103,6 @@ unsigned int shed_time_measurements[5] = {0}; // init so no garbage values screw
 unsigned int min_shed_time = 0;
 unsigned int max_shed_time = 0;
 float avg_shed_time = 0;
-bool array_filled = 0;
 unsigned int shed_count = 0;
 
 // ISR
@@ -191,7 +191,9 @@ void ROC_Calculation_Task(void *pvParameters) {
 
 		// also update whether system is stable or not, done here since it's got both freq and roc
 		if (((freq[freq_idx] < freq_threshold) || (fabs(roc[freq_idx]) >= roc_threshold)) && (system_state != MAINTENANCE_MODE)) {
+			xSemaphoreTake(shed_sem, portMAX_DELAY);
 			time_before_shed = xTaskGetTickCountFromISR(); // instability will first be detected here, so get t=0 from here 
+			xSemaphoreGive(shed_sem, portMAX_DELAY);
 			system_stable = false;
 		}
 		else {
@@ -204,6 +206,7 @@ void ROC_Calculation_Task(void *pvParameters) {
 }
 
 void update_shed_stats() {
+	xSemaphoreTake(shed_sem, portMAX_DELAY);
 	shed_time = xTaskGetTickCount() - time_before_shed;
 	int i = 0;
 
@@ -212,14 +215,11 @@ void update_shed_stats() {
 	}
 
 	// when not all array elements have been filled yet
-	if (array_filled == 0) {
+	if (shed_count < 5) {
 		for (i = 0; i < 5; i++) {
 			if (shed_time_measurements[i] == 0) { // if array element has yet to be assigned
 				shed_time_measurements[i] = shed_time;
 				shed_count++;
-				if (i == 4) { // if we are on the last array element
-					array_filled = 1;
-				}
 				break;
 			}
 		}
@@ -248,10 +248,11 @@ void update_shed_stats() {
 
 	// calculate average
 	unsigned int sum = 0;
-	for (i = 0; i < 5; i++) {
+	for (i = 0; i < shed_count; i++) {
 		sum += shed_time_measurements[i];
 	}
 	avg_shed_time = (float)sum/(float)shed_count;
+	xSemaphoreGive(shed_sem, portMAX_DELAY);
 }
 // VGA_Task
 void VGA_Task(void *pvParameters){
@@ -322,6 +323,7 @@ void VGA_Task(void *pvParameters){
 		}
 
 		// print shed times
+		xSemaphoreTake(shed_sem, portMAX_DELAY); // take sem since reading 
 		sprintf(vga_info_buf, "Time taken for initial load shed: %d ms   ", shed_time);
 		alt_up_char_buffer_string(char_buf, vga_info_buf, 4, 48);
 		sprintf(vga_info_buf, "Last 5 initial load sheds: %d ms, %d ms, %d ms, %d ms, %d ms ", shed_time_measurements[0], shed_time_measurements[1], shed_time_measurements[2], shed_time_measurements[3], shed_time_measurements[4]);
@@ -332,9 +334,10 @@ void VGA_Task(void *pvParameters){
 		alt_up_char_buffer_string(char_buf, vga_info_buf, 4, 54);
 		sprintf(vga_info_buf, "Average shed time: %2.1f ms   ", avg_shed_time);
 		alt_up_char_buffer_string(char_buf, vga_info_buf, 4, 56);
+		xSemaphoreGive(shed_sem, portMAX_DELAY);
 
-		unsigned int uptime = xTaskGetTickCount()/1000;
-		// System active time
+		// System uptime
+		unsigned int uptime = xTaskGetTickCount()/1000; // get seconds 
 		sprintf(vga_info_buf, "System uptime: %d m %d s    ", uptime/60, uptime%60);
 		alt_up_char_buffer_string(char_buf, vga_info_buf, 4, 58);
 
@@ -557,6 +560,7 @@ int initOSDataStructs(void)
 	thresholds_sem = xSemaphoreCreateMutex();
 	led_sem = xSemaphoreCreateMutex();
 	state_sem = xSemaphoreCreateBinary(); // binary sem required because sem is used in ISR, mutexes cannot be
+	shed_sem = xSemaphoreCreateMutex();
 	fsm_timer = xTimerCreate("fsm_timer", TIMER_PERIOD, pdFALSE, (void*)0, timer_expiry_callback); // create 500ms timer with autoreload, callback sets timer expiry flag high
 
 	xTimerStart(fsm_timer, 0);
