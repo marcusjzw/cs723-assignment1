@@ -4,6 +4,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "io.h"
+#include "math.h"
 
 // Scheduler includes
 #include "FreeRTOS/FreeRTOS.h"
@@ -40,10 +41,10 @@ int initCreateTasks(void);
 #define   TASK_STACKSIZE       2048
 
 // Definition of Task Priorities
-#define VGA_TASK_PRIORITY 				(tskIDLE_PRIORITY+4)
-#define CALCULATION_TASK_PRIORITY 		(tskIDLE_PRIORITY+4)
-#define FSM_TASK_PRIORITY 				(tskIDLE_PRIORITY+5)
-#define KEYBOARD_UPDATE_TASK_PRIORITY 	(tskIDLE_PRIORITY+4)
+#define VGA_TASK_PRIORITY 				(tskIDLE_PRIORITY+2)
+#define CALCULATION_TASK_PRIORITY 		(tskIDLE_PRIORITY+3)
+#define FSM_TASK_PRIORITY 				(tskIDLE_PRIORITY+4)
+#define KEYBOARD_UPDATE_TASK_PRIORITY 	(tskIDLE_PRIORITY+1)
 
 // Definition of Queue Sizes
 #define HW_DATA_QUEUE_SIZE 	100
@@ -179,6 +180,7 @@ void Keyboard_Update_Task(void *pvParameters) {
 			printf("RoC threshold: %f\n", roc_threshold);
 		}
 		xSemaphoreGive(thresholds_sem);
+		vTaskDelay(30);
 	}
 }
 
@@ -205,14 +207,13 @@ void ROC_Calculation_Task(void *pvParameters) {
 		if (((freq[freq_idx] < freq_threshold) || (fabs(roc[freq_idx]) >= roc_threshold)) && (system_state != MAINTENANCE_MODE)) {
 			time_before_shed = xTaskGetTickCountFromISR();
 			system_stable = false;
-			//system_state = LOAD_MGMT_MONITOR_UNSTABLE; // how to force fsm_task preemption here? not sure if it will be a problem
 		}
 		else {
 			system_stable = true;
-			// system_state can't be determined here because we don't know if the system is completely stable yet
 		}
 
 		freq_idx = (++freq_idx) % 100; // point to the next data (oldest) to be overwritten
+		vTaskDelay(10);
 	}
 }
 
@@ -376,18 +377,11 @@ void VGA_Task(void *pvParameters){
 				alt_up_pixel_buffer_dma_draw_line(pixel_buf, line_roc.x1, line_roc.y1, line_roc.x2, line_roc.y2, 0x3ff << 0, 0);
 			}
 		}
-
+		vTaskDelay(15);
 	}
 }
 
-/* Load Management Task Helper Functions
- * update_leds_from_fsm: updates leds based on current state in FSM_task, different to in maintenance since green leds stuff (may refactor into one function later)
- * shed_load: shed a single load from the network, starting from lowest prio (lowest led no)
- * reconnect_load: reconnect a single load to network, starting from highest prio (highest led no)
- * check_if_all_loads_connected: used to go back into NORMAL_OPERATION state if all loads are connected back
- * reset_timer: resets the timer expiry flag and the actual timer handle
- * timer_expiry_callback: runs when timer expires, sets expiry flag to high
- */
+
 
 /*
  * Red LEDs essentially correspond to the load state. In all tasks (including maintenance), red LEDs show this.
@@ -429,6 +423,15 @@ void update_loads_from_switches() {
 		}
 	}
 }
+
+/* Load Management Task Helper Functions
+ * update_leds_from_fsm: updates leds based on current state in FSM_task, different to in maintenance since green leds stuff (may refactor into one function later)
+ * shed_load: shed a single load from the network, starting from lowest prio (lowest led no)
+ * reconnect_load: reconnect a single load to network, starting from highest prio (highest led no)
+ * check_if_all_loads_connected: used to go back into NORMAL_OPERATION state if all loads are connected back
+ * reset_timer: resets the timer expiry flag and the actual timer handle
+ * timer_expiry_callback: runs when timer expires, sets expiry flag to high
+ */
 
 void update_leds_from_fsm() {
 	unsigned long red_led = 0, green_led = 0, bit = 1; // for pio call, ending result of 0 is off and 1 is on
