@@ -42,13 +42,12 @@ int initCreateTasks(void);
 
 // Definition of Task Priorities
 #define VGA_TASK_PRIORITY 				(tskIDLE_PRIORITY+2)
-#define CALCULATION_TASK_PRIORITY 		(tskIDLE_PRIORITY+3)
-#define FSM_TASK_PRIORITY 				(tskIDLE_PRIORITY+4)
+#define CALCULATION_TASK_PRIORITY 		(tskIDLE_PRIORITY+4)
+#define FSM_TASK_PRIORITY 				(tskIDLE_PRIORITY+3)
 #define KEYBOARD_UPDATE_TASK_PRIORITY 	(tskIDLE_PRIORITY+1)
 
 // Definition of Queue Sizes
 #define HW_DATA_QUEUE_SIZE 	100
-#define ROC_DATA_QUEUE_SIZE 10
 #define KB_DATA_QUEUE_SIZE 	10
 
 // Definition of system parameters
@@ -72,29 +71,34 @@ typedef struct{
 typedef enum { false, true } bool;
 
 // Definition of RTOS Handles
-SemaphoreHandle_t freq_roc_sem;
-SemaphoreHandle_t thresholds_sem;
-SemaphoreHandle_t state_sem;
+SemaphoreHandle_t freq_roc_sem; // mutex to protect freq and roc global arrays - written to in RoC_Calculation task, read in VGA task
+SemaphoreHandle_t thresholds_sem; // mutex to protect threshold global vars - written in kb update task, read in vga task & roc calculation task
+SemaphoreHandle_t state_sem; // binary sem to protect system_state figure - written to in button_irq, read by VGA, read by fsm
 SemaphoreHandle_t led_sem;
 
-QueueHandle_t HW_dataQ; // contains frequency
+QueueHandle_t HW_dataQ; // contains frequency values from analyser
 QueueHandle_t kb_dataQ; // stores keystrokes
 
 TimerHandle_t fsm_timer;
 
 // Global variables
+
+// Related to frequency and RoC values
 int freq_idx = 99; // used for configuring HW_dataQ with f values and displaying
 double freq[100];
 double roc[100];
 
+// Related to system thresholds and states
 double freq_threshold = 50; 
 double roc_threshold = 10;
 bool system_stable = true; // system_stable is manipulated when thresholds are good/bad
-volatile state system_state = NORMAL_OPERATION; // note: not the same as system_stable, system_state describes current mode of operation
-volatile state prev_state;
+state system_state = NORMAL_OPERATION; // note: not the same as system_stable, system_state describes current mode of operation
+state prev_state;
 static bool load_states[NO_OF_LOADS];
 static bool sw_load_states[NO_OF_LOADS];
 bool timer_expired_flag = false; // high when 500ms timer expires, does not need a sem since data R/W on here is atomic and done by one task
+
+// Related to timing mechanisms for shedding
 
 volatile unsigned int time_before_shed = 0;
 unsigned int shed_time = 0;
@@ -105,11 +109,13 @@ float avg_shed_time = 0;
 bool array_filled = 0;
 unsigned int shed_count = 0;
 
-// ISR
+
+
+
+// ISR for capturing freq data from analyser
 void freq_relay() {
 	unsigned int adc_samples = IORD(FREQUENCY_ANALYSER_BASE, 0);	// number of ADC samples
 	double new_freq = SAMPLING_FREQ/(double)adc_samples;
-
 	// ROC calculation done in separate Calculation task to minimise ISR time
 	xQueueSendToBackFromISR(HW_dataQ, &new_freq, NULL);
 	return;
@@ -125,21 +131,25 @@ void ps2_isr (void* context, alt_u32 id)
 	status = decode_scancode (context, &decode_mode , &key , &ascii) ;
 	if ( status == 0 ) //success
 	{
-		xQueueSendFromISR(kb_dataQ, &key, pdFALSE)
+		xQueueSendFromISR(kb_dataQ, &key, pdFALSE);
 	}
 }
 
+// ISR to enable maintenance mode
 void button_irq(void* context, alt_u32 id)
 {
+	// xSemaphoreTake(state_sem, portMAX_DELAY);
 	if (IORD_ALTERA_AVALON_PIO_EDGE_CAP(PUSH_BUTTON_BASE) == 4) {
 		if (system_state != MAINTENANCE_MODE) {
 			prev_state = system_state; // save previous state
 			system_state = MAINTENANCE_MODE;
+
 		}
 		else {
 			system_state = prev_state;
 		}
 	}
+	// xSemaphoreGive(state_sem);
    //clears the edge capture register
   IOWR_ALTERA_AVALON_PIO_EDGE_CAP(PUSH_BUTTON_BASE, 0x7);
   return;
@@ -147,7 +157,6 @@ void button_irq(void* context, alt_u32 id)
 
 void Keyboard_Update_Task(void *pvParameters) {
 	unsigned char key;
-
 	while(1) {
 		xQueueReceive(kb_dataQ, &key, portMAX_DELAY);
 		xSemaphoreTake(thresholds_sem, portMAX_DELAY);
@@ -167,7 +176,6 @@ void Keyboard_Update_Task(void *pvParameters) {
 			roc_threshold -= 0.5;
 		}
 		xSemaphoreGive(thresholds_sem);
-		vTaskDelay(30);
 	}
 }
 
@@ -190,6 +198,7 @@ void ROC_Calculation_Task(void *pvParameters) {
 		xSemaphoreGive(freq_roc_sem);
 
 		// also update whether system is stable or not, done here since it's got both freq and roc
+		xSemaphoreTake(thresholds_sem, portMAX_DELAY);
 		if (((freq[freq_idx] < freq_threshold) || (fabs(roc[freq_idx]) >= roc_threshold)) && (system_state != MAINTENANCE_MODE)) {
 			time_before_shed = xTaskGetTickCountFromISR(); // instability will first be detected here, so get t=0 from here 
 			system_stable = false;
@@ -197,9 +206,8 @@ void ROC_Calculation_Task(void *pvParameters) {
 		else {
 			system_stable = true;
 		}
-
+		xSemaphoreGive(thresholds_sem);
 		freq_idx = (++freq_idx) % 100; // point to the next data (oldest) to be overwritten
-		vTaskDelay(10);
 	}
 }
 
@@ -226,26 +234,20 @@ void update_shed_stats() {
 	}
 	else {
 		for (i = 0; i < 4; i++) {
-			// if array is full
-			// oldest element needs to be discarded, adding new shed time to end of array
+			// if array is full oldest element discards, adding new shed time to end of array
 			shed_time_measurements[i] = shed_time_measurements[i+1]; // shift elements to the left
 		}
 		shed_time_measurements[4] = shed_time;
 	}
-
 	// calculate running minimum and maximum
 	for (i = 0; i < 5; i++) {
 		if (shed_time_measurements[i] < min_shed_time && shed_time_measurements[i] != 0) {
 			min_shed_time = shed_time_measurements[i];
 		}
-
-		// calculate max
 		if (shed_time_measurements[i] > max_shed_time) {
 			max_shed_time = shed_time_measurements[i];
 		}
 	}
-
-
 	// calculate average
 	unsigned int sum = 0;
 	for (i = 0; i < 5; i++) {
@@ -253,6 +255,7 @@ void update_shed_stats() {
 	}
 	avg_shed_time = (float)sum/(float)shed_count;
 }
+
 // VGA_Task
 void VGA_Task(void *pvParameters){
 	//initialize VGA controllers
@@ -295,11 +298,12 @@ void VGA_Task(void *pvParameters){
 	while(1) {
 
 		// print out thresholds
+		xSemaphoreTake(thresholds_sem, portMAX_DELAY);
 		sprintf(vga_info_buf, "Frequency threshold: %2.1f", freq_threshold);
 		alt_up_char_buffer_string(char_buf, vga_info_buf, 4, 40);
 		sprintf(vga_info_buf, "ROC threshold: %2.1f ", roc_threshold);
 		alt_up_char_buffer_string(char_buf, vga_info_buf, 4, 42);
-
+		xSemaphoreGive(thresholds_sem);
 		// print system state
 		if (system_state == NORMAL_OPERATION) {
 			alt_up_char_buffer_string(char_buf, "System state: Normal operation           ", 4, 44);
@@ -313,7 +317,6 @@ void VGA_Task(void *pvParameters){
 		else if (system_state == MAINTENANCE_MODE) {
 			alt_up_char_buffer_string(char_buf, "System state: Maintenance mode           ", 4, 44);
 		}
-
 		if (system_stable == true) {
 			alt_up_char_buffer_string(char_buf, "System is stable    ", 4, 46);
 		}
@@ -341,7 +344,7 @@ void VGA_Task(void *pvParameters){
 		//clear old graph to draw new graph
 		alt_up_pixel_buffer_dma_draw_box(pixel_buf, 101, 0, 639, 199, 0, 0);
 		alt_up_pixel_buffer_dma_draw_box(pixel_buf, 101, 201, 639, 299, 0, 0);
-
+		xSemaphoreTake(freq_roc_sem, portMAX_DELAY);
 		for(j=0;j<99;++j){ //i here points to the oldest data, j loops through all the data to be drawn on VGA
 			if (((int)(freq[(freq_idx+j)%100]) > MIN_FREQ) && ((int)(freq[(freq_idx+j+1)%100]) > MIN_FREQ)){
 				//Frequency plot
@@ -363,6 +366,7 @@ void VGA_Task(void *pvParameters){
 				alt_up_pixel_buffer_dma_draw_line(pixel_buf, line_roc.x1, line_roc.y1, line_roc.x2, line_roc.y2, 0x3ff << 0, 0);
 			}
 		}
+		xSemaphoreGive(freq_roc_sem);
 		vTaskDelay(15);
 	}
 }
