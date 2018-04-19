@@ -87,7 +87,7 @@ int freq_idx = 99; // used for configuring HW_dataQ with f values and displaying
 double freq[100];
 double roc[100];
 
-double freq_threshold = 50; // TODO: change this back to 50
+double freq_threshold = 50; 
 double roc_threshold = 10;
 bool system_stable = true; // system_stable is manipulated when thresholds are good/bad
 volatile state system_state = NORMAL_OPERATION; // note: not the same as system_stable, system_state describes current mode of operation
@@ -112,7 +112,6 @@ void freq_relay() {
 
 	// ROC calculation done in separate Calculation task to minimise ISR time
 	xQueueSendToBackFromISR(HW_dataQ, &new_freq, NULL);
-	//printf("time before shed: %d\n", time_before_shed);
 	return;
 }
 
@@ -126,19 +125,13 @@ void ps2_isr (void* context, alt_u32 id)
 	status = decode_scancode (context, &decode_mode , &key , &ascii) ;
 	if ( status == 0 ) //success
 	{
-		if (xQueueSendFromISR(kb_dataQ, &key, pdFALSE) == pdPASS) {
-			printf("keycode sent: %x\n", key);
-		}
-		else {
-			printf("Keycode queue full!");
-		}
+		xQueueSendFromISR(kb_dataQ, &key, pdFALSE)
 	}
 }
 
 void button_irq(void* context, alt_u32 id)
 {
 	if (IORD_ALTERA_AVALON_PIO_EDGE_CAP(PUSH_BUTTON_BASE) == 4) {
-		// xSemaphoreTake(state_sem, portMAX_DELAY);
 		if (system_state != MAINTENANCE_MODE) {
 			prev_state = system_state; // save previous state
 			system_state = MAINTENANCE_MODE;
@@ -146,7 +139,6 @@ void button_irq(void* context, alt_u32 id)
 		else {
 			system_state = prev_state;
 		}
-		// xSemaphoreGive(state_sem);
 	}
    //clears the edge capture register
   IOWR_ALTERA_AVALON_PIO_EDGE_CAP(PUSH_BUTTON_BASE, 0x7);
@@ -155,29 +147,24 @@ void button_irq(void* context, alt_u32 id)
 
 void Keyboard_Update_Task(void *pvParameters) {
 	unsigned char key;
-//	printf("in keyboard task!!!");
+
 	while(1) {
 		xQueueReceive(kb_dataQ, &key, portMAX_DELAY);
 		xSemaphoreTake(thresholds_sem, portMAX_DELAY);
 
 		// adjust thresholds according to keycode
 		// 0.5 because every time you press a key it goes twice
-		// may need to implement real debouncing w/ timers?? delays??
 		if (key == 0x75) { // up arrow
 			freq_threshold += 0.5;
-			printf("Frequency threshold: %f\n", freq_threshold);
 		}
 		else if (key == 0x72) { // down arrow
 			freq_threshold -= 0.5;
-			printf("Frequency threshold: %f\n", freq_threshold);
 		}
 		else if (key == 0x7d) { // pg up
 			roc_threshold += 0.5;
-			printf("RoC threshold: %f\n", roc_threshold);
 		}
 		else if (key == 0x7a) { // pg down
 			roc_threshold -= 0.5;
-			printf("RoC threshold: %f\n", roc_threshold);
 		}
 		xSemaphoreGive(thresholds_sem);
 		vTaskDelay(30);
@@ -186,7 +173,6 @@ void Keyboard_Update_Task(void *pvParameters) {
 
 // ROC Calculation Task
 void ROC_Calculation_Task(void *pvParameters) {
-	// printf("calculating!!!");
 	while(1) {
 		xQueueReceive(HW_dataQ, freq+freq_idx, portMAX_DELAY); // pops new f value from back of q to freq array
 		xSemaphoreTake(freq_roc_sem, portMAX_DELAY);
@@ -205,7 +191,7 @@ void ROC_Calculation_Task(void *pvParameters) {
 
 		// also update whether system is stable or not, done here since it's got both freq and roc
 		if (((freq[freq_idx] < freq_threshold) || (fabs(roc[freq_idx]) >= roc_threshold)) && (system_state != MAINTENANCE_MODE)) {
-			time_before_shed = xTaskGetTickCountFromISR();
+			time_before_shed = xTaskGetTickCountFromISR(); // instability will first be detected here, so get t=0 from here 
 			system_stable = false;
 		}
 		else {
@@ -506,8 +492,8 @@ void Load_Management_Task(void *pvParameters) {
 			case NORMAL_OPERATION:
 				// check if things are still normal
 				if (system_stable != true) {
-					shed_load(); // gotta happen within 200ms, TODO: provisions to check this (may need to reimplement timestamps)
-					update_shed_stats();
+					shed_load();
+					update_shed_stats(); // t1 here since load has been shed here 
 					reset_timer();
 					system_state = LOAD_MGMT_MONITOR_UNSTABLE;
 				}
