@@ -42,8 +42,8 @@ int initCreateTasks(void);
 
 // Definition of Task Priorities
 #define VGA_TASK_PRIORITY 				(tskIDLE_PRIORITY+2)
-#define CALCULATION_TASK_PRIORITY 		(tskIDLE_PRIORITY+4)
-#define FSM_TASK_PRIORITY 				(tskIDLE_PRIORITY+3)
+#define CALCULATION_TASK_PRIORITY 		(tskIDLE_PRIORITY+3)
+#define FSM_TASK_PRIORITY 				(tskIDLE_PRIORITY+4)
 #define KEYBOARD_UPDATE_TASK_PRIORITY 	(tskIDLE_PRIORITY+1)
 
 // Definition of Queue Sizes
@@ -73,8 +73,7 @@ typedef enum { false, true } bool;
 // Definition of RTOS Handles
 SemaphoreHandle_t freq_roc_sem; // mutex to protect freq and roc global arrays - written to in RoC_Calculation task, read in VGA task
 SemaphoreHandle_t thresholds_sem; // mutex to protect threshold global vars - written in kb update task, read in vga task & roc calculation task
-SemaphoreHandle_t state_sem; // binary sem to protect system_state figure - written to in button_irq, read by VGA, read by fsm
-SemaphoreHandle_t led_sem;
+SemaphoreHandle_t shed_sem; // mutex to protect shedding variables - written in roc calculation task, read in vga task, written and read to in fsm task
 
 QueueHandle_t HW_dataQ; // contains frequency values from analyser
 QueueHandle_t kb_dataQ; // stores keystrokes
@@ -138,7 +137,6 @@ void ps2_isr (void* context, alt_u32 id)
 // ISR to enable maintenance mode
 void button_irq(void* context, alt_u32 id)
 {
-	// xSemaphoreTake(state_sem, portMAX_DELAY);
 	if (IORD_ALTERA_AVALON_PIO_EDGE_CAP(PUSH_BUTTON_BASE) == 4) {
 		if (system_state != MAINTENANCE_MODE) {
 			prev_state = system_state; // save previous state
@@ -149,7 +147,6 @@ void button_irq(void* context, alt_u32 id)
 			system_state = prev_state;
 		}
 	}
-	// xSemaphoreGive(state_sem);
    //clears the edge capture register
   IOWR_ALTERA_AVALON_PIO_EDGE_CAP(PUSH_BUTTON_BASE, 0x7);
   return;
@@ -200,7 +197,9 @@ void ROC_Calculation_Task(void *pvParameters) {
 		// also update whether system is stable or not, done here since it's got both freq and roc
 		xSemaphoreTake(thresholds_sem, portMAX_DELAY);
 		if (((freq[freq_idx] < freq_threshold) || (fabs(roc[freq_idx]) >= roc_threshold)) && (system_state != MAINTENANCE_MODE)) {
+			xSemaphoreTake(shed_sem, portMAX_DELAY);
 			time_before_shed = xTaskGetTickCountFromISR(); // instability will first be detected here, so get t=0 from here 
+			xSemaphoreGive(shed_sem);
 			system_stable = false;
 		}
 		else {
@@ -212,6 +211,7 @@ void ROC_Calculation_Task(void *pvParameters) {
 }
 
 void update_shed_stats() {
+	xSemaphoreTake(shed_sem, portMAX_DELAY);
 	shed_time = xTaskGetTickCount() - time_before_shed;
 	int i = 0;
 
@@ -254,6 +254,7 @@ void update_shed_stats() {
 		sum += shed_time_measurements[i];
 	}
 	avg_shed_time = (float)sum/(float)shed_count;
+	xSemaphoreGive(shed_sem);
 }
 
 // VGA_Task
@@ -325,6 +326,7 @@ void VGA_Task(void *pvParameters){
 		}
 
 		// print shed times
+		xSemaphoreTake(shed_sem, portMAX_DELAY);
 		sprintf(vga_info_buf, "Time taken for initial load shed: %d ms   ", shed_time);
 		alt_up_char_buffer_string(char_buf, vga_info_buf, 4, 48);
 		sprintf(vga_info_buf, "Last 5 initial load sheds: %d ms, %d ms, %d ms, %d ms, %d ms ", shed_time_measurements[0], shed_time_measurements[1], shed_time_measurements[2], shed_time_measurements[3], shed_time_measurements[4]);
@@ -335,7 +337,7 @@ void VGA_Task(void *pvParameters){
 		alt_up_char_buffer_string(char_buf, vga_info_buf, 4, 54);
 		sprintf(vga_info_buf, "Average shed time: %2.1f ms   ", avg_shed_time);
 		alt_up_char_buffer_string(char_buf, vga_info_buf, 4, 56);
-
+		xSemaphoreGive(shed_sem);
 		unsigned int uptime = xTaskGetTickCount()/1000;
 		// System active time
 		sprintf(vga_info_buf, "System uptime: %d m %d s    ", uptime/60, uptime%60);
@@ -390,7 +392,6 @@ void VGA_Task(void *pvParameters){
 void update_loads_from_switches() {
 	unsigned long switch_cfg = IORD_ALTERA_AVALON_PIO_DATA(SLIDE_SWITCH_BASE);
 	unsigned int i;
-
 	if ((system_state == NORMAL_OPERATION) || (system_state == MAINTENANCE_MODE)) { // can turn on or off loads w/ switches freely
 		// load state (red LEDs) reflects whatever the switch config is
 		for (i = 0; i < NO_OF_LOADS; i++) {
@@ -434,10 +435,7 @@ void update_leds_from_fsm() {
 		green_led |= (load_states[i] == false && sw_load_states[i] == true) ? bit : 0; // green leds turn on when relay switches off loads AND switch is high
 		bit = bit << 1; // shift left to do logic on next led
 	}
-
-	xSemaphoreTake(led_sem, portMAX_DELAY);
 	IOWR_ALTERA_AVALON_PIO_DATA(RED_LEDS_BASE, red_led);
-	xSemaphoreGive(led_sem);
 	IOWR_ALTERA_AVALON_PIO_DATA(GREEN_LEDS_BASE, green_led);
 }
 
@@ -559,8 +557,7 @@ int initOSDataStructs(void)
 	kb_dataQ = xQueueCreate(KB_DATA_QUEUE_SIZE, sizeof(unsigned char));
 	freq_roc_sem = xSemaphoreCreateMutex();
 	thresholds_sem = xSemaphoreCreateMutex();
-	led_sem = xSemaphoreCreateMutex();
-	state_sem = xSemaphoreCreateBinary(); // binary sem required because sem is used in ISR, mutexes cannot be
+	shed_sem = xSemaphoreCreateMutex();
 	fsm_timer = xTimerCreate("fsm_timer", TIMER_PERIOD, pdFALSE, (void*)0, timer_expiry_callback); // create 500ms timer with autoreload, callback sets timer expiry flag high
 
 	xTimerStart(fsm_timer, 0);
