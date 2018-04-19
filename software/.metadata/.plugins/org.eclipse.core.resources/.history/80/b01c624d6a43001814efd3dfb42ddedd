@@ -207,9 +207,11 @@ void ROC_Calculation_Task(void *pvParameters) {
 		if (((freq[freq_idx] < freq_threshold) || (fabs(roc[freq_idx]) >= roc_threshold)) && (system_state != MAINTENANCE_MODE)) {
 			time_before_shed = xTaskGetTickCountFromISR();
 			system_stable = false;
+			//system_state = LOAD_MGMT_MONITOR_UNSTABLE; // how to force fsm_task preemption here? not sure if it will be a problem
 		}
 		else {
 			system_stable = true;
+			// system_state can't be determined here because we don't know if the system is completely stable yet
 		}
 
 		freq_idx = (++freq_idx) % 100; // point to the next data (oldest) to be overwritten
