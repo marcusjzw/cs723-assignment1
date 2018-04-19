@@ -189,6 +189,8 @@ void ROC_Calculation_Task(void *pvParameters) {
 		}
 		xSemaphoreGive(freq_roc_sem);
 
+		xSemaphoreTake(state_sem, portMAX_DELAY);
+		// TODO: do we need thresholds/freq_roc sem here too??
 		// also update whether system is stable or not, done here since it's got both freq and roc
 		if (((freq[freq_idx] < freq_threshold) || (fabs(roc[freq_idx]) >= roc_threshold)) && (system_state != MAINTENANCE_MODE)) {
 			xSemaphoreTake(shed_sem, portMAX_DELAY);
@@ -199,6 +201,7 @@ void ROC_Calculation_Task(void *pvParameters) {
 		else {
 			system_stable = true;
 		}
+		xSemaphoreGive(state_sem, portMAX_DELAY);
 
 		freq_idx = (++freq_idx) % 100; // point to the next data (oldest) to be overwritten
 		vTaskDelay(10);
@@ -296,12 +299,15 @@ void VGA_Task(void *pvParameters){
 	while(1) {
 
 		// print out thresholds
+		xSemaphoreTake(thresholds_sem, portMAX_DELAY);
 		sprintf(vga_info_buf, "Frequency threshold: %2.1f", freq_threshold);
 		alt_up_char_buffer_string(char_buf, vga_info_buf, 4, 40);
 		sprintf(vga_info_buf, "ROC threshold: %2.1f ", roc_threshold);
 		alt_up_char_buffer_string(char_buf, vga_info_buf, 4, 42);
+		xSemaphoreGive(thresholds_sem, portMAX_DELAY);
 
 		// print system state
+		xSemaphoreTake(state_sem, portMAX_DELAY);
 		if (system_state == NORMAL_OPERATION) {
 			alt_up_char_buffer_string(char_buf, "System state: Normal operation           ", 4, 44);
 		}
@@ -321,6 +327,7 @@ void VGA_Task(void *pvParameters){
 		else {
 			alt_up_char_buffer_string(char_buf, "System is not stable", 4, 46);
 		}
+		xSemaphoreGive(state_sem, portMAX_DELAY);
 
 		// print shed times
 		xSemaphoreTake(shed_sem, portMAX_DELAY); // take sem since reading 
@@ -344,7 +351,7 @@ void VGA_Task(void *pvParameters){
 		//clear old graph to draw new graph
 		alt_up_pixel_buffer_dma_draw_box(pixel_buf, 101, 0, 639, 199, 0, 0);
 		alt_up_pixel_buffer_dma_draw_box(pixel_buf, 101, 201, 639, 299, 0, 0);
-
+		// TODO:  do we need freq_roc sem ehre?? 
 		for(j=0;j<99;++j){ //i here points to the oldest data, j loops through all the data to be drawn on VGA
 			if (((int)(freq[(freq_idx+j)%100]) > MIN_FREQ) && ((int)(freq[(freq_idx+j+1)%100]) > MIN_FREQ)){
 				//Frequency plot
