@@ -52,7 +52,7 @@ int initCreateTasks(void);
 
 // Definition of system parameters
 #define SAMPLING_FREQ 16000.0
-#define NO_OF_LOADS 8
+#define NO_OF_LOADS 5
 #define TIMER_PERIOD (500 / portTICK_RATE_MS)
 
 // Macro to check if bit is set

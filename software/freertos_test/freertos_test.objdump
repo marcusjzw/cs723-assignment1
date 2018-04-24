@@ -11,7 +11,7 @@ Program Header:
     LOAD off    0x0001b000 vaddr 0x01000000 paddr 0x01000000 align 2**12
          filesz 0x00000000 memsz 0x00000000 flags r-x
     LOAD off    0x0001b000 vaddr 0x08000000 paddr 0x08000000 align 2**12
-         filesz 0x00002d40 memsz 0x00080938 flags rw-
+         filesz 0x00002d40 memsz 0x00080920 flags rw-
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
@@ -25,7 +25,7 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
   4 .rwdata       000020f0  08000c50  08000c50  0001bc50  2**2
                   CONTENTS, ALLOC, LOAD, DATA, SMALL_DATA
-  5 .bss          0007de73  08002d40  08002d40  0001dd40  2**2
+  5 .bss          0007de5b  08002d40  08002d40  0001dd40  2**2
                   ALLOC, SMALL_DATA
   6 .comment      00000026  00000000  00000000  0001dd40  2**0
                   CONTENTS, READONLY
@@ -179,8 +179,8 @@ SYMBOL TABLE:
 0807ffc4 l     O .bss	00000014 xActiveTimerList1
 0807ffd8 l     O .bss	00000014 xActiveTimerList2
 00000000 l    df *ABS*	00000000 freertos_test.c
-08080000 l     O .bss	00000020 load_states
-08080020 l     O .bss	00000020 sw_load_states
+08080000 l     O .bss	00000014 load_states
+08080014 l     O .bss	00000014 sw_load_states
 00000000 l    df *ABS*	00000000 fp-bit.c
 00000000 l    df *ABS*	00000000 fp-bit.c
 00000000 l    df *ABS*	00000000 fp-bit.c
@@ -370,14 +370,14 @@ SYMBOL TABLE:
 000085d4 g     F .text	000000a0 _puts_r
 00011d1c g     F .text	00000048 alt_read_query_entry_32bit
 00015814 g     F .text	00000058 alt_up_ps2_disable_read_interrupt
-080806a8 g     O .bss	00000100 alt_irq
+08080690 g     O .bss	00000100 alt_irq
 0000f71c g     F .text	00000078 _lseek_r
 000000c4 g       .exceptions	00000000 restore_sp_from_pxCurrentTCB
 00002e28 g     F .text	00000074 vTaskPlaceOnUnorderedEventList
 00000ab0 g     F .text	00000020 xPortGetFreeHeapSize
 00011494 g     F .text	000002c0 alt_flash_cfi_write
 00010398 g     F .text	00000088 __eqdf2
-08080938 g       *ABS*	00000000 __alt_heap_start
+08080920 g       *ABS*	00000000 __alt_heap_start
 000041dc g     F .text	000000b0 xTimerCreate
 0000523c g     F .text	000002f0 update_shed_stats
 0000855c g     F .text	00000044 printf
@@ -443,7 +443,7 @@ SYMBOL TABLE:
 08002dd8 g     O .bss	00000004 shed_sem
 00008674 g     F .text	00000014 puts
 00000a30 g     F .text	00000080 vPortFree
-08080068 g     O .bss	00000320 freq
+08080050 g     O .bss	00000320 freq
 00000290 g     F .text	00000140 xCoRoutineCreate
 0000de04 g     F .text	000000b0 __ratio
 08002db8 g     O .bss	00000004 shed_time
@@ -499,7 +499,7 @@ SYMBOL TABLE:
 08002cf4 g     O .rwdata	00000004 _global_impure_ptr
 08002db0 g     O .bss	00000004 timer_expired_flag
 0000ea9c g     F .text	000005f4 _realloc_r
-08080938 g       *ABS*	00000000 __bss_end
+08080920 g       *ABS*	00000000 __bss_end
 000163f4 g     F .text	000004f4 alt_up_pixel_buffer_dma_draw_box
 000184bc g     F .text	0000010c alt_tick
 0000f80c g     F .text	000005dc __udivdi3
@@ -545,7 +545,7 @@ SYMBOL TABLE:
 000105ec g     F .text	00000008 __umodsi3
 000117e4 g     F .text	00000068 alt_flash_cfi_read
 00011f38 g     F .text	00000034 alt_write_native_8bit
-08080938 g       *ABS*	00000000 end
+08080920 g       *ABS*	00000000 end
 00015be0 g     F .text	000000a8 alt_up_ps2_write_fd
 00007c74 g     F .text	00000160 __pack_f
 00011da0 g     F .text	0000007c alt_write_flash_command_16bit_device_8bit_mode
@@ -587,7 +587,7 @@ SYMBOL TABLE:
 08002e1c g     O .bss	00000004 _alt_nticks
 00010bcc g     F .text	00000120 read
 0001101c g     F .text	0000036c alt_sys_init
-08080388 g     O .bss	00000320 roc
+08080370 g     O .bss	00000320 roc
 00000ed8 g     F .text	00000098 uxListRemove
 000192b4 g     F .text	00000134 __register_exitproc
 00015aec g     F .text	00000058 alt_up_ps2_clear_fifo
@@ -595,7 +595,7 @@ SYMBOL TABLE:
 0000e538 g     F .text	000001e8 __multiply
 0001361c g     F .text	00000074 altera_avalon_jtag_uart_close
 000037c8 g     F .text	00000130 vTaskPriorityInherit
-08080040 g     O .bss	00000028 __malloc_current_mallinfo
+08080028 g     O .bss	00000028 __malloc_current_mallinfo
 00011fd0 g     F .text	000001e0 alt_set_flash_width_func
 0000e0e4 g     F .text	0000017c __d2b
 00002c98 g     F .text	00000130 vTaskSwitchContext
@@ -611,7 +611,7 @@ SYMBOL TABLE:
 00017884 g     F .text	000000ac decode_scancode
 000083b0 g     F .text	00000074 memcmp
 000131f0 g     F .text	00000048 altera_avalon_jtag_uart_close_fd
-08080938 g       *ABS*	00000000 __alt_stack_base
+08080920 g       *ABS*	00000000 __alt_stack_base
 00013238 g     F .text	00000050 altera_avalon_jtag_uart_ioctl_fd
 08002db4 g     O .bss	00000004 time_before_shed
 0000428c g     F .text	000000c8 xTimerGenericCommand
@@ -659,7 +659,7 @@ SYMBOL TABLE:
 0000f624 g     F .text	00000014 fclose
 0000416c g     F .text	00000070 xTimerCreateTimerTask
 00015a70 g     F .text	0000007c alt_up_ps2_read_data_byte
-080807a8 g     O .bss	00000190 _atexit0
+08080790 g     O .bss	00000190 _atexit0
 0000aa4c g     F .text	000015b4 _dtoa_r
 0000d1a4 g     F .text	00000740 _malloc_r
 00004354 g     F .text	00000030 pcTimerGetTimerName
@@ -718,7 +718,7 @@ SYMBOL TABLE:
 00004d30 g     F .text	0000050c ROC_Calculation_Task
 08002d40 g       *ABS*	00000000 _edata
 00014c1c g     F .text	00000058 altera_avalon_uart_read_fd
-08080938 g       *ABS*	00000000 _end
+08080920 g       *ABS*	00000000 _end
 00017f54 g     F .text	0000007c alt_flash_open_dev
 00013690 g     F .text	000000f4 altera_avalon_jtag_uart_ioctl
 00000ad0 g     F .text	0000001c vPortInitialiseBlocks
@@ -948,13 +948,13 @@ static ALT_INLINE alt_u32 ALT_ALWAYS_INLINE alt_irq_pending (void)
         alt_irq[i].handler(alt_irq[i].context, i); 
  1bc:	e0bffd17 	ldw	r2,-12(fp)
  1c0:	00c20234 	movhi	r3,2056
- 1c4:	18c1aa04 	addi	r3,r3,1704
+ 1c4:	18c1a404 	addi	r3,r3,1680
  1c8:	100490fa 	slli	r2,r2,3
  1cc:	10c5883a 	add	r2,r2,r3
  1d0:	11800017 	ldw	r6,0(r2)
  1d4:	e0bffd17 	ldw	r2,-12(fp)
  1d8:	00c20234 	movhi	r3,2056
- 1dc:	18c1aa04 	addi	r3,r3,1704
+ 1dc:	18c1a404 	addi	r3,r3,1680
  1e0:	100490fa 	slli	r2,r2,3
  1e4:	10c5883a 	add	r2,r2,r3
  1e8:	10800104 	addi	r2,r2,4
@@ -1060,7 +1060,7 @@ Disassembly of section .text:
     movhi r3, %hi(__bss_end)
      270:	00c20234 	movhi	r3,2056
     ori r3, r3, %lo(__bss_end)
-     274:	18c24e14 	ori	r3,r3,2360
+     274:	18c24814 	ori	r3,r3,2336
 
     beq r2, r3, 1f
      278:	10c00326 	beq	r2,r3,288 <_start+0x40>
@@ -2929,7 +2929,7 @@ static ALT_INLINE alt_irq_context ALT_ALWAYS_INLINE
 		alt_irq[id].handler = handler;
     1240:	e0bffc17 	ldw	r2,-16(fp)
     1244:	00c20234 	movhi	r3,2056
-    1248:	18c1aa04 	addi	r3,r3,1704
+    1248:	18c1a404 	addi	r3,r3,1680
     124c:	100490fa 	slli	r2,r2,3
     1250:	10c7883a 	add	r3,r2,r3
     1254:	e0bffe17 	ldw	r2,-8(fp)
@@ -2937,7 +2937,7 @@ static ALT_INLINE alt_irq_context ALT_ALWAYS_INLINE
 		alt_irq[id].context = context;
     125c:	e0bffc17 	ldw	r2,-16(fp)
     1260:	00c20234 	movhi	r3,2056
-    1264:	18c1aa04 	addi	r3,r3,1704
+    1264:	18c1a404 	addi	r3,r3,1680
     1268:	100490fa 	slli	r2,r2,3
     126c:	10c5883a 	add	r2,r2,r3
     1270:	10c00104 	addi	r3,r2,4
@@ -10360,7 +10360,7 @@ void ROC_Calculation_Task(void *pvParameters) {
     4d58:	100490fa 	slli	r2,r2,3
     4d5c:	1007883a 	mov	r3,r2
     4d60:	00820234 	movhi	r2,2056
-    4d64:	10801a04 	addi	r2,r2,104
+    4d64:	10801404 	addi	r2,r2,80
     4d68:	188b883a 	add	r5,r3,r2
     4d6c:	01bfffc4 	movi	r6,-1
     4d70:	000f883a 	mov	r7,zero
@@ -10379,11 +10379,11 @@ void ROC_Calculation_Task(void *pvParameters) {
     4d94:	1000531e 	bne	r2,zero,4ee4 <ROC_Calculation_Task+0x1b4>
 			roc[0] = (freq[0]-freq[99]) * 2.0 * freq[0] * freq[99] / (freq[0]+freq[99]);
     4d98:	00820234 	movhi	r2,2056
-    4d9c:	10801a04 	addi	r2,r2,104
+    4d9c:	10801404 	addi	r2,r2,80
     4da0:	11400017 	ldw	r5,0(r2)
     4da4:	11800117 	ldw	r6,4(r2)
     4da8:	01020234 	movhi	r4,2056
-    4dac:	21001a04 	addi	r4,r4,104
+    4dac:	21001404 	addi	r4,r4,80
     4db0:	2080c617 	ldw	r2,792(r4)
     4db4:	20c0c717 	ldw	r3,796(r4)
     4db8:	2809883a 	mov	r4,r5
@@ -10405,7 +10405,7 @@ void ROC_Calculation_Task(void *pvParameters) {
     4df8:	200d883a 	mov	r6,r4
     4dfc:	280f883a 	mov	r7,r5
     4e00:	01020234 	movhi	r4,2056
-    4e04:	21001a04 	addi	r4,r4,104
+    4e04:	21001404 	addi	r4,r4,80
     4e08:	20800017 	ldw	r2,0(r4)
     4e0c:	20c00117 	ldw	r3,4(r4)
     4e10:	3009883a 	mov	r4,r6
@@ -10418,7 +10418,7 @@ void ROC_Calculation_Task(void *pvParameters) {
     4e2c:	200d883a 	mov	r6,r4
     4e30:	280f883a 	mov	r7,r5
     4e34:	01020234 	movhi	r4,2056
-    4e38:	21001a04 	addi	r4,r4,104
+    4e38:	21001404 	addi	r4,r4,80
     4e3c:	2080c617 	ldw	r2,792(r4)
     4e40:	20c0c717 	ldw	r3,796(r4)
     4e44:	3009883a 	mov	r4,r6
@@ -10431,11 +10431,11 @@ void ROC_Calculation_Task(void *pvParameters) {
     4e60:	2021883a 	mov	r16,r4
     4e64:	2823883a 	mov	r17,r5
     4e68:	00820234 	movhi	r2,2056
-    4e6c:	10801a04 	addi	r2,r2,104
+    4e6c:	10801404 	addi	r2,r2,80
     4e70:	11400017 	ldw	r5,0(r2)
     4e74:	11800117 	ldw	r6,4(r2)
     4e78:	01020234 	movhi	r4,2056
-    4e7c:	21001a04 	addi	r4,r4,104
+    4e7c:	21001404 	addi	r4,r4,80
     4e80:	2080c617 	ldw	r2,792(r4)
     4e84:	20c0c717 	ldw	r3,796(r4)
     4e88:	2809883a 	mov	r4,r5
@@ -10457,7 +10457,7 @@ void ROC_Calculation_Task(void *pvParameters) {
     4ec8:	2005883a 	mov	r2,r4
     4ecc:	2807883a 	mov	r3,r5
     4ed0:	01020234 	movhi	r4,2056
-    4ed4:	2100e204 	addi	r4,r4,904
+    4ed4:	2100dc04 	addi	r4,r4,880
     4ed8:	20800015 	stw	r2,0(r4)
     4edc:	20c00115 	stw	r3,4(r4)
     4ee0:	00006a06 	br	508c <ROC_Calculation_Task+0x35c>
@@ -10466,7 +10466,7 @@ void ROC_Calculation_Task(void *pvParameters) {
     4ee4:	d4a00417 	ldw	r18,-32752(gp)
     4ee8:	d0a00417 	ldw	r2,-32752(gp)
     4eec:	00c20234 	movhi	r3,2056
-    4ef0:	18c01a04 	addi	r3,r3,104
+    4ef0:	18c01404 	addi	r3,r3,80
     4ef4:	100490fa 	slli	r2,r2,3
     4ef8:	10c5883a 	add	r2,r2,r3
     4efc:	11400017 	ldw	r5,0(r2)
@@ -10474,7 +10474,7 @@ void ROC_Calculation_Task(void *pvParameters) {
     4f04:	d0a00417 	ldw	r2,-32752(gp)
     4f08:	10bfffc4 	addi	r2,r2,-1
     4f0c:	00c20234 	movhi	r3,2056
-    4f10:	18c01a04 	addi	r3,r3,104
+    4f10:	18c01404 	addi	r3,r3,80
     4f14:	100490fa 	slli	r2,r2,3
     4f18:	10c9883a 	add	r4,r2,r3
     4f1c:	20800017 	ldw	r2,0(r4)
@@ -10499,7 +10499,7 @@ void ROC_Calculation_Task(void *pvParameters) {
     4f68:	280f883a 	mov	r7,r5
     4f6c:	d0a00417 	ldw	r2,-32752(gp)
     4f70:	00c20234 	movhi	r3,2056
-    4f74:	18c01a04 	addi	r3,r3,104
+    4f74:	18c01404 	addi	r3,r3,80
     4f78:	100490fa 	slli	r2,r2,3
     4f7c:	10c9883a 	add	r4,r2,r3
     4f80:	20800017 	ldw	r2,0(r4)
@@ -10516,7 +10516,7 @@ void ROC_Calculation_Task(void *pvParameters) {
     4fac:	d0a00417 	ldw	r2,-32752(gp)
     4fb0:	10bfffc4 	addi	r2,r2,-1
     4fb4:	00c20234 	movhi	r3,2056
-    4fb8:	18c01a04 	addi	r3,r3,104
+    4fb8:	18c01404 	addi	r3,r3,80
     4fbc:	100490fa 	slli	r2,r2,3
     4fc0:	10c9883a 	add	r4,r2,r3
     4fc4:	20800017 	ldw	r2,0(r4)
@@ -10532,7 +10532,7 @@ void ROC_Calculation_Task(void *pvParameters) {
     4fec:	2823883a 	mov	r17,r5
     4ff0:	d0a00417 	ldw	r2,-32752(gp)
     4ff4:	00c20234 	movhi	r3,2056
-    4ff8:	18c01a04 	addi	r3,r3,104
+    4ff8:	18c01404 	addi	r3,r3,80
     4ffc:	100490fa 	slli	r2,r2,3
     5000:	10c5883a 	add	r2,r2,r3
     5004:	11400017 	ldw	r5,0(r2)
@@ -10540,7 +10540,7 @@ void ROC_Calculation_Task(void *pvParameters) {
     500c:	d0a00417 	ldw	r2,-32752(gp)
     5010:	10bfffc4 	addi	r2,r2,-1
     5014:	00c20234 	movhi	r3,2056
-    5018:	18c01a04 	addi	r3,r3,104
+    5018:	18c01404 	addi	r3,r3,80
     501c:	100490fa 	slli	r2,r2,3
     5020:	10c9883a 	add	r4,r2,r3
     5024:	20800017 	ldw	r2,0(r4)
@@ -10564,7 +10564,7 @@ void ROC_Calculation_Task(void *pvParameters) {
     506c:	2005883a 	mov	r2,r4
     5070:	2807883a 	mov	r3,r5
     5074:	01420234 	movhi	r5,2056
-    5078:	2940e204 	addi	r5,r5,904
+    5078:	2940dc04 	addi	r5,r5,880
     507c:	900890fa 	slli	r4,r18,3
     5080:	2149883a 	add	r4,r4,r5
     5084:	20800015 	stw	r2,0(r4)
@@ -10574,7 +10574,7 @@ void ROC_Calculation_Task(void *pvParameters) {
 		if (roc[freq_idx] > 100.0){
     508c:	d0a00417 	ldw	r2,-32752(gp)
     5090:	00c20234 	movhi	r3,2056
-    5094:	18c0e204 	addi	r3,r3,904
+    5094:	18c0dc04 	addi	r3,r3,880
     5098:	100490fa 	slli	r2,r2,3
     509c:	10c9883a 	add	r4,r2,r3
     50a0:	20800017 	ldw	r2,0(r4)
@@ -10590,7 +10590,7 @@ void ROC_Calculation_Task(void *pvParameters) {
 			roc[freq_idx] = 100.0;
     50c8:	d0a00417 	ldw	r2,-32752(gp)
     50cc:	00c20234 	movhi	r3,2056
-    50d0:	18c0e204 	addi	r3,r3,904
+    50d0:	18c0dc04 	addi	r3,r3,880
     50d4:	100490fa 	slli	r2,r2,3
     50d8:	10c7883a 	add	r3,r2,r3
     50dc:	18000015 	stw	zero,0(r3)
@@ -10614,7 +10614,7 @@ void ROC_Calculation_Task(void *pvParameters) {
 		if (((freq[freq_idx] < freq_threshold) || (fabs(roc[freq_idx]) >= roc_threshold)) && (system_state != MAINTENANCE_MODE)) {
     5110:	d0a00417 	ldw	r2,-32752(gp)
     5114:	00c20234 	movhi	r3,2056
-    5118:	18c01a04 	addi	r3,r3,104
+    5118:	18c01404 	addi	r3,r3,80
     511c:	100490fa 	slli	r2,r2,3
     5120:	10c5883a 	add	r2,r2,r3
     5124:	11400017 	ldw	r5,0(r2)
@@ -10632,7 +10632,7 @@ void ROC_Calculation_Task(void *pvParameters) {
     5154:	1000171e 	bne	r2,zero,51b4 <ROC_Calculation_Task+0x484>
     5158:	d0a00417 	ldw	r2,-32752(gp)
     515c:	00c20234 	movhi	r3,2056
-    5160:	18c0e204 	addi	r3,r3,904
+    5160:	18c0dc04 	addi	r3,r3,880
     5164:	100490fa 	slli	r2,r2,3
     5168:	10c9883a 	add	r4,r2,r3
     516c:	20800017 	ldw	r2,0(r4)
@@ -11442,7 +11442,7 @@ void VGA_Task(void *pvParameters){
     5ad8:	10801924 	muli	r2,r2,100
     5adc:	1885c83a 	sub	r2,r3,r2
     5ae0:	00c20234 	movhi	r3,2056
-    5ae4:	18c01a04 	addi	r3,r3,104
+    5ae4:	18c01404 	addi	r3,r3,80
     5ae8:	100490fa 	slli	r2,r2,3
     5aec:	10c9883a 	add	r4,r2,r3
     5af0:	20800017 	ldw	r2,0(r4)
@@ -11472,7 +11472,7 @@ void VGA_Task(void *pvParameters){
     5b50:	10801924 	muli	r2,r2,100
     5b54:	1885c83a 	sub	r2,r3,r2
     5b58:	00c20234 	movhi	r3,2056
-    5b5c:	18c01a04 	addi	r3,r3,104
+    5b5c:	18c01404 	addi	r3,r3,80
     5b60:	100490fa 	slli	r2,r2,3
     5b64:	10c9883a 	add	r4,r2,r3
     5b68:	20800017 	ldw	r2,0(r4)
@@ -11508,7 +11508,7 @@ void VGA_Task(void *pvParameters){
     5bd4:	10801924 	muli	r2,r2,100
     5bd8:	1885c83a 	sub	r2,r3,r2
     5bdc:	00c20234 	movhi	r3,2056
-    5be0:	18c01a04 	addi	r3,r3,104
+    5be0:	18c01404 	addi	r3,r3,80
     5be4:	100490fa 	slli	r2,r2,3
     5be8:	10c9883a 	add	r4,r2,r3
     5bec:	20800017 	ldw	r2,0(r4)
@@ -11562,7 +11562,7 @@ void VGA_Task(void *pvParameters){
     5ca0:	10801924 	muli	r2,r2,100
     5ca4:	1885c83a 	sub	r2,r3,r2
     5ca8:	00c20234 	movhi	r3,2056
-    5cac:	18c01a04 	addi	r3,r3,104
+    5cac:	18c01404 	addi	r3,r3,80
     5cb0:	100490fa 	slli	r2,r2,3
     5cb4:	10c9883a 	add	r4,r2,r3
     5cb8:	20800017 	ldw	r2,0(r4)
@@ -11616,7 +11616,7 @@ void VGA_Task(void *pvParameters){
     5d68:	10801924 	muli	r2,r2,100
     5d6c:	1885c83a 	sub	r2,r3,r2
     5d70:	00c20234 	movhi	r3,2056
-    5d74:	18c0e204 	addi	r3,r3,904
+    5d74:	18c0dc04 	addi	r3,r3,880
     5d78:	100490fa 	slli	r2,r2,3
     5d7c:	10c9883a 	add	r4,r2,r3
     5d80:	20800017 	ldw	r2,0(r4)
@@ -11660,7 +11660,7 @@ void VGA_Task(void *pvParameters){
     5e0c:	10801924 	muli	r2,r2,100
     5e10:	1885c83a 	sub	r2,r3,r2
     5e14:	00c20234 	movhi	r3,2056
-    5e18:	18c0e204 	addi	r3,r3,904
+    5e18:	18c0dc04 	addi	r3,r3,880
     5e1c:	100490fa 	slli	r2,r2,3
     5e20:	10c9883a 	add	r4,r2,r3
     5e24:	20800017 	ldw	r2,0(r4)
@@ -11793,7 +11793,7 @@ void update_loads_from_switches() {
 				sw_load_states[i] = 1;
     5f9c:	e0bffe17 	ldw	r2,-8(fp)
     5fa0:	00c20234 	movhi	r3,2056
-    5fa4:	18c00804 	addi	r3,r3,32
+    5fa4:	18c00504 	addi	r3,r3,20
     5fa8:	1085883a 	add	r2,r2,r2
     5fac:	1085883a 	add	r2,r2,r2
     5fb0:	10c7883a 	add	r3,r2,r3
@@ -11813,7 +11813,7 @@ void update_loads_from_switches() {
 				sw_load_states[i] = 0;
     5fdc:	e0bffe17 	ldw	r2,-8(fp)
     5fe0:	00c20234 	movhi	r3,2056
-    5fe4:	18c00804 	addi	r3,r3,32
+    5fe4:	18c00504 	addi	r3,r3,20
     5fe8:	1085883a 	add	r2,r2,r2
     5fec:	1085883a 	add	r2,r2,r2
     5ff0:	10c5883a 	add	r2,r2,r3
@@ -11828,7 +11828,7 @@ void update_loads_from_switches() {
     5ffc:	10800044 	addi	r2,r2,1
     6000:	e0bffe15 	stw	r2,-8(fp)
     6004:	e0bffe17 	ldw	r2,-8(fp)
-    6008:	10800230 	cmpltui	r2,r2,8
+    6008:	10800170 	cmpltui	r2,r2,5
     600c:	103fd31e 	bne	r2,zero,5f5c <update_loads_from_switches+0x3c>
 // i.e. in Normal Operation or Maintenance Mode, loads can be switched on/off freely
 // However under Load Management Mode, switches can only turn off loads
@@ -11865,7 +11865,7 @@ void update_loads_from_switches() {
 				sw_load_states[i] = 0;
     6058:	e0bffe17 	ldw	r2,-8(fp)
     605c:	00c20234 	movhi	r3,2056
-    6060:	18c00804 	addi	r3,r3,32
+    6060:	18c00504 	addi	r3,r3,20
     6064:	1085883a 	add	r2,r2,r2
     6068:	1085883a 	add	r2,r2,r2
     606c:	10c5883a 	add	r2,r2,r3
@@ -11880,7 +11880,7 @@ void update_loads_from_switches() {
     6078:	10800044 	addi	r2,r2,1
     607c:	e0bffe15 	stw	r2,-8(fp)
     6080:	e0bffe17 	ldw	r2,-8(fp)
-    6084:	10800230 	cmpltui	r2,r2,8
+    6084:	10800170 	cmpltui	r2,r2,5
     6088:	103fe41e 	bne	r2,zero,601c <update_loads_from_switches+0xfc>
 				load_states[i] = 0; // turn off the load
 				sw_load_states[i] = 0;
@@ -11929,7 +11929,7 @@ void update_leds_from_fsm() {
     60e8:	10000c1e 	bne	r2,zero,611c <update_leds_from_fsm+0x80>
     60ec:	e0bffa17 	ldw	r2,-24(fp)
     60f0:	00c20234 	movhi	r3,2056
-    60f4:	18c00804 	addi	r3,r3,32
+    60f4:	18c00504 	addi	r3,r3,20
     60f8:	1085883a 	add	r2,r2,r2
     60fc:	1085883a 	add	r2,r2,r2
     6100:	10c5883a 	add	r2,r2,r3
@@ -11956,7 +11956,7 @@ void update_leds_from_fsm() {
     6150:	10000c1e 	bne	r2,zero,6184 <update_leds_from_fsm+0xe8>
     6154:	e0bffa17 	ldw	r2,-24(fp)
     6158:	00c20234 	movhi	r3,2056
-    615c:	18c00804 	addi	r3,r3,32
+    615c:	18c00504 	addi	r3,r3,20
     6160:	1085883a 	add	r2,r2,r2
     6164:	1085883a 	add	r2,r2,r2
     6168:	10c5883a 	add	r2,r2,r3
@@ -11985,7 +11985,7 @@ void update_leds_from_fsm() {
     61a8:	10800044 	addi	r2,r2,1
     61ac:	e0bffa15 	stw	r2,-24(fp)
     61b0:	e0bffa17 	ldw	r2,-24(fp)
-    61b4:	10800230 	cmpltui	r2,r2,8
+    61b4:	10800170 	cmpltui	r2,r2,5
     61b8:	103fc31e 	bne	r2,zero,60c8 <update_leds_from_fsm+0x2c>
 		red_led |= (load_states[i] == true && sw_load_states[i] == true) ? bit : 0;
 		green_led |= (load_states[i] == false && sw_load_states[i] == true) ? bit : 0; // green leds turn on when relay switches off loads AND switch is high
@@ -12049,7 +12049,7 @@ void shed_load() {
     6250:	10800044 	addi	r2,r2,1
     6254:	e0bfff15 	stw	r2,-4(fp)
     6258:	e0bfff17 	ldw	r2,-4(fp)
-    625c:	10800230 	cmpltui	r2,r2,8
+    625c:	10800170 	cmpltui	r2,r2,5
     6260:	103fe91e 	bne	r2,zero,6208 <shed_load+0x18>
 		if (load_states[i] == true) {
 			load_states[i] = false;
@@ -12074,7 +12074,7 @@ void reconnect_load() {
     6288:	df000104 	addi	fp,sp,4
 	unsigned int i;
 	for (i = NO_OF_LOADS - 1; i >= 0; i--) {
-    628c:	008001c4 	movi	r2,7
+    628c:	00800104 	movi	r2,4
     6290:	e0bfff15 	stw	r2,-4(fp)
 		if (load_states[i] == false && sw_load_states[i] == true) { // only turn back on the load if it is actually switched on
     6294:	e0bfff17 	ldw	r2,-4(fp)
@@ -12088,7 +12088,7 @@ void reconnect_load() {
     62b4:	1000131e 	bne	r2,zero,6304 <reconnect_load+0x88>
     62b8:	e0bfff17 	ldw	r2,-4(fp)
     62bc:	00c20234 	movhi	r3,2056
-    62c0:	18c00804 	addi	r3,r3,32
+    62c0:	18c00504 	addi	r3,r3,20
     62c4:	1085883a 	add	r2,r2,r2
     62c8:	1085883a 	add	r2,r2,r2
     62cc:	10c5883a 	add	r2,r2,r3
@@ -12156,7 +12156,7 @@ bool check_if_all_loads_connected() {
     635c:	10000b1e 	bne	r2,zero,638c <check_if_all_loads_connected+0x64>
     6360:	e0bffe17 	ldw	r2,-8(fp)
     6364:	00c20234 	movhi	r3,2056
-    6368:	18c00804 	addi	r3,r3,32
+    6368:	18c00504 	addi	r3,r3,20
     636c:	1085883a 	add	r2,r2,r2
     6370:	1085883a 	add	r2,r2,r2
     6374:	10c5883a 	add	r2,r2,r3
@@ -12176,7 +12176,7 @@ bool check_if_all_loads_connected() {
     6390:	10800044 	addi	r2,r2,1
     6394:	e0bffe15 	stw	r2,-8(fp)
     6398:	e0bffe17 	ldw	r2,-8(fp)
-    639c:	10800230 	cmpltui	r2,r2,8
+    639c:	10800170 	cmpltui	r2,r2,5
     63a0:	103fe61e 	bne	r2,zero,633c <check_if_all_loads_connected+0x14>
 		if (load_states[i] == false && sw_load_states[i] == true) { // do not check if load is connected if it's not actually switched on
 			return false;
@@ -12521,7 +12521,7 @@ int initOSDataStructs(void)
     6724:	10800044 	addi	r2,r2,1
     6728:	e0bfff15 	stw	r2,-4(fp)
     672c:	e0bfff17 	ldw	r2,-4(fp)
-    6730:	10800230 	cmpltui	r2,r2,8
+    6730:	10800170 	cmpltui	r2,r2,5
     6734:	103ff21e 	bne	r2,zero,6700 <initOSDataStructs+0xb0>
 		load_states[i] = true; // turn all LEDs on initially because all loads are on
 	}
@@ -18720,7 +18720,7 @@ int main(int argc, char* argv[], char* envp[])
     c59c:	9009883a 	mov	r4,r18
     c5a0:	000b883a 	mov	r5,zero
     c5a4:	01c20234 	movhi	r7,2056
-    c5a8:	39c01004 	addi	r7,r7,64
+    c5a8:	39c00a04 	addi	r7,r7,40
     c5ac:	31800054 	ori	r6,r6,1
     c5b0:	10c00926 	beq	r2,r3,c5d8 <_malloc_trim_r+0xe8>
     c5b4:	38800017 	ldw	r2,0(r7)
@@ -18744,7 +18744,7 @@ int main(int argc, char* argv[], char* envp[])
     c5fc:	108b4104 	addi	r2,r2,11524
     c600:	10c00017 	ldw	r3,0(r2)
     c604:	00820234 	movhi	r2,2056
-    c608:	10801004 	addi	r2,r2,64
+    c608:	10800a04 	addi	r2,r2,40
     c60c:	31400115 	stw	r5,4(r6)
     c610:	38c7c83a 	sub	r3,r7,r3
     c614:	10c00015 	stw	r3,0(r2)
@@ -19776,7 +19776,7 @@ int main(int argc, char* argv[], char* envp[])
     d5c4:	0007883a 	mov	r3,zero
     d5c8:	003f0a06 	br	d1f4 <_malloc_r+0x50>
     d5cc:	05c20234 	movhi	r23,2056
-    d5d0:	bdc01004 	addi	r23,r23,64
+    d5d0:	bdc00a04 	addi	r23,r23,40
     d5d4:	b8800017 	ldw	r2,0(r23)
     d5d8:	988d883a 	add	r6,r19,r2
     d5dc:	b9800015 	stw	r6,0(r23)
@@ -19853,7 +19853,7 @@ int main(int argc, char* argv[], char* envp[])
     d6f8:	48c000c4 	addi	r3,r9,3
     d6fc:	003f3106 	br	d3c4 <_malloc_r+0x220>
     d700:	05c20234 	movhi	r23,2056
-    d704:	bdc01004 	addi	r23,r23,64
+    d704:	bdc00a04 	addi	r23,r23,40
     d708:	b8800017 	ldw	r2,0(r23)
     d70c:	988d883a 	add	r6,r19,r2
     d710:	b9800015 	stw	r6,0(r23)
@@ -37620,7 +37620,7 @@ int alt_get_fd (alt_dev* dev)
    19380:	30804115 	stw	r2,260(r6)
    19384:	003fdf06 	br	19304 <__register_exitproc+0x50>
    19388:	00820234 	movhi	r2,2056
-   1938c:	1081ea04 	addi	r2,r2,1960
+   1938c:	1081e404 	addi	r2,r2,1936
    19390:	100b883a 	mov	r5,r2
    19394:	80805215 	stw	r2,328(r16)
    19398:	003fd606 	br	192f4 <__register_exitproc+0x40>
